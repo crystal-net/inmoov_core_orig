@@ -1,0 +1,3311 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='inmoov'>
+      <joint name='fixed' type='fixed'>
+        <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
+        <parent>world</parent>
+        <child>base_link</child>
+      </joint>
+      <link name='base_link'>
+        <pose relative_to='fixed'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1710.22</mass>
+          <inertia>
+            <ixx>10.1299</ixx>
+            <ixy>0.00179769</ixy>
+            <ixz>0.205381</ixz>
+            <iyy>4.40147</iyy>
+            <iyz>-0.000721074</iyz>
+            <izz>10.6233</izz>
+          </inertia>
+        </inertial>
+        <visual name='base_link_visual'>
+          <pose>0 0 0.055 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.11</length>
+              <radius>0.26</radius>
+            </cylinder>
+          </geometry>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__pedestal_link_visual_1'>
+          <pose>0 0 0.58 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.94</length>
+              <radius>0.0254</radius>
+            </cylinder>
+          </geometry>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__mid_stomach_link_visual_2'>
+          <pose>0 0 1.152 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/mid_stomach.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='waist_pan_joint' type='revolute'>
+        <pose relative_to='base_link'>0 0 1.152 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>top_stomach_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1.5708</lower>
+            <upper>1.5708</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='top_stomach_link'>
+        <pose relative_to='waist_pan_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.006219 0 0.012167 0 -0 0</pose>
+          <mass>1323.86</mass>
+          <inertia>
+            <ixx>7.59609</ixx>
+            <ixy>0.00452947</ixy>
+            <ixz>-0.850623</ixz>
+            <iyy>6.02008</iyy>
+            <iyz>0.00412351</iyz>
+            <izz>6.55839</izz>
+          </inertia>
+        </inertial>
+        <visual name='top_stomach_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/top_stomach.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='top_stomach_link_fixed_joint_lump__disk_link_visual_1'>
+          <pose>0.046 0 0.09 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/disk.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='waist_roll_joint' type='revolute'>
+        <pose relative_to='top_stomach_link'>0 0 0.11 0 -0 0</pose>
+        <parent>top_stomach_link</parent>
+        <child>torso_link</child>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>-0.261799</lower>
+            <upper>0.261799</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='torso_link'>
+        <pose relative_to='waist_roll_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.006283 0 0.034738 0 -0 0</pose>
+          <mass>5051.47</mass>
+          <inertia>
+            <ixx>59.8823</ixx>
+            <ixy>0.0217305</ixy>
+            <ixz>0.910314</ixz>
+            <iyy>36.9828</iyy>
+            <iyz>-0.0303415</iyz>
+            <izz>30.6053</izz>
+          </inertia>
+        </inertial>
+        <visual name='torso_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/torso.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='torso_link_fixed_joint_lump__chestplate_link_visual_1'>
+          <pose>0.042 0 0.025 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/chest.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='torso_link_fixed_joint_lump__kinect2_ir_optical_frame_visual_2'>
+          <pose>0 0 0.066 0 0 -1.57</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/kinectone.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='torso_link_fixed_joint_lump__kinect2_link_visual_3'>
+          <pose>0 0 0.066 0 0 -1.57</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/kinectone.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/DarkGrey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='torso_link_fixed_joint_lump__kinect2_rgb_optical_frame_visual_4'>
+          <pose>0 0 0.066 0 0 -1.57</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/kinectone.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay/>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='head_roll_joint' type='revolute'>
+        <pose relative_to='torso_link'>-0.0315 -0.001 0.4551 0 -0 3.1415</pose>
+        <parent>torso_link</parent>
+        <child>head_tilt_link</child>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>-0.261799</lower>
+            <upper>0.261799</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='head_tilt_link'>
+        <pose relative_to='head_roll_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.001</mass>
+          <inertia>
+            <ixx>1.66667e-10</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1.66667e-10</iyy>
+            <iyz>0</iyz>
+            <izz>1.66667e-10</izz>
+          </inertia>
+        </inertial>
+        <visual name='head_tilt_link_visual'>
+          <pose>0 0 0 0 -0 3.1415</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/virtual.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_shoulder_out_joint' type='revolute'>
+        <pose relative_to='torso_link'>0 0.143 0.298 0 -0 0</pose>
+        <parent>torso_link</parent>
+        <child>l_shoulder_base_link</child>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>0.0872665</lower>
+            <upper>1.0472</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <damping>50</damping>
+            <friction>1</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_shoulder_base_link'>
+        <pose relative_to='l_shoulder_out_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>266.527</mass>
+          <inertia>
+            <ixx>0.35041</ixx>
+            <ixy>0.00573516</ixy>
+            <ixz>-0.0111938</ixz>
+            <iyy>0.390886</iyy>
+            <iyz>-0.0454475</iyz>
+            <izz>0.271459</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_shoulder_base_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_shoulder_base.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_shoulder_lift_joint' type='revolute'>
+        <pose relative_to='l_shoulder_base_link'>0 0.012 -0.04 0 -0 0</pose>
+        <parent>l_shoulder_base_link</parent>
+        <child>l_shoulder_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-2.35619</lower>
+            <upper>0.785398</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_shoulder_link'>
+        <pose relative_to='l_shoulder_lift_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>322.443</mass>
+          <inertia>
+            <ixx>0.601346</ixx>
+            <ixy>-0.00343774</ixy>
+            <ixz>-0.0117619</ixz>
+            <iyy>0.473866</iyy>
+            <iyz>0.114277</iyz>
+            <izz>0.500952</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_shoulder_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_shoulder.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_upper_arm_roll_joint' type='revolute'>
+        <pose relative_to='l_shoulder_link'>0 0.066 -0.06 0 -0 0</pose>
+        <parent>l_shoulder_link</parent>
+        <child>l_bicep_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1.5708</lower>
+            <upper>1.5708</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_bicep_link'>
+        <pose relative_to='l_upper_arm_roll_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>458.182</mass>
+          <inertia>
+            <ixx>1.81971</ixx>
+            <ixy>0.000765751</ixy>
+            <ixz>-0.293866</ixz>
+            <iyy>2.02506</iyy>
+            <iyz>0.00122116</iyz>
+            <izz>0.858538</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_bicep_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/bicep.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='l_bicep_link_fixed_joint_lump__l_bicepcover_link_visual_1'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/bicepcover.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_elbow_flex_joint' type='revolute'>
+        <pose relative_to='l_bicep_link'>-0.0278 0 -0.2235 0 -0 0</pose>
+        <parent>l_bicep_link</parent>
+        <child>l_forearm_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1.48353</lower>
+            <upper>-0.261799</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_forearm_link'>
+        <pose relative_to='l_elbow_flex_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>401.767</mass>
+          <inertia>
+            <ixx>3.24231</ixx>
+            <ixy>-0.0500112</ixy>
+            <ixz>-0.143185</ixz>
+            <iyy>3.24251</iyy>
+            <iyz>-0.086289</iyz>
+            <izz>0.584588</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_forearm_link_visual'>
+          <pose>-0.001 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_forearm.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_wrist_roll_joint' type='revolute'>
+        <pose relative_to='l_forearm_link'>-0.0144 -0.01 -0.2885 0 -0 0</pose>
+        <parent>l_forearm_link</parent>
+        <child>l_hand_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>3.14159</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_hand_link'>
+        <pose relative_to='l_wrist_roll_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.002905 -0.006198 -0.031537 0 -0 0</pose>
+          <mass>123.455</mass>
+          <inertia>
+            <ixx>0.437976</ixx>
+            <ixy>0.0045062</ixy>
+            <ixz>0.0229212</ixz>
+            <iyy>0.386335</iyy>
+            <iyz>-0.0822927</iyz>
+            <izz>0.0623986</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_hand_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_hand.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='l_hand_link_fixed_joint_lump__l_handcover_link_visual_1'>
+          <pose>0.009 -0.0192 -0.0977 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_cover_hand.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_index1_joint' type='revolute'>
+        <pose relative_to='l_hand_link'>-0.0015 -0.0342 -0.119 -0.1 0 0</pose>
+        <parent>l_hand_link</parent>
+        <child>l_index1_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_index1_link'>
+        <pose relative_to='l_index1_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.001789 0 -0.003024 0 -0 0</pose>
+          <mass>6.48992</mass>
+          <inertia>
+            <ixx>0.00113089</ixx>
+            <ixy>-1.47786e-07</ixy>
+            <ixz>0.000107694</ixz>
+            <iyy>0.00111502</iyy>
+            <iyz>2.1947e-06</iyz>
+            <izz>0.000323676</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_index1_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/index3_1.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='l_index1_link_fixed_joint_lump__l_cover_index_link_visual_1'>
+          <pose>0.0071 0 -0.012 0 -0.05 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_cover_index.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_index_joint' type='revolute'>
+        <pose relative_to='l_index1_link'>0 0.001 -0.03595 0 -0 0</pose>
+        <parent>l_index1_link</parent>
+        <child>l_index2_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_index2_link'>
+        <pose relative_to='l_index_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>2.91155</mass>
+          <inertia>
+            <ixx>0.000247698</ixx>
+            <ixy>5.31054e-09</ixy>
+            <ixz>-1.36151e-05</ixz>
+            <iyy>0.000244508</iyy>
+            <iyz>7.01601e-07</iyz>
+            <izz>9.10515e-05</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_index2_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/index3_2.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_index3_joint' type='revolute'>
+        <pose relative_to='l_index2_link'>0 0 -0.024 0 -0 0</pose>
+        <parent>l_index2_link</parent>
+        <child>l_index3_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_index3_link'>
+        <pose relative_to='l_index3_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>2.75476</mass>
+          <inertia>
+            <ixx>0.000240288</ixx>
+            <ixy>2.60715e-08</ixy>
+            <ixz>-1.39734e-05</ixz>
+            <iyy>0.000244507</iyy>
+            <iyz>8.40886e-08</iyz>
+            <izz>7.25365e-05</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_index3_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/index3_3.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_middle1_joint' type='revolute'>
+        <pose relative_to='l_hand_link'>-0.00175 -0.007 -0.12325 0 -0 0</pose>
+        <parent>l_hand_link</parent>
+        <child>l_middle1_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_middle1_link'>
+        <pose relative_to='l_middle1_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.001713 0 -0.002896 0 -0 0</pose>
+          <mass>7.89261</mass>
+          <inertia>
+            <ixx>0.00155465</ixx>
+            <ixy>3.30019e-08</ixy>
+            <ixz>0.000108837</ixz>
+            <iyy>0.00152524</iyy>
+            <iyz>2.3153e-06</iyz>
+            <izz>0.000444252</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_middle1_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/middle3_1.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='l_middle1_link_fixed_joint_lump__l_cover_middle_link_visual_1'>
+          <pose>0.0071 0 -0.012 0 0.05 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_cover_middle.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_middle_joint' type='revolute'>
+        <pose relative_to='l_middle1_link'>0 0 -0.0389 0 -0 0</pose>
+        <parent>l_middle1_link</parent>
+        <child>l_middle2_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_middle2_link'>
+        <pose relative_to='l_middle_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>3.58854</mass>
+          <inertia>
+            <ixx>0.000350951</ixx>
+            <ixy>1.96666e-08</ixy>
+            <ixz>-1.94343e-05</ixz>
+            <iyy>0.000346446</iyy>
+            <iyz>1.21476e-06</iyz>
+            <izz>0.000129023</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_middle2_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/middle3_2.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_middle3_joint' type='revolute'>
+        <pose relative_to='l_middle2_link'>0 0.0005 -0.0259 0 -0 0</pose>
+        <parent>l_middle2_link</parent>
+        <child>l_middle3_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_middle3_link'>
+        <pose relative_to='l_middle3_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>3.39529</mass>
+          <inertia>
+            <ixx>0.000340451</ixx>
+            <ixy>3.21711e-08</ixy>
+            <ixz>-1.97078e-05</ixz>
+            <iyy>0.000346419</iyy>
+            <iyz>2.62807e-08</iyz>
+            <izz>0.000102764</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_middle3_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/middle3_3.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_pinky1_joint' type='revolute'>
+        <pose relative_to='l_hand_link'>0 0.027 -0.0555 -0.7 0 0</pose>
+        <parent>l_hand_link</parent>
+        <child>l_pinky1_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_pinky1_link'>
+        <pose relative_to='l_pinky1_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.00207 0.004192 -0.00147 0 -0 0</pose>
+          <mass>18.7807</mass>
+          <inertia>
+            <ixx>0.00651325</ixx>
+            <ixy>-0.000660652</ixy>
+            <ixz>0.000252076</ixz>
+            <iyy>0.00295866</iyy>
+            <iyz>0.00187097</iyz>
+            <izz>0.00509031</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_pinky1_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_pinky3_1.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='l_pinky1_link_fixed_joint_lump__l_cover_handpinky_link_visual_1'>
+          <pose>0.01 0.02025 -0.0071 0.7 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_cover_handpinky.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_pinky_joint' type='revolute'>
+        <pose relative_to='l_pinky1_link'>0 0.046 -0.0228 0.93 -0 0</pose>
+        <parent>l_pinky1_link</parent>
+        <child>l_pinky2_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_pinky2_link'>
+        <pose relative_to='l_pinky_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.001481 0 -0.003111 0 -0 0</pose>
+          <mass>4.33953</mass>
+          <inertia>
+            <ixx>0.000570603</ixx>
+            <ixy>-2.38532e-07</ixy>
+            <ixz>4.01e-05</ixz>
+            <iyy>0.000552639</iyy>
+            <iyz>-3.22853e-06</iyz>
+            <izz>0.000154118</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_pinky2_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/pinky3_2.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='l_pinky2_link_fixed_joint_lump__l_cover_pinky_link_visual_1'>
+          <pose>0.005 0 -0.0105 -0.1 0.05 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_cover_pinky.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_pinky3_joint' type='revolute'>
+        <pose relative_to='l_pinky2_link'>0 0.0005 -0.031 0 -0 0</pose>
+        <parent>l_pinky2_link</parent>
+        <child>l_pinky3_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_pinky3_link'>
+        <pose relative_to='l_pinky3_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1.84871</mass>
+          <inertia>
+            <ixx>0.000116124</ixx>
+            <ixy>1.60776e-08</ixy>
+            <ixz>-6.39316e-06</ixz>
+            <iyy>0.000114666</iyy>
+            <iyz>3.92228e-07</iyz>
+            <izz>4.27152e-05</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_pinky3_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/pinky3_3.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_pinky4_joint' type='revolute'>
+        <pose relative_to='l_pinky3_link'>0 0.0004 -0.0208 0 -0 0</pose>
+        <parent>l_pinky3_link</parent>
+        <child>l_pinky4_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_pinky4_link'>
+        <pose relative_to='l_pinky4_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1.74822</mass>
+          <inertia>
+            <ixx>0.000112612</ixx>
+            <ixy>1.06552e-08</ixy>
+            <ixz>-6.5188e-06</ixz>
+            <iyy>0.000114587</iyy>
+            <iyz>8.84516e-09</iyz>
+            <izz>3.39916e-05</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_pinky4_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/pinky3_4.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_ring1_joint' type='revolute'>
+        <pose relative_to='l_hand_link'>0 0.00705 -0.0794 -0.7 0 0</pose>
+        <parent>l_hand_link</parent>
+        <child>l_ring1_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_ring1_link'>
+        <pose relative_to='l_ring1_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.002205 0.003675 -0.000196 0 -0 0</pose>
+          <mass>14.3178</mass>
+          <inertia>
+            <ixx>0.00342039</ixx>
+            <ixy>-0.000378159</ixy>
+            <ixz>3.87629e-05</ixz>
+            <iyy>0.00170049</iyy>
+            <iyz>0.000522183</iyz>
+            <izz>0.00283458</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_ring1_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_ring3_1.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='l_ring1_link_fixed_joint_lump__l_cover_handring_link_visual_1'>
+          <pose>0.009 0.015 -0.0008 0.7 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_cover_handring.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_ring_joint' type='revolute'>
+        <pose relative_to='l_ring1_link'>0.00126 0.0351 -0.0166 0.7775 -0 0</pose>
+        <parent>l_ring1_link</parent>
+        <child>l_ring2_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_ring2_link'>
+        <pose relative_to='l_ring_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.001289 0 -0.002836 0 -0 0</pose>
+          <mass>5.68946</mass>
+          <inertia>
+            <ixx>0.000900616</ixx>
+            <ixy>-3.23452e-07</ixy>
+            <ixz>5.11462e-05</ixz>
+            <iyy>0.000867472</iyy>
+            <iyz>-4.33978e-06</iyz>
+            <izz>0.000238716</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_ring2_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/ring3_2.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='l_ring2_link_fixed_joint_lump__l_cover_ring_link_visual_1'>
+          <pose>0.005 0 -0.011 -0.1 0.05 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_cover_ring.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_ring3_joint' type='revolute'>
+        <pose relative_to='l_ring2_link'>0 0.0005 -0.0345 0 -0 0</pose>
+        <parent>l_ring2_link</parent>
+        <child>l_ring3_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_ring3_link'>
+        <pose relative_to='l_ring3_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>2.53</mass>
+          <inertia>
+            <ixx>0.000195998</ixx>
+            <ixy>1.0987e-08</ixy>
+            <ixz>-1.08538e-05</ixz>
+            <iyy>0.000193482</iyy>
+            <iyz>6.78438e-07</iyz>
+            <izz>7.20562e-05</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_ring3_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/ring3_3.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_ring4_joint' type='revolute'>
+        <pose relative_to='l_ring3_link'>0 0.0004 -0.0229 0 -0 0</pose>
+        <parent>l_ring3_link</parent>
+        <child>l_ring4_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_ring4_link'>
+        <pose relative_to='l_ring4_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>2.39376</mass>
+          <inertia>
+            <ixx>0.000190134</ixx>
+            <ixy>1.79695e-08</ixy>
+            <ixz>-1.10063e-05</ixz>
+            <iyy>0.000193467</iyy>
+            <iyz>1.47005e-08</iyz>
+            <izz>5.73911e-05</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_ring4_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/ring3_4.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_thumb1_joint' type='revolute'>
+        <pose relative_to='l_hand_link'>0 -0.029 -0.0577 -0.1 0 0</pose>
+        <parent>l_hand_link</parent>
+        <child>l_thumb1_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.13446</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_thumb1_link'>
+        <pose relative_to='l_thumb1_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.002445 -0.005195 0.001149 0 -0 0</pose>
+          <mass>13.2946</mass>
+          <inertia>
+            <ixx>0.00345101</ixx>
+            <ixy>0.000566922</ixy>
+            <ixz>-6.61389e-05</ixz>
+            <iyy>0.00196178</iyy>
+            <iyz>-6.32366e-05</iyz>
+            <izz>0.00265809</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_thumb1_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_thumb5_1.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='l_thumb1_link_fixed_joint_lump__l_cover_thumb_link_visual_1'>
+          <pose>0.01 -0.02125 0.0047 -0.05 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/l_cover_thumb.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_thumb_joint' type='revolute'>
+        <pose relative_to='l_thumb1_link'>-0.00052 -0.02725 -0.013 -0.825 -0.1 -0.3</pose>
+        <parent>l_thumb1_link</parent>
+        <child>l_thumb2_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.13446</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_thumb2_link'>
+        <pose relative_to='l_thumb_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>7.51105</mass>
+          <inertia>
+            <ixx>0.00130424</ixx>
+            <ixy>2.49766e-07</ixy>
+            <ixz>4.2292e-06</ixz>
+            <iyy>0.00116962</iyy>
+            <iyz>9.06594e-07</iyz>
+            <izz>0.000555691</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_thumb2_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/thumb5_2.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_thumb3_joint' type='revolute'>
+        <pose relative_to='l_thumb2_link'>0 0 -0.035 0 -0 0</pose>
+        <parent>l_thumb2_link</parent>
+        <child>l_thumb3_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.13446</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_thumb3_link'>
+        <pose relative_to='l_thumb3_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>5.81255</mass>
+          <inertia>
+            <ixx>0.00071499</ixx>
+            <ixy>-4.41942e-07</ixy>
+            <ixz>-5.52909e-05</ixz>
+            <iyy>0.000735457</iyy>
+            <iyz>4.97619e-07</iyz>
+            <izz>0.000260508</izz>
+          </inertia>
+        </inertial>
+        <visual name='l_thumb3_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/thumb5_3.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_shoulder_out_joint' type='revolute'>
+        <pose relative_to='torso_link'>0 -0.143 0.298 0 -0 0</pose>
+        <parent>torso_link</parent>
+        <child>r_shoulder_base_link</child>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>-1.0472</lower>
+            <upper>-0.0872665</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_shoulder_base_link'>
+        <pose relative_to='r_shoulder_out_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>266.527</mass>
+          <inertia>
+            <ixx>0.35041</ixx>
+            <ixy>-0.00573516</ixy>
+            <ixz>-0.0111938</ixz>
+            <iyy>0.390886</iyy>
+            <iyz>0.0454475</iyz>
+            <izz>0.271459</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_shoulder_base_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_shoulder_base.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_shoulder_lift_joint' type='revolute'>
+        <pose relative_to='r_shoulder_base_link'>0 -0.012 -0.04 0 -0 0</pose>
+        <parent>r_shoulder_base_link</parent>
+        <child>r_shoulder_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-2.35619</lower>
+            <upper>0.785398</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_shoulder_link'>
+        <pose relative_to='r_shoulder_lift_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>322.443</mass>
+          <inertia>
+            <ixx>0.601346</ixx>
+            <ixy>0.00343773</ixy>
+            <ixz>-0.0117619</ixz>
+            <iyy>0.473866</iyy>
+            <iyz>-0.114277</iyz>
+            <izz>0.500952</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_shoulder_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_shoulder.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_upper_arm_roll_joint' type='revolute'>
+        <pose relative_to='r_shoulder_link'>0 -0.066 -0.06 0 -0 0</pose>
+        <parent>r_shoulder_link</parent>
+        <child>r_bicep_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1.5708</lower>
+            <upper>1.5708</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_bicep_link'>
+        <pose relative_to='r_upper_arm_roll_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>458.182</mass>
+          <inertia>
+            <ixx>1.81971</ixx>
+            <ixy>0.000765751</ixy>
+            <ixz>-0.293866</ixz>
+            <iyy>2.02506</iyy>
+            <iyz>0.00122116</iyz>
+            <izz>0.858538</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_bicep_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/bicep.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='r_bicep_link_fixed_joint_lump__r_bicepcover_link_visual_1'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/bicepcover.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_elbow_flex_joint' type='revolute'>
+        <pose relative_to='r_bicep_link'>-0.0278 0 -0.2235 0 -0 0</pose>
+        <parent>r_bicep_link</parent>
+        <child>r_forearm_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1.39626</lower>
+            <upper>-0.261799</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_forearm_link'>
+        <pose relative_to='r_elbow_flex_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>401.767</mass>
+          <inertia>
+            <ixx>3.24231</ixx>
+            <ixy>0.0500112</ixy>
+            <ixz>-0.143185</ixz>
+            <iyy>3.24251</iyy>
+            <iyz>0.086289</iyz>
+            <izz>0.584588</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_forearm_link_visual'>
+          <pose>0.001 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_forearm.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_wrist_roll_joint' type='revolute'>
+        <pose relative_to='r_forearm_link'>-0.0144 0.01 -0.2885 0 -0 0</pose>
+        <parent>r_forearm_link</parent>
+        <child>r_hand_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-3.14159</lower>
+            <upper>0</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_hand_link'>
+        <pose relative_to='r_wrist_roll_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.002905 0.006198 -0.031537 0 -0 0</pose>
+          <mass>123.455</mass>
+          <inertia>
+            <ixx>0.437976</ixx>
+            <ixy>-0.00450619</ixy>
+            <ixz>0.0229212</ixz>
+            <iyy>0.386335</iyy>
+            <iyz>0.0822927</iyz>
+            <izz>0.0623986</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_hand_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_hand.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='r_hand_link_fixed_joint_lump__r_handcover_link_visual_1'>
+          <pose>0.009 0.0192 -0.0977 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_cover_hand.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_index1_joint' type='revolute'>
+        <pose relative_to='r_hand_link'>-0.0015 0.0342 -0.119 0.1 -0 0</pose>
+        <parent>r_hand_link</parent>
+        <child>r_index1_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_index1_link'>
+        <pose relative_to='r_index1_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.001789 0 -0.003024 0 -0 0</pose>
+          <mass>6.48992</mass>
+          <inertia>
+            <ixx>0.00112777</ixx>
+            <ixy>-1.49658e-07</ixy>
+            <ixz>9.45686e-05</ixz>
+            <iyy>0.00111502</iyy>
+            <iyz>7.98428e-07</iyz>
+            <izz>0.000326798</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_index1_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/index3_1.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='r_index1_link_fixed_joint_lump__r_cover_index_link_visual_1'>
+          <pose>0.0071 0 -0.012 0 0.05 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_cover_index.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_index_joint' type='revolute'>
+        <pose relative_to='r_index1_link'>0 0.001 -0.03595 0 -0 0</pose>
+        <parent>r_index1_link</parent>
+        <child>r_index2_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_index2_link'>
+        <pose relative_to='r_index_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>2.91155</mass>
+          <inertia>
+            <ixx>0.000247698</ixx>
+            <ixy>5.31054e-09</ixy>
+            <ixz>-1.36151e-05</ixz>
+            <iyy>0.000244508</iyy>
+            <iyz>7.01601e-07</iyz>
+            <izz>9.10515e-05</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_index2_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/index3_2.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_index3_joint' type='revolute'>
+        <pose relative_to='r_index2_link'>0 0 -0.024 0 -0 0</pose>
+        <parent>r_index2_link</parent>
+        <child>r_index3_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_index3_link'>
+        <pose relative_to='r_index3_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>2.75476</mass>
+          <inertia>
+            <ixx>0.000240288</ixx>
+            <ixy>2.60715e-08</ixy>
+            <ixz>-1.39734e-05</ixz>
+            <iyy>0.000244507</iyy>
+            <iyz>8.40886e-08</iyz>
+            <izz>7.25365e-05</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_index3_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/index3_3.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_middle1_joint' type='revolute'>
+        <pose relative_to='r_hand_link'>-0.00175 0.007 -0.12325 0 -0 0</pose>
+        <parent>r_hand_link</parent>
+        <child>r_middle1_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_middle1_link'>
+        <pose relative_to='r_middle1_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.001713 0 -0.002896 0 -0 0</pose>
+          <mass>7.89261</mass>
+          <inertia>
+            <ixx>0.00155913</ixx>
+            <ixy>9.04308e-09</ixy>
+            <ixz>0.000127538</ixz>
+            <iyy>0.00152524</iyy>
+            <iyz>4.27017e-07</iyz>
+            <izz>0.000439776</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_middle1_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/middle3_1.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='r_middle1_link_fixed_joint_lump__r_cover_middle_link_visual_1'>
+          <pose>0.0071 0 -0.012 0 -0.05 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_cover_middle.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_middle_joint' type='revolute'>
+        <pose relative_to='r_middle1_link'>0 0 -0.0389 0 -0 0</pose>
+        <parent>r_middle1_link</parent>
+        <child>r_middle2_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_middle2_link'>
+        <pose relative_to='r_middle_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>3.58854</mass>
+          <inertia>
+            <ixx>0.000350951</ixx>
+            <ixy>1.96666e-08</ixy>
+            <ixz>-1.94343e-05</ixz>
+            <iyy>0.000346446</iyy>
+            <iyz>1.21476e-06</iyz>
+            <izz>0.000129023</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_middle2_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/middle3_2.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_middle3_joint' type='revolute'>
+        <pose relative_to='r_middle2_link'>0 0.0005 -0.0259 0 -0 0</pose>
+        <parent>r_middle2_link</parent>
+        <child>r_middle3_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_middle3_link'>
+        <pose relative_to='r_middle3_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>3.39529</mass>
+          <inertia>
+            <ixx>0.000340451</ixx>
+            <ixy>3.21711e-08</ixy>
+            <ixz>-1.97078e-05</ixz>
+            <iyy>0.000346419</iyy>
+            <iyz>2.62807e-08</iyz>
+            <izz>0.000102764</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_middle3_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/middle3_3.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_pinky1_joint' type='revolute'>
+        <pose relative_to='r_hand_link'>0 -0.027 -0.0555 0.7 -0 0</pose>
+        <parent>r_hand_link</parent>
+        <child>r_pinky1_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_pinky1_link'>
+        <pose relative_to='r_pinky1_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.00207 -0.004192 -0.00147 0 -0 0</pose>
+          <mass>18.7807</mass>
+          <inertia>
+            <ixx>0.00651325</ixx>
+            <ixy>0.000660652</ixy>
+            <ixz>0.000252076</ixz>
+            <iyy>0.00295866</iyy>
+            <iyz>-0.00187097</iyz>
+            <izz>0.00509031</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_pinky1_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_pinky3_1.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='r_pinky1_link_fixed_joint_lump__r_cover_handpinky_link_visual_1'>
+          <pose>0.01 -0.02025 -0.0071 -0.7 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_cover_handpinky.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_pinky_joint' type='revolute'>
+        <pose relative_to='r_pinky1_link'>0 -0.046 -0.0228 -0.93 0 0</pose>
+        <parent>r_pinky1_link</parent>
+        <child>r_pinky2_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_pinky2_link'>
+        <pose relative_to='r_pinky_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.001481 0 -0.003111 0 -0 0</pose>
+          <mass>4.33953</mass>
+          <inertia>
+            <ixx>0.000572439</ixx>
+            <ixy>-2.11284e-07</ixy>
+            <ixz>4.85605e-05</ixz>
+            <iyy>0.000552639</iyy>
+            <iyz>4.54571e-06</iyz>
+            <izz>0.000152282</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_pinky2_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/pinky3_2.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='r_pinky2_link_fixed_joint_lump__r_cover_pinky_link_visual_1'>
+          <pose>0.005 0 -0.0105 0.1 -0.05 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_cover_pinky.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_pinky3_joint' type='revolute'>
+        <pose relative_to='r_pinky2_link'>0 0.0005 -0.031 0 -0 0</pose>
+        <parent>r_pinky2_link</parent>
+        <child>r_pinky3_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_pinky3_link'>
+        <pose relative_to='r_pinky3_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1.84871</mass>
+          <inertia>
+            <ixx>0.000116124</ixx>
+            <ixy>1.60776e-08</ixy>
+            <ixz>-6.39316e-06</ixz>
+            <iyy>0.000114666</iyy>
+            <iyz>3.92228e-07</iyz>
+            <izz>4.27152e-05</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_pinky3_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/pinky3_3.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_pinky4_joint' type='revolute'>
+        <pose relative_to='r_pinky3_link'>0 0.0004 -0.0208 0 -0 0</pose>
+        <parent>r_pinky3_link</parent>
+        <child>r_pinky4_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_pinky4_link'>
+        <pose relative_to='r_pinky4_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1.74822</mass>
+          <inertia>
+            <ixx>0.000112612</ixx>
+            <ixy>1.06552e-08</ixy>
+            <ixz>-6.5188e-06</ixz>
+            <iyy>0.000114587</iyy>
+            <iyz>8.84516e-09</iyz>
+            <izz>3.39916e-05</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_pinky4_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/pinky3_4.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_ring1_joint' type='revolute'>
+        <pose relative_to='r_hand_link'>0 -0.00705 -0.0794 0.7 -0 0</pose>
+        <parent>r_hand_link</parent>
+        <child>r_ring1_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_ring1_link'>
+        <pose relative_to='r_ring1_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.002205 -0.003675 -0.000196 0 -0 0</pose>
+          <mass>14.3178</mass>
+          <inertia>
+            <ixx>0.00342039</ixx>
+            <ixy>0.000378159</ixy>
+            <ixz>3.87629e-05</ixz>
+            <iyy>0.00170049</iyy>
+            <iyz>-0.000522183</iyz>
+            <izz>0.00283458</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_ring1_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_ring3_1.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='r_ring1_link_fixed_joint_lump__r_cover_handring_link_visual_1'>
+          <pose>0.009 -0.015 -0.0008 -0.7 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_cover_handring.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_ring_joint' type='revolute'>
+        <pose relative_to='r_ring1_link'>0.00126 -0.0351 -0.0166 -0.7775 0 0</pose>
+        <parent>r_ring1_link</parent>
+        <child>r_ring2_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_ring2_link'>
+        <pose relative_to='r_ring_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.001289 0 -0.002836 0 -0 0</pose>
+          <mass>5.68946</mass>
+          <inertia>
+            <ixx>0.000903199</ixx>
+            <ixy>-1.72799e-07</ixy>
+            <ixz>6.28713e-05</ixz>
+            <iyy>0.000867472</iyy>
+            <iyz>5.80691e-06</iyz>
+            <izz>0.000236133</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_ring2_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/ring3_2.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='r_ring2_link_fixed_joint_lump__r_cover_ring_link_visual_1'>
+          <pose>0.005 0 -0.011 0.1 -0.05 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_cover_ring.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_ring3_joint' type='revolute'>
+        <pose relative_to='r_ring2_link'>0 0.0005 -0.0345 0 -0 0</pose>
+        <parent>r_ring2_link</parent>
+        <child>r_ring3_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_ring3_link'>
+        <pose relative_to='r_ring3_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>2.53</mass>
+          <inertia>
+            <ixx>0.000195998</ixx>
+            <ixy>1.0987e-08</ixy>
+            <ixz>-1.08538e-05</ixz>
+            <iyy>0.000193482</iyy>
+            <iyz>6.78438e-07</iyz>
+            <izz>7.20562e-05</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_ring3_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/ring3_3.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_ring4_joint' type='revolute'>
+        <pose relative_to='r_ring3_link'>0 0.0004 -0.0229 0 -0 0</pose>
+        <parent>r_ring3_link</parent>
+        <child>r_ring4_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.48353</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_ring4_link'>
+        <pose relative_to='r_ring4_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>2.39376</mass>
+          <inertia>
+            <ixx>0.000190134</ixx>
+            <ixy>1.79695e-08</ixy>
+            <ixz>-1.10063e-05</ixz>
+            <iyy>0.000193467</iyy>
+            <iyz>1.47005e-08</iyz>
+            <izz>5.73911e-05</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_ring4_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/ring3_4.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_thumb1_joint' type='revolute'>
+        <pose relative_to='r_hand_link'>0 0.029 -0.0577 0.1 -0 0</pose>
+        <parent>r_hand_link</parent>
+        <child>r_thumb1_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.13446</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_thumb1_link'>
+        <pose relative_to='r_thumb1_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.002445 0.005195 0.001149 0 -0 0</pose>
+          <mass>13.2946</mass>
+          <inertia>
+            <ixx>0.00345101</ixx>
+            <ixy>-0.000566922</ixy>
+            <ixz>-6.61389e-05</ixz>
+            <iyy>0.00196178</iyy>
+            <iyz>6.32365e-05</iyz>
+            <izz>0.00265809</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_thumb1_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_thumb5_1.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='r_thumb1_link_fixed_joint_lump__r_cover_thumb_link_visual_1'>
+          <pose>0.01 0.02125 0.0047 0.05 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/r_cover_thumb.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_thumb_joint' type='revolute'>
+        <pose relative_to='r_thumb1_link'>-0.00052 0.02725 -0.013 0.825 -0.1 0.3</pose>
+        <parent>r_thumb1_link</parent>
+        <child>r_thumb2_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.13446</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_thumb2_link'>
+        <pose relative_to='r_thumb_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>7.51105</mass>
+          <inertia>
+            <ixx>0.00130424</ixx>
+            <ixy>2.49766e-07</ixy>
+            <ixz>4.2292e-06</ixz>
+            <iyy>0.00116962</iyy>
+            <iyz>9.06594e-07</iyz>
+            <izz>0.000555691</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_thumb2_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/thumb5_2.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='r_thumb3_joint' type='revolute'>
+        <pose relative_to='r_thumb2_link'>0 0 -0.035 0 -0 0</pose>
+        <parent>r_thumb2_link</parent>
+        <child>r_thumb3_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.0872665</lower>
+            <upper>1.13446</upper>
+            <effort>1000</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_thumb3_link'>
+        <pose relative_to='r_thumb3_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>5.81255</mass>
+          <inertia>
+            <ixx>0.00071499</ixx>
+            <ixy>-4.41942e-07</ixy>
+            <ixz>-5.52909e-05</ixz>
+            <iyy>0.000735457</iyy>
+            <iyz>4.97619e-07</iyz>
+            <izz>0.000260508</izz>
+          </inertia>
+        </inertial>
+        <visual name='r_thumb3_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/gkemper/catkin_ws/src/inmoov_description/meshes/thumb5_3.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <plugin name='gazebo_ros_control' filename='libgazebo_ros_control.so'>
+        <robotNamespace>/inmoov</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+      <static>0</static>
+      <plugin name='joint_state_publisher' filename='libgazebo_ros_joint_state_publisher.so'>
+        <robotNamespace>/inmoov</robotNamespace>
+        <jointName>r_shoulder_out_joint, l_shoulder_out_joint</jointName>
+        <updateRate>100</updateRate>
+      </plugin>
+      <pose>0 0 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>45 983000000</sim_time>
+      <real_time>46 689155093</real_time>
+      <wall_time>1634489258 320004750</wall_time>
+      <iterations>45983</iterations>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='inmoov'>
+        <pose>-0 -0 0 -1e-06 -5e-06 0</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose>-0 -0 0 -1e-06 -5e-06 0</pose>
+          <velocity>0 0 0 3.9e-05 -1e-06 0</velocity>
+          <acceleration>-0 0.00015 5.8e-05 0.028831 -0.005925 -2e-06</acceleration>
+          <wrench>-0.000369 0.257203 0.099251 0 -0 0</wrench>
+        </link>
+        <link name='head_tilt_link'>
+          <pose>-0.034121 -0.118024 1.70133 -0.491526 -4.1e-05 3.11922</pose>
+          <velocity>0.00641 -0.001842 3.2e-05 -0.004837 0.000108 0.054398</velocity>
+          <acceleration>-0.12252 -0.000797 0.030301 0.000388 0.01929 -1.09028</acceleration>
+          <wrench>-0.000123 -1e-06 3e-05 0 -0 0</wrench>
+        </link>
+        <link name='l_bicep_link'>
+          <pose>0.010147 0.168193 1.51987 0.210824 0.299115 -1.26823</pose>
+          <velocity>-0.00454 0.000261 0.000436 0.006675 -0.048804 -0.038891</velocity>
+          <acceleration>-0.020264 -0.064702 -0.04442 -1.03269 0.925488 -3.10299</acceleration>
+          <wrench>-9.28465 -29.6453 -20.3526 0 -0 0</wrench>
+        </link>
+        <link name='l_forearm_link'>
+          <pose>0.027688 0.268967 1.31922 0.20242 -0.103082 -1.35233</pose>
+          <velocity>0.009171 0.000917 0.001965 -0.148461 -0.086702 -0.071481</velocity>
+          <acceleration>-0.800329 -0.042806 -0.099842 2.73006 1.53836 1.17268</acceleration>
+          <wrench>-321.546 -17.1981 -40.1131 0 -0 0</wrench>
+        </link>
+        <link name='l_hand_link'>
+          <pose>0.077991 0.264807 1.03463 0.12053 -0.19263 -0.810374</pose>
+          <velocity>0.03355 -0.04493 0.006939 -0.068449 -0.106796 -0.428991</velocity>
+          <acceleration>-1.2558 0.354309 -0.182656 2.15812 0.985611 0.554437</acceleration>
+          <wrench>-155.035 43.7412 -22.5498 0 -0 0</wrench>
+        </link>
+        <link name='l_index1_link'>
+          <pose>0.078874 0.235378 0.914353 0.020665 -0.224244 -0.811037</pose>
+          <velocity>0.033771 -0.053541 0.009047 -0.358313 -0.384789 -0.437103</velocity>
+          <acceleration>-1.27436 0.344374 -0.256104 0.275017 0.548751 -0.693474</acceleration>
+          <wrench>-8.27053 2.23496 -1.66209 0 -0 0</wrench>
+        </link>
+        <link name='l_index2_link'>
+          <pose>0.085639 0.230787 0.87933 0.020999 -0.285609 -0.812359</pose>
+          <velocity>0.045243 -0.069048 0.013296 -1.34668 -1.33288 -0.464679</velocity>
+          <acceleration>-2.19217 1.28007 -0.470924 0.776175 0.422551 0.936059</acceleration>
+          <wrench>-6.38262 3.72698 -1.37112 0 -0 0</wrench>
+        </link>
+        <link name='l_index3_link'>
+          <pose>0.090655 0.226226 0.856307 0.037331 1.0008 -0.775009</pose>
+          <velocity>0.073827 -0.102387 0.026083 -0.381284 0.535324 2.79151</velocity>
+          <acceleration>-2.37458 1.45207 -0.452669 0.73254 -1.55329 -1.23851</acceleration>
+          <wrench>-6.54138 4.0001 -1.24699 0 -0 0</wrench>
+        </link>
+        <link name='l_middle1_link'>
+          <pose>0.098765 0.254387 0.913374 0.121666 -0.235892 -0.815757</pose>
+          <velocity>0.042034 -0.062142 0.009867 1.08108 1.03905 -0.236135</velocity>
+          <acceleration>-1.44625 0.524285 -0.268164 -1.52651 1.4528 2.75709</acceleration>
+          <wrench>-11.4146 4.13798 -2.11652 0 -0 0</wrench>
+        </link>
+        <link name='l_middle2_link'>
+          <pose>0.108387 0.251051 0.87583 0.12467 -0.320925 -0.826701</pose>
+          <velocity>0.002238 -0.023837 -0.003784 0.99011 0.948351 -0.251416</velocity>
+          <acceleration>-2.10161 1.26865 -0.37692 1.92464 -0.887838 -0.225738</acceleration>
+          <wrench>-7.54172 4.55258 -1.35259 0 -0 0</wrench>
+        </link>
+        <link name='l_middle3_link'>
+          <pose>0.1166 0.247619 0.851502 0.147026 0.634196 -0.699663</pose>
+          <velocity>-0.021692 -0.001823 -0.014996 -0.48757 -0.504434 -1.55354</velocity>
+          <acceleration>-2.48723 1.77585 -0.531855 -0.2032 -0.825203 -3.05677</acceleration>
+          <wrench>-8.44487 6.02954 -1.8058 0 -0 0</wrench>
+        </link>
+        <link name='l_pinky1_link'>
+          <pose>0.109088 0.280688 0.983736 -0.599901 0.099965 -0.380894</pose>
+          <velocity>0.045804 -0.061749 0.00917 -0.362297 -0.613323 -1.27199</velocity>
+          <acceleration>-1.46139 0.512557 -0.22607 2.31782 -1.36746 -1.2785</acceleration>
+          <wrench>-27.4459 9.62617 -4.24576 0 -0 0</wrench>
+        </link>
+        <link name='l_pinky2_link'>
+          <pose>0.114268 0.305648 0.93917 0.334801 0.192636 -0.348555</pose>
+          <velocity>0.104901 -0.084438 0.003274 -0.652828 -1.27368 -1.51783</velocity>
+          <acceleration>-0.382706 -0.111975 -0.373384 -1.37646 -1.4598 1.01349</acceleration>
+          <wrench>-1.66076 -0.485918 -1.62031 0 -0 0</wrench>
+        </link>
+        <link name='l_pinky3_link'>
+          <pose>0.11267 0.31757 0.910594 0.343109 0.288883 -0.313643</pose>
+          <velocity>0.159396 -0.100619 -0.006585 2.1184 -1.02569 1.31028</velocity>
+          <acceleration>0.32773 -0.47693 -0.509941 -2.41065 -0.547979 1.12303</acceleration>
+          <wrench>0.605877 -0.881704 -0.942733 0 -0 0</wrench>
+        </link>
+        <link name='l_pinky4_link'>
+          <pose>0.109673 0.326295 0.891947 0.372258 0.480928 -0.236361</pose>
+          <velocity>0.214825 -0.114137 -0.021936 -1.47152 -0.86389 -2.69427</velocity>
+          <acceleration>2.08237 -1.18881 -0.950941 -0.52099 -0.072558 1.17911</acceleration>
+          <wrench>3.64044 -2.0783 -1.66245 0 -0 0</wrench>
+        </link>
+        <link name='l_ring1_link'>
+          <pose>0.100268 0.265395 0.958094 -0.60247 0.080539 -0.409332</pose>
+          <velocity>0.041978 -0.059723 0.009277 -0.091249 -0.146095 -0.494389</velocity>
+          <acceleration>-1.38832 0.440367 -0.202751 -0.174109 1.11172 0.479414</acceleration>
+          <wrench>-19.8777 6.30509 -2.90294 0 -0 0</wrench>
+        </link>
+        <link name='l_ring2_link'>
+          <pose>0.106709 0.283872 0.924533 0.177089 0.172055 -0.392922</pose>
+          <velocity>0.056018 -0.065965 0.00853 -0.175182 -0.332442 -0.530406</velocity>
+          <acceleration>-0.734703 0.061629 -0.279533 -1.82283 0.240942 -2.06449</acceleration>
+          <wrench>-4.18007 0.350635 -1.59039 0 -0 0</wrench>
+        </link>
+        <link name='l_ring3_link'>
+          <pose>0.103867 0.292162 0.891161 0.18076 0.26399 -0.375903</pose>
+          <velocity>0.07151 -0.070297 0.006129 -0.016666 0.019316 -0.462401</velocity>
+          <acceleration>0.257983 -0.380714 -0.514926 1.25365 -0.610539 1.4838</acceleration>
+          <wrench>0.652697 -0.963206 -1.30276 0 -0 0</wrench>
+        </link>
+        <link name='l_ring4_link'>
+          <pose>0.100072 0.298509 0.869484 0.183358 0.311726 -0.366739</pose>
+          <velocity>0.074026 -0.068902 0.006099 -1.4683 -0.628926 -2.8789</velocity>
+          <acceleration>1.85616 -1.01628 -0.9812 0.341189 -1.51524 0.876737</acceleration>
+          <wrench>4.44321 -2.43272 -2.34876 0 -0 0</wrench>
+        </link>
+        <link name='l_shoulder_base_link'>
+          <pose>0.001374 0.060983 1.58686 0.348885 2e-05 -0.022306</pose>
+          <velocity>-0.003328 6.2e-05 -2e-05 8.6e-05 -6e-06 0.054471</velocity>
+          <acceleration>0.06975 -0.063578 -0.018329 0.110568 0.088336 -1.07086</acceleration>
+          <wrench>18.5901 -16.9452 -4.88514 0 -0 0</wrench>
+        </link>
+        <link name='l_shoulder_link'>
+          <pose>0.001929 0.085935 1.55337 0.350673 -0.100104 -0.05886</pose>
+          <velocity>-0.004686 8.6e-05 -2.7e-05 -0.001473 -0.072939 0.027956</velocity>
+          <acceleration>0.096283 -0.069863 -0.024399 -2.79209 -0.572496 -2.88136</acceleration>
+          <wrench>31.0458 -22.5267 -7.86743 0 -0 0</wrench>
+        </link>
+        <link name='l_thumb1_link'>
+          <pose>0.070176 0.241317 0.974983 -0.164469 -0.102748 0.313873</pose>
+          <velocity>0.029846 -0.045664 0.007714 0.058966 -0.214885 -1.28079</velocity>
+          <acceleration>-1.22947 0.152141 -0.157785 -2.71615 -0.778008 2.70244</acceleration>
+          <wrench>-16.3453 2.02265 -2.09768 0 -0 0</wrench>
+        </link>
+        <link name='l_thumb2_link'>
+          <pose>0.079457 0.213828 0.966611 -0.91777 -0.083282 -0.194844</pose>
+          <velocity>-0.003559 -0.057077 0.008091 -2.52402 1.56602 -0.568914</velocity>
+          <acceleration>-1.60126 0.130458 -0.233347 3.13263 -0.436738 1.27196</acceleration>
+          <wrench>-12.0271 0.979878 -1.75268 0 -0 0</wrench>
+        </link>
+        <link name='l_thumb3_link'>
+          <pose>0.07581 0.186211 0.945419 -0.922028 -0.11574 -0.152025</pose>
+          <velocity>-0.139465 -0.030705 -0.003326 -2.3348 0.959311 -1.39211</velocity>
+          <acceleration>-0.834973 0.620571 -0.084678 2.74285 -1.12248 -3.08695</acceleration>
+          <wrench>-4.85332 3.6071 -0.492193 0 -0 0</wrench>
+        </link>
+        <link name='r_bicep_link'>
+          <pose>-0.002455 -0.274734 1.40091 -0.026589 -0.182912 1.35601</pose>
+          <velocity>0.012324 0.000519 -0.000324 0.032771 0.127729 -0.421501</velocity>
+          <acceleration>-0.322367 0.74327 -0.276831 1.10433 0.405332 0.188597</acceleration>
+          <wrench>-147.703 340.553 -126.839 0 -0 0</wrench>
+        </link>
+        <link name='r_forearm_link'>
+          <pose>0.006186 -0.263003 1.17616 -0.028962 -0.444608 1.36364</pose>
+          <velocity>-0.011442 0.004098 -0.001052 0.032975 0.127419 -0.421538</velocity>
+          <acceleration>-0.408471 0.918868 -0.267539 -0.086115 0.473641 -0.060439</acceleration>
+          <wrench>-164.11 369.171 -107.488 0 -0 0</wrench>
+        </link>
+        <link name='r_hand_link'>
+          <pose>0.027443 -0.153885 0.909366 0.02896 0.444608 -1.77796</pose>
+          <velocity>0.000557 0.00386 -0.000197 0.032432 0.126709 -0.420034</velocity>
+          <acceleration>-0.595207 0.803927 -0.334015 -0.712123 0.215467 0.811822</acceleration>
+          <wrench>-73.4812 99.2488 -41.2358 0 -0 0</wrench>
+        </link>
+        <link name='r_index1_link'>
+          <pose>0.074984 -0.110649 0.803519 0.124278 0.358026 -1.78993</pose>
+          <velocity>0.005305 -0.012731 -0.004835 0.028068 0.127004 -0.421257</velocity>
+          <acceleration>-0.655186 0.70853 -0.380387 1.8424 0.58621 -0.512241</acceleration>
+          <wrench>-4.2521 4.59831 -2.46868 0 -0 0</wrench>
+        </link>
+        <link name='r_index2_link'>
+          <pose>0.08301 -0.099674 0.770224 0.120802 0.271398 -1.80114</pose>
+          <velocity>0.005695 -0.015105 -0.005529 0.023739 0.126875 -0.421607</velocity>
+          <acceleration>-0.672017 0.644411 -0.418205 2.76578 -0.290672 2.75509</acceleration>
+          <wrench>-1.95661 1.87624 -1.21763 0 -0 0</wrench>
+        </link>
+        <link name='r_index3_link'>
+          <pose>0.087284 -0.094116 0.747271 2.2476 1.42132 0.419403</pose>
+          <velocity>0.005127 -0.016308 -0.005936 -0.177552 0.181024 -0.445988</velocity>
+          <acceleration>-0.679841 0.481785 -0.468687 -1.31236 0.825283 -0.741388</acceleration>
+          <wrench>-1.8728 1.3272 -1.29112 0 -0 0</wrench>
+        </link>
+        <link name='r_middle1_link'>
+          <pose>0.048989 -0.102742 0.79908 0.02791 0.357338 -1.78065</pose>
+          <velocity>0.008063 -0.001662 -0.001284 0.034075 0.125513 -0.420471</velocity>
+          <acceleration>-0.653044 0.700627 -0.368898 0.246816 1.03648 -1.27096</acceleration>
+          <wrench>-5.15422 5.52978 -2.91157 0 -0 0</wrench>
+        </link>
+        <link name='r_middle2_link'>
+          <pose>0.052884 -0.089665 0.762652 0.027134 0.270053 -1.78318</pose>
+          <velocity>0.008989 -0.001962 -0.001303 0.038653 0.123329 -0.420494</velocity>
+          <acceleration>-0.682178 0.578435 -0.434548 -0.697591 0.394145 2.89006</acceleration>
+          <wrench>-2.44802 2.07574 -1.55939 0 -0 0</wrench>
+        </link>
+        <link name='r_middle3_link'>
+          <pose>0.055515 -0.08317 0.737713 2.9773 1.41024 1.18895</pose>
+          <velocity>0.008647 -0.002035 -0.001371 -0.022402 0.136966 -0.42213</velocity>
+          <acceleration>-0.709689 0.309821 -0.518166 -1.05881 1.26633 -0.911497</acceleration>
+          <wrench>-2.4096 1.05193 -1.75932 0 -0 0</wrench>
+        </link>
+        <link name='r_pinky1_link'>
+          <pose>0.007581 -0.124984 0.858577 0.820724 -0.156597 -1.18483</pose>
+          <velocity>0.006256 0.013831 0.003249 0.883492 0.337319 -1.2184</velocity>
+          <acceleration>-0.658012 0.831333 -0.367124 2.59418 0.478526 2.41618</acceleration>
+          <wrench>-12.3579 15.613 -6.89485 0 -0 0</wrench>
+        </link>
+        <link name='r_pinky2_link'>
+          <pose>-0.003128 -0.137618 0.80998 -0.109728 -0.181356 -1.18208</pose>
+          <velocity>-0.025561 0.06979 -0.004339 1.04659 0.402686 -1.23654</velocity>
+          <acceleration>-0.93283 1.61968 -0.414086 -3.00009 -0.268206 2.95822</acceleration>
+          <wrench>-4.04804 7.02864 -1.79694 0 -0 0</wrench>
+        </link>
+        <link name='r_pinky3_link'>
+          <pose>-0.0037 -0.143869 0.779618 -0.111234 -0.244666 -1.17489</pose>
+          <velocity>-0.045516 0.102267 -0.010674 1.58349 0.6131 -1.29974</velocity>
+          <acceleration>-1.03442 1.872 -0.407275 0.565028 -1.03448 1.18667</acceleration>
+          <wrench>-1.91234 3.4608 -0.752933 0 -0 0</wrench>
+        </link>
+        <link name='r_pinky4_link'>
+          <pose>-0.003528 -0.149236 0.759519 -0.304489 1.20336 -1.48723</pose>
+          <velocity>-0.064816 0.133854 -0.019309 0.874755 0.338568 -1.21731</velocity>
+          <acceleration>-1.15419 2.04986 -0.382044 -1.48739 -1.52822 -2.09323</acceleration>
+          <wrench>-2.01778 3.58361 -0.667898 0 -0 0</wrench>
+        </link>
+        <link name='r_ring1_link'>
+          <pose>0.029836 -0.119416 0.837531 0.817639 0.176239 -1.49205</pose>
+          <velocity>0.005931 0.005172 0.000613 1.03597 0.374621 -1.36166</velocity>
+          <acceleration>-0.55029 0.643608 -0.300105 3.07508 -0.276062 -2.35844</acceleration>
+          <wrench>-7.87894 9.21505 -4.29684 0 -0 0</wrench>
+        </link>
+        <link name='r_ring2_link'>
+          <pose>0.017564 -0.115128 0.800922 0.040282 0.195185 -1.49128</pose>
+          <velocity>-0.001976 0.059811 0.009622 2.02916 0.446878 -1.32202</velocity>
+          <acceleration>-0.382024 -0.493395 -0.427614 2.06701 0.281353 -2.97511</acceleration>
+          <wrench>-2.17351 -2.80715 -2.43289 0 -0 0</wrench>
+        </link>
+        <link name='r_ring3_link'>
+          <pose>0.018916 -0.108317 0.767124 0.040271 0.193293 -1.49135</pose>
+          <velocity>-0.008109 0.12662 0.022782 2.49445 0.480966 -1.30369</velocity>
+          <acceleration>-0.257043 -1.1906 -0.462127 1.59431 1.26022 2.84186</acceleration>
+          <wrench>-0.650319 -3.01222 -1.16918 0 -0 0</wrench>
+        </link>
+        <link name='r_ring4_link'>
+          <pose>0.019884 -0.103834 0.744684 0.047344 0.582589 -1.47303</pose>
+          <velocity>-0.013089 0.181344 0.033438 -0.107477 0.29225 -1.40707</velocity>
+          <acceleration>-0.118506 -1.73939 -0.423737 -0.865429 0.689336 1.29666</acceleration>
+          <wrench>-0.283674 -4.16367 -1.01432 0 -0 0</wrench>
+        </link>
+        <link name='r_shoulder_base_link'>
+          <pose>-0.004782 -0.215202 1.51283 0.174545 1.8e-05 -0.022282</pose>
+          <velocity>0.011695 -0.000306 4.5e-05 0.010811 -0.000321 0.054946</velocity>
+          <acceleration>-0.233636 -0.08752 0.037554 0.831786 -0.456941 -0.446116</acceleration>
+          <wrench>-62.2704 -23.3265 10.0092 0 -0 0</wrench>
+        </link>
+        <link name='r_shoulder_link'>
+          <pose>-0.004891 -0.220072 1.47136 0.17489 -0.059993 -0.032872</pose>
+          <velocity>0.011976 8.7e-05 -2e-06 0.004957 0.043013 0.061761</velocity>
+          <acceleration>-0.220453 0.409012 -0.01895 -0.384044 0.350118 -1.46029</acceleration>
+          <wrench>-71.0835 131.883 -6.11044 0 -0 0</wrench>
+        </link>
+        <link name='r_thumb1_link'>
+          <pose>0.062474 -0.136268 0.858055 0.087093 0.454029 -1.87431</pose>
+          <velocity>0.001443 -0.009217 -0.004066 0.031307 0.122532 -0.412902</velocity>
+          <acceleration>-0.63087 0.771334 -0.354881 0.64678 0.066089 -1.15571</acceleration>
+          <wrench>-8.38716 10.2546 -4.71801 0 -0 0</wrench>
+        </link>
+        <link name='r_thumb2_link'>
+          <pose>0.090985 -0.139845 0.848774 1.01902 0.264473 -1.64933</pose>
+          <velocity>-0.00117 -0.020768 -0.007702 0.035095 0.121162 -0.406932</velocity>
+          <acceleration>-0.638064 0.685222 -0.385304 0.091684 1.30707 0.797634</acceleration>
+          <wrench>-4.79253 5.14674 -2.89404 0 -0 0</wrench>
+        </link>
+        <link name='r_thumb3_link'>
+          <pose>0.121076 -0.137402 0.831063 1.57973 0.60589 -0.464381</pose>
+          <velocity>-0.002322 -0.032541 -0.011312 -0.057529 0.169634 -0.557466</velocity>
+          <acceleration>-0.667088 0.369235 -0.485538 -1.63582 1.12168 3.05499</acceleration>
+          <wrench>-3.87748 2.1462 -2.82221 0 -0 0</wrench>
+        </link>
+        <link name='top_stomach_link'>
+          <pose>8e-06 1e-06 1.152 0 1.3e-05 -0.022279</pose>
+          <velocity>-1.3e-05 -0.000106 -0 2e-06 -2e-06 0.054395</velocity>
+          <acceleration>-0.006332 -0.149314 -0.000176 0.040716 0.015263 -1.09505</acceleration>
+          <wrench>-8.38268 -197.67 -0.232762 0 -0 0</wrench>
+        </link>
+        <link name='torso_link'>
+          <pose>9e-06 1e-06 1.262 0.261802 1.6e-05 -0.022279</pose>
+          <velocity>-1.3e-05 -0.000106 -0 -0.000235 5e-06 0.054397</velocity>
+          <acceleration>-0.014162 -0.146992 0.001782 -0.205189 0.065528 -1.0801</acceleration>
+          <wrench>-71.5393 -742.524 9.00399 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>5.59165 -4.21692 2.47857 0 0.275643 2.35619</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

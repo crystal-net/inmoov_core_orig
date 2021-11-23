@@ -1,0 +1,58 @@
+<launch>
+
+    <arg name="model" default="$(find inmoov_description)/urdf/easyjoint.urdf.xacro"/>
+    <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>  
+ 
+  <!-- ================ -->
+  <!-- Gazebo Component -->
+  <!-- ================ -->
+
+  <!-- Part 1.  These aruements are going to be used in the next step to launch Gazebo.  This is from tutorial.  Not sure why these variables need to be used if it is all in the same file.  Maybe they should be in another file.  Which?  And does it then apply to all Gazebo launches?  Is that the point? Anyways... Set Variables -->
+  <arg name="debug" default="false"/>
+  <arg name="gui" default="true"/>
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="verbose" value="true"/>
+
+
+  <!-- Part 2.  We resume the logic in empty_world.launch.  Args are set below to the value of the variables.  -->
+  <!-- <include file="$(find gazebo_ros)/launch/empty_world.launch"> -->
+  <!-- <include file="$(find gazebo_ros)/launch/empty_world.launch"> -->
+  <!-- <include file="$(find inmoov_gazebo)/launch/empty_world.launch"> -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="verbose" value="$(arg verbose)"/>
+  </include>
+
+
+
+  <!-- There seems to be two ways of launching Gazebo. -->
+  <!-- Below is my original whay which does work except for movement -->
+  <!-- The current uncommented way is from an rrbot tutorial -->
+
+  <!-- Original: Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <!-- <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model inmoov_description -param robot_description"/> -->
+
+  <!-- New Way: -->
+  <!-- Also note that older configs said name="urdf_spawner" -->
+  <!-- I don't think this matters.  Its just a name. -->
+  <!-- Check with graph viewer to confirm -->
+  
+  <node 
+    name="spawn_model" 
+    pkg="gazebo_ros" 
+    type="spawn_model" 
+    args="-urdf -param robot_description -model inmoov"
+    output="screen"
+  />
+
+
+</launch>
+
+
+

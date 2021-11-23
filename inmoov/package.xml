@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>inmoov</name>
+  <version>1.0.0</version>
+  <description>The InMoov robot starting package</description>
+
+  <maintainer email="gckemper@gmail.com">Crystal Networks</maintainer>
+
+  <license>GPLv3</license>
+
+  <url type="website">http://crystal-net.org</url>
+
+
+  <!-- Dependencies:  Anything with a <build_depend> tag needs to also go into the CMakeLists.txt file under the find_package call.  My modifications got there automatically somehow but you should ensure that they get there for your project -->
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>inmoov_description</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_export_depend>inmoov_description</build_export_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <exec_depend>inmoov_description</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>xacro</exec_depend>  
+  <exec_depend>rviz</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  
+
+
+
+
+
+
+  <!-- These 2 dependencies ensure that the msg files are turned into source code for C++, Python, and other languages: -->
+  <!-- More details here: https://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv -->
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+  
+  </package>

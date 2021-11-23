@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<!-- Transmission Macro/Xacro-->
+<!-- This is the transmission definition that we will use throughout the joints -->
+<!-- Creating a macro allows us to use but one line in our joint definitions -->
+
+<!-- "joint_name" is the joint in which we link the actuators and is passed in to the macro which is used below   -->
+<!-- <joint name="${joint_name}"> -->
+
+<!-- The type must remain as is.  It is currently the only one supported as of the time of writing -->
+
+<!-- The <hardwareInterface> tag is the type of interface to load. -->
+<!-- This is the abstraction type provided by the ROS library XXXXXX -->
+<!-- and can be of type polition, velocity, or effort -->
+<!-- The <hardwareInterface> is loaded by the gazebo_ros_control plugin -->
+<!-- The gazebo_ros_control plugin is defined in inmoov_description/urdf/inmoov.gazebo -->
+
+<!-- The actuator tage is the specific type of sensor/motor that comprises the joint -->
+
+
+<robot name="inmoov" xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+  <xacro:macro name="transmission_block" params="joint_name"> 
+    <transmission name="tran1"> 
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint_name}">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor1">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+  
+
+</robot>
+
+

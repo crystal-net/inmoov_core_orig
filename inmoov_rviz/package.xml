@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>inmoov_rviz</name>
+  <version>1.2.4</version>
+  <description>
+    InMoov telemetry visualization.
+  </description>
+  <license>Apache 2.0</license>
+  <author email="gckemper@gmail.com">Crystal Networks</author>
+  <author>Leon Jung</author>
+  <maintainer email="gckemper@gmail.com">Crystal Networks</maintainer>
+  <url type="website">http://crystal-net.org</url>
+  <url type="emanual">http://crystal-net.org</url>
+  <url type="repository">https://github.com/crystal-net</url>
+  <url type="bugtracker">https://github.com/crystal-net</url>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>amcl</exec_depend>
+  <exec_depend>map_server</exec_depend>
+  <exec_depend>move_base</exec_depend>
+</package>

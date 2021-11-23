@@ -1,0 +1,105 @@
+<launch>
+
+
+  <!-- Load the URDF into the ROS Parameter Server XACRO VERSION -->
+  <!-- This is the description of the robot.  It is loaded right away since all the -->
+  <!-- other operations like loading Gazebo, RViz, RQT, etc. -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find inmoov_description)/urdf/easyjoint.urdf.xacro'" />
+
+  <!-- Start gazebo using a seperate launch file in package inmoov_gazebo -->
+  <include file="$(find inmoov_gazebo)/launch/gazebo.launch" />
+
+  <!-- Start ros_control inside the inmoov_control package -->
+  <include file="$(find inmoov_control)/launch/control.launch" />
+
+                                            
+  <!-- ================================== -->
+  <!-- ===   rViz Data Visualization  === -->
+  <!-- ================================== -->
+  <!-- Load rViz robot visualization tool.  This allows you to see what the robot sees or thinks its state is-->
+  <!-- The inmoov.rviz file is created inside rviz itself after configuring the interface
+  and then clicking file and save. -->
+  <node name="rviz" 
+    pkg="rviz" 
+    type="rviz" 
+    args="-d $(find inmoov_rviz)/rviz/inmoov.rviz"
+    required="false" 
+  />
+
+
+  <!-- ====================== -->
+  <!-- RQT Data Visualization -->
+  <!-- ====================== -->
+  <!-- Load RQT logger,  RQT Logger Level, RQT Console, RQT Graph -->
+  <!-- Load inside RQT Gui.  This might need to be broken out later to use multi monitors or something. -->
+  <!-- <node name = "rqt_dashboard" 
+    pkg = "rqt_gui" 
+    type = "rqt_gui" 
+    respawn = "false" 
+    output = "screen"
+  /> -->
+
+
+<!-- Redundant when the dashboard is used and preconfigured -->
+  <node name = "rqt_graph" 
+    pkg = "rqt_gui" 
+    type = "rqt_gui" 
+    respawn = "false" 
+    output = "screen"
+  />
+  
+
+ 
+  <!-- 
+    Load parameters for the motor controllers.  
+  Currently these are arduinos but I'd like to change these to st controllers.  
+  This is very likely going to require making a special PCB and since the 
+  STM32 pinouts are not always the same this might be a daunting task.  
+  Might actually even mean that I need to create the entire board from scratch with ICs and all 
+  -->
+
+
+
+<!-- ################################# -->
+<!-- #######    Servo setup    #######-->
+<!-- ################################# -->
+
+  <!-- Not exactly sure where this is used but I think its important.  While I am setting this information that I
+  downloaded from the net, I don't think it is being used yet.  I need to 
+  under stand more-->
+  <!-- I believe this information is for the servos -->
+  <!-- REMOVED: This is currently being loaded in (inmoov_description/config.joints.urdf.xacro) -->
+  <!-- <rosparam file="$(find inmoov)/config/servo_config.yaml"/> -->
+
+
+  <!-- Namespace groups are required as the nodes are starting the same module multiple tiems  -->
+  <!-- Actually I might not need the <group ns> tag but the name param needs to be set for sure -->
+  <!-- ROS will through an error without them. -->
+  <!-- namespace bus_right and bus_left are for the two arduinos that run the left and right side -->
+  <!-- A third namespace and arduino may be required in the future as the legs and other senstors are implemented -->
+  
+  <!-- <group ns="servobus/00" >
+    <node pkg="rosserial_python" type="serial_node.py" name="bus_right" respawn="true">
+      <param name="port" value="/dev/ttyACM0"/>
+      <param name="baud" value="57600"/>
+    </node>
+  </group> -->
+
+  <!-- <group ns="servobus/01" >
+    <node pkg="rosserial_python" type="serial_node.py" name="bus_left" respawn="true">
+        <param name="port" value="/dev/ttyACM1"/>
+        <param name="baud" value="57600"/>
+    </node>
+  </group> -->
+
+  <!-- <group ns="servobus/02" >
+    <node pkg="rosserial_python" type="serial_node.py" name="bus" respawn="true">
+      <param name="port" value="/dev/ttyACM2"/>
+      <param name="baud" value="115200"/>
+    </node>
+  </group> -->
+
+
+
+
+</launch>

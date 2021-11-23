@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>inmoov_description</name>
+  <version>1.0.0</version>
+  <description>The InMoov robot model package</description>
+
+  <maintainer email="gckemper@gmail.com">Crystal Networks</maintainer>
+
+  <license>GPLv3</license>
+
+  <url type="website">http://crystal-net.org</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>robot_state_publisher</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>urdf</build_depend>
+  <build_export_depend>robot_state_publisher</build_export_depend>
+  <build_export_depend>urdf</build_export_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>geoemetry_msgs</exec_depend>
+  <exec_depend>rqt_gui</exec_depend>
+  <exec_depend>effort_controllers</exec_depend>
+
+
+</package>
