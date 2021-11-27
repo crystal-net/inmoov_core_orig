@@ -1,6 +1,6 @@
 <launch>
 
-
+<!-- Welcome to the project -->
   <!-- Load the URDF into the ROS Parameter Server XACRO VERSION -->
   <!-- This is the description of the robot.  It is loaded right away since all the -->
   <!-- other operations like loading Gazebo, RViz, RQT, etc. -->
