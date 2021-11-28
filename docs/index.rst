@@ -149,6 +149,7 @@ There are three equivalents: ``code``, ``sourcecode``, and ``code-block``.
 
 .. code:: C
 
+   if (x=1, 1, 1) 
 
 .. sourcecode::
 
