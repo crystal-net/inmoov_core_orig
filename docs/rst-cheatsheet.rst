@@ -4,51 +4,23 @@
    contain the root `toctree` directive.
 
 
-"""""""""""""""""
-Document Title
-"""""""""""""""""
 
 
+
+Main Title
 =================
-InMoov on Robot Operating System 2!
-=================
--------------------------
-Embodiment Of Our Robot Overlords
--------------------------
+
+Section
+-------
+
+Subsection
+~~~~~~~~~~
+   
+
+    You can use ``backticks`` for showing ``highlighted`` code.
 
 
-  
-    ROS 2 Galactic Cheatsheet
-    Filesystem Management Tools
-    ros2 pkg
-    
-ROS2 Cheatsheet
-==================
 
-    
-    
-    wstool - Manage many repos in workspace.
-    catkin make - Builds a ROS catkin workspace.
-    rqt dep - Displays package structure and dependencies.
-
-    action     Various action related sub-commands
-    bag        Various rosbag related sub-commands
-    component  Various component related sub-commands
-    daemon     Various daemon related sub-commands
-    doctor     Check ROS setup and other potential issues
-    interface  Show information about ROS interfaces
-    launch     Run a launch file
-    lifecycle  Various lifecycle related sub-commands
-    multicast  Various multicast related sub-commands
-    node       Various node related sub-commands
-    param      Various param related sub-commands
-    pkg        Various package related sub-commands
-    run        Run a package specific executable
-    security   Various security related sub-commands
-    service    Various service related sub-commands
-    wtf        Use `wtf` as alias to `doctor`
-  
-    
     
     Logging Tools rostopic
     rosbag - A tool for displaying information about ROS topics, including publishers, subscribers, publishing rate, and messages.
@@ -231,46 +203,42 @@ Indices and tables
 * InMoov Telemetry: http://www.crystal-net.org
 
 
-"""""""""""""""""
+
 Document Title
 """""""""""""""""
-...........
+
 Subtitle
 ...........
 
 .. contents:: Overview
    :depth: 3
 
-===================
+
 Section 1
 ===================
 
 Text can be *italicized* or **bolded**  as well as ``monospaced``.
 You can \*escape certain\* special characters.
 
-----------------------
-Subsection 1 (Level 2)
-----------------------
 
-Some section 2 text
 
 Sub-subsection 1 (level 3)
 --------------------------
 
 Some more text.
 
-=========
+
 Examples
 =========
 
---------
+
 Comments
 --------
 
 .. This is a comment
    Special notes that are not shown but might come out as HTML comments
 
-------
+
 Images
 ------
 
@@ -286,7 +254,7 @@ You can inline an image or other directive with the |customsub| command.
 .. |customsub| image:: image/image.png
               :alt: (missing image text)
 
------
+
 Lists
 -----
 
