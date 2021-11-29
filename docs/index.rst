@@ -335,6 +335,10 @@ There are three equivalents: ``code``, ``sourcecode``, and ``code-block``.
 
    if (x=1, 1, 1) 
 
+   .. code:: bash
+
+   if (x=1, 1, 1) 
+
 .. sourcecode::
 
   # Equivalent
@@ -398,7 +402,7 @@ Bill of Materials
 | M5    | 23  | http://somesite.com        |
 +-------+-----+----------------------------+
 | M6    | 23  | http://somesite.com        |
-+-------+-----+----------------------------+
++=======+=====+============================+
 
 
 
