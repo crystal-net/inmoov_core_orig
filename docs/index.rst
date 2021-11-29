@@ -231,9 +231,7 @@ Indices and tables
 * InMoov Telemetry: http://www.crystal-net.org
 
 
-"""""""""""""""""
-Document Title
-"""""""""""""""""
+
 ...........
 Subtitle
 ...........
