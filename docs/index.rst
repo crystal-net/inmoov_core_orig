@@ -8,10 +8,20 @@
 Setup
 =================
 
+Create a Project Directory
+-------------------------
+
+
+Clone the repository
+-------------------------
+
+
 
 
 3D Printing
 =================
+
+
 
 
 Bill of Materials
