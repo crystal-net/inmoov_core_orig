@@ -12,6 +12,7 @@ Create a Project Directory
 -------------------------
 
 
+
 Clone the repository
 -------------------------
 
@@ -20,12 +21,25 @@ Clone the repository
 
 3D Printing
 =================
+Source PLA
+Printer Settings
+Table of print aproximate print times
 
 
 
 
 Bill of Materials
 =================
+Screws
+Plastic
+
+
+Tools
+~~~~~~~~~~
+
+
+
+
 
 
 Troubleshooting
