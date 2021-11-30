@@ -4,13 +4,34 @@
    contain the root `toctree` directive.
 
 
-"""""""""""""""""
-InMoov on ROS 2
-"""""""""""""""""
 
-
-InMoov on Robot Operating System 2!
+Setup
 =================
+
+
+
+3D Printing
+=================
+
+
+Bill of Materials
+=================
+
+
+Troubleshooting
+=================
+
+
+About
+=================
+
+
+
+
+-------------------------
+InMoov on Robot Operating System 2!
+-------------------------
+
 
 
 
@@ -27,9 +48,6 @@ InMoov on Robot Operating System 2!
    license.rst
 
 
--------------------------
-Embodiment Of Our Robot Overlords
--------------------------
 
 
   
