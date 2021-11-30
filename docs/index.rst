@@ -28,7 +28,6 @@ About
 
 
 
--------------------------
 InMoov on Robot Operating System 2!
 -------------------------
 
