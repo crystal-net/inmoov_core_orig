@@ -10,6 +10,13 @@ Setup
 
 Create a Project Directory
 -------------------------
+First we need to create a working directory for the project.  Here, we will clone the git repository into /src.  Later as build the project, there will be an /install and /build folder.
+
+
+
+.. code:: bash
+mkdir -p inmoov_ros2_ws/src
+git clone https://github.com/crystal-net/inmoov_ros2 inmoov_ros2_ws
 
 
 
