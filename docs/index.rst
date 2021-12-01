@@ -335,10 +335,6 @@ There are three equivalents: ``code``, ``sourcecode``, and ``code-block``.
 
    if (x=1, 1, 1) 
 
-.. code:: bash
-
-   if (x=1, 1, 1) 
-
 .. sourcecode::
 
   # Equivalent
