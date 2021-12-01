@@ -4,17 +4,80 @@
    contain the root `toctree` directive.
 
 
-"""""""""""""""""
-Document Title
-"""""""""""""""""
 
-
+Setup
 =================
+
+Create a Project Directory
+-------------------------
+First we need to create a working directory for the project.  Here, we will clone the git repository into /src.  Later as build the project, there will be an /install and /build folder.
+
+
+
+.. code:: bash
+mkdir -p inmoov_ros2_ws/src
+git clone https://github.com/crystal-net/inmoov_ros2 inmoov_ros2_ws
+
+
+
+Clone the repository
+-------------------------
+
+
+
+
+3D Printing
+=================
+Source PLA
+Printer Settings
+Table of print aproximate print times
+
+
+
+
+Bill of Materials
+=================
+Screws
+Plastic
+
+
+Tools
+~~~~~~~~~~
+
+
+
+
+
+
+Troubleshooting
+=================
+
+
+About
+=================
+
+
+
+
 InMoov on Robot Operating System 2!
-=================
 -------------------------
-Embodiment Of Our Robot Overlords
--------------------------
+
+
+
+
+.. toctree::
+
+   index.rst
+   setup.rst
+   3dprinting.rst
+   bom.rst
+   troubleshoot.rst
+
+   about.rst
+   copyright.rst
+   license.rst
+
+
 
 
   
