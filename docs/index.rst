@@ -8,6 +8,20 @@
 Setup
 =================
 
+Setup Ubuntu if you haven't already
+-------------------------
+You can run these commands even if you have already installed many of the ROS components
+If you already have them then nothing will happen.  If you don't have them they will be downloaded and installed
+
+
+
+
+We need these packages for Gazebo
+sudo apt install ros-galactic-gazebo-ros2-control
+
+
+
+
 Create a Project Directory
 -------------------------
 First we need to create a working directory for the project.  Here, we will clone the git repository into /src.  Later as build the project, there will be an /install and /build folder.
