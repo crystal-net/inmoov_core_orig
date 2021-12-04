@@ -59,6 +59,21 @@ Tools
 ~~~~~~~~~~
 
 
+Simulation
+=================
+
+Working with Joint State
+-----------------
+This allows us to send fake joint states using a slider GUI.
+
+.. code:: xml
+<!-- send fake joint values -->
+<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+   <param name="use_gui" value="true">
+</node>
+
+
+
 
 
 
