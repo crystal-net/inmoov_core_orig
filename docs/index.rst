@@ -117,7 +117,7 @@ InMoov on Robot Operating System 2!
 ROS2 Cheatsheet
 ==================
 
-    
+Below is a list of available commands    
     
     wstool - Manage many repos in workspace.
     catkin make - Builds a ROS catkin workspace.
@@ -142,7 +142,11 @@ ROS2 Cheatsheet
   
     
     
-    Logging Tools rostopic
+Logging Tools 
+---------------------
+
+
+    rostopic
     rosbag - A tool for displaying information about ROS topics, including publishers, subscribers, publishing rate, and messages.
     Commands:
     ros2 topic bw - Display bandwidth used by topic.
@@ -172,26 +176,10 @@ ROS2 Cheatsheet
     $ rosbag play demo1.bag demo2.bag
     Usage:
     
-    Introspection and Command Tools
-    $ rospack find [package]
-    $ roscd [package[/subdir]]
-    $ rosmsg/rossrv
-    $ rospd [package[/subdir] | +N | -N]
-    $ rosd - Displays Message/Service (msg/srv) data structure definitions.
-    $ rosls [package[/subdir]]
-    $ rosmsg show - Display the fields in the msg/srv.
-    $ rosed [package] [file]
-    $ rosmsg list - Display names of all msg/srv.
-    $ roscp [package] [file] [destination]
-    # rosmsg md5 - Display the msg/srv md5 sum.
-    $ rosdep install [package]
-    $ rosmsg package - List all the msg/srv in a package.
-    $ roswtf or roswtf [file]
-    
 
 
 
-    ROS Galactic Cheatsheet
+    RQT Galactic Cheatsheet
     rqt_console
     rqt_bag
     rqt_logger_level
@@ -215,38 +203,7 @@ ROS2 Cheatsheet
     rqt_image_view
 
 
-    ROS Indigo Catkin Workspaces
-    Create a catkin workspace
-    Setup and use a new catkin workspace from scratch.
-    Example:
-    $ source /opt/ros/hydro/setup.bash
-    $ mkdir -p ~/catkin ws/src
-    $ cd ~/catkin ws/src
-    $ catkin init workspace
-    
-    Checkout an existing ROS package
-    Get a local copy of the code for an existing package and keep it up to date using wstool.
-    Examples:
-    $ cd ~/catkin ws/src
-    $ wstool init
-    $ wstool set tutorials --git git://github.com/ros/ros tutorials.git
-    $ wstool update
-    
-    Create a new catkin ROS package
-    Create a new ROS catkin package in an existing workspace with catkin create package. After using this you will need to
-    edit the CMakeLists.txt to detail how you want your package built and add information to your package.xml.
-    Usage:
-    $ catkin create pkg <package name> [depend1] [depend2]
-    Example:
-    $ cd ~/catkin ws/src
-    $ catkin create pkg tutorials std msgs rospy roscpp
-    
-    Build all packages in a workspace
-    Use catkin make to build all the packages in the workspace and then source the setup.bash to add the workspace to the ROS PACKAGE PATH.
-    Examples:
-    $ cd ~/catkin ws
-    $ ~/catkin make
-    $ source devel/setup.bash
+
 
     Notes
       Joint Types
