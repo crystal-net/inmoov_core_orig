@@ -1,1 +1,0 @@
-This is where models for objects inside the Gazebo simulation are kept.  They do not have anything to do with our robot specifically.  They are just for building a world around the robot.  I will be building a sample world here for testing the robot later.
