@@ -20,6 +20,7 @@ We need these packages for Gazebo
 sudo apt install ros-galactic-gazebo-ros2-control
 
 
+Packages for Naviation (Nav2): sudo apt install ros-galactic-navigation2 ros-galactic-nav2-bringup
 
 
 Create a Project Directory
