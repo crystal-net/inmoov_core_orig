@@ -30,13 +30,25 @@ First we need to create a working directory for the project.  Here, we will clon
 
 .. code:: bash
 mkdir -p inmoov_ros2_ws/src
-git clone https://github.com/crystal-net/inmoov_ros2 inmoov_ros2_ws
 
 
 
 Clone the repository
 -------------------------
+git clone https://github.com/crystal-net/inmoov_ros2 inmoov_ros2_ws
 
+
+Install ROS2 base system
+-------------------------
+sudo apt install ros-galactic-desktop ros-galactic-gazebo-ros2-control ros-galactic-rcl ros-galactic-rclcpp ros-galactic-rqt 
+
+
+
+Install Extra packages
+--------------------------
+sudo apt install ros-galactic-rviz2
+sudo apt install ros-galactic-joint-state-publisher-gui ros-galactic-joint-state-publisher
+sudo apt install 
 
 
 
