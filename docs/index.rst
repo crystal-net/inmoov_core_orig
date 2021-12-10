@@ -14,6 +14,15 @@ You can run these commands even if you have already installed many of the ROS co
 If you already have them then nothing will happen.  If you don't have them they will be downloaded and installed
 
 
+See following example:
+
+.. code-block:: php
+
+   $a = 'b';
+
+
+
+
 .. code-block:: python
 
 sudo apt install ros-galactic-desktop
