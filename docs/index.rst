@@ -14,11 +14,15 @@ You can run these commands even if you have already installed many of the ROS co
 If you already have them then nothing will happen.  If you don't have them they will be downloaded and installed
 
 
-.. code:: bash
+.. code-block:: console
+
 sudo apt install ros-galactic-desktop
 
+
 We need these packages for Gazebo
-.. code:: bash
+
+.. code-block:: console
+   
 sudo apt install ros-galactic-gazebo-ros2-control
 
 
@@ -31,7 +35,7 @@ First we need to create a working directory for the project.  Here, we will clon
 
 
 
-.. code:: bash
+.. code-block:: console
 mkdir -p inmoov_ros2_ws/src
 
 
@@ -49,6 +53,8 @@ sudo apt install ros-galactic-desktop ros-galactic-gazebo-ros2-control ros-galac
 
 Install Extra packages
 -----------------
+
+.. code:: bash
 sudo apt install ros-galactic-rviz2
 sudo apt install ros-galactic-joint-state-publisher-gui ros-galactic-joint-state-publisher
 sudo apt install 
