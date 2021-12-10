@@ -14,15 +14,13 @@ You can run these commands even if you have already installed many of the ROS co
 If you already have them then nothing will happen.  If you don't have them they will be downloaded and installed
 
 
-.. code-block:: console
-
+.. code-block:: python
 sudo apt install ros-galactic-desktop
 
 
 We need these packages for Gazebo
 
 .. code-block:: console
-   
 sudo apt install ros-galactic-gazebo-ros2-control
 
 
