@@ -79,9 +79,9 @@ Install Extra packages
 
 3D Printing
 =================
-Source PLA
-Printer Settings
-Table of print aproximate print times
+- Source PLA
+- Printer Settings
+- Table of print aproximate print times
 
 
 
