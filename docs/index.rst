@@ -15,13 +15,21 @@ If you already have them then nothing will happen.  If you don't have them they 
 
 
 .. code-block:: python
+
 sudo apt install ros-galactic-desktop
+
+
 
 
 We need these packages for Gazebo
 
+
+
 .. code-block:: console
+
 sudo apt install ros-galactic-gazebo-ros2-control
+
+
 
 
 Packages for Naviation (Nav2): sudo apt install ros-galactic-navigation2 ros-galactic-nav2-bringup
