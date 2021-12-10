@@ -25,7 +25,7 @@ See following example:
 
 .. code-block:: python
 
-sudo apt install ros-galactic-desktop
+   sudo apt install ros-galactic-desktop
 
 
 
@@ -35,9 +35,9 @@ We need these packages for Gazebo
 
 
 .. code-block:: console
-{
+
    sudo apt install ros-galactic-gazebo-ros2-control
-}
+
 
 
 
@@ -51,7 +51,8 @@ First we need to create a working directory for the project.  Here, we will clon
 
 
 .. code-block:: console
-mkdir -p inmoov_ros2_ws/src
+
+   mkdir -p inmoov_ros2_ws/src
 
 
 
@@ -70,9 +71,9 @@ Install Extra packages
 -----------------
 
 .. code:: bash
-sudo apt install ros-galactic-rviz2
-sudo apt install ros-galactic-joint-state-publisher-gui ros-galactic-joint-state-publisher
-sudo apt install 
+   sudo apt install ros-galactic-rviz2
+   sudo apt install ros-galactic-joint-state-publisher-gui ros-galactic-joint-state-publisher
+   sudo apt install 
 
 
 
