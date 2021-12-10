@@ -26,9 +26,9 @@ We need these packages for Gazebo
 
 
 .. code-block:: console
-
-sudo apt install ros-galactic-gazebo-ros2-control
-
+{
+   sudo apt install ros-galactic-gazebo-ros2-control
+}
 
 
 
