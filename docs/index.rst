@@ -4,6 +4,22 @@
    contain the root `toctree` directive.
 
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+* InMoov Telemetry: http://www.crystal-net.org
+
+
+
 
 Setup
 =================
@@ -63,14 +79,16 @@ git clone https://github.com/crystal-net/inmoov_ros2 inmoov_ros2_ws
 
 Install ROS2 base system
 -----------------
-sudo apt install ros-galactic-desktop ros-galactic-gazebo-ros2-control ros-galactic-rcl ros-galactic-rclcpp ros-galactic-rqt 
+
+.. code:: console
+   sudo apt install ros-galactic-desktop ros-galactic-gazebo-ros2-control ros-galactic-rcl ros-galactic-rclcpp ros-galactic-rqt 
 
 
 
 Install Extra packages
 -----------------
 
-.. code:: bash
+.. code:: console
    sudo apt install ros-galactic-rviz2
    sudo apt install ros-galactic-joint-state-publisher-gui ros-galactic-joint-state-publisher
    sudo apt install 
@@ -79,17 +97,17 @@ Install Extra packages
 
 3D Printing
 =================
-- Source PLA
-- Printer Settings
-- Table of print aproximate print times
+   - Source PLA
+   - Printer Settings
+   - Table of print aproximate print times
 
 
 
 
 Bill of Materials
 =================
-Screws
-Plastic
+   - Screws
+   - Plastic
 
 
 Tools
@@ -104,10 +122,10 @@ Working with Joint State
 This allows us to send fake joint states using a slider GUI.
 
 .. code:: xml
-<!-- send fake joint values -->
-<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-   <param name="use_gui" value="true">
-</node>
+   <!-- send fake joint values -->
+   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+      <param name="use_gui" value="true">
+   </node>
 
 
 
@@ -258,6 +276,8 @@ Logging Tools
     roslaunch urdf_tutorial display.launch model:=urdf/easyjoint.urdf.xacro
 
     URDF Geometry Definition
+    ==================
+
     Links
     
       origin rpy="0 1.57075 0" xyz="0 0 -0.3" 
@@ -301,20 +321,6 @@ taking advantage of those yet though.
 - IMU readings
 - Force sensor readings
 
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-* InMoov Telemetry: http://www.crystal-net.org
 
 
 
@@ -392,19 +398,6 @@ Term2
 
 :Something: single item
 :Someitem: single item
-
------------------
-Preformatted text
------------------
-
-A code example prefix must always end with double colon like it's presenting something::
-
-    Anything indented is part of the preformatted block
-   Until
-  It gets back to
- Allll the way left
-
-Now we're out of the preformatted block.
 
 ------------
 Code blocks
