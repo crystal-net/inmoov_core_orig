@@ -9,43 +9,79 @@ Setup
 =================
 
 Setup Ubuntu if you haven't already
--------------------------
+-----------------
 You can run these commands even if you have already installed many of the ROS components
 If you already have them then nothing will happen.  If you don't have them they will be downloaded and installed
+
+
+See following example:
+
+.. code-block:: php
+
+   $a = 'b';
+
+
+
+
+.. code-block:: python
+
+   sudo apt install ros-galactic-desktop
 
 
 
 
 We need these packages for Gazebo
-sudo apt install ros-galactic-gazebo-ros2-control
+
+
+
+.. code-block:: console
+
+   sudo apt install ros-galactic-gazebo-ros2-control
+
+
 
 
 Packages for Naviation (Nav2): sudo apt install ros-galactic-navigation2 ros-galactic-nav2-bringup
 
 
 Create a Project Directory
--------------------------
+-----------------
 First we need to create a working directory for the project.  Here, we will clone the git repository into /src.  Later as build the project, there will be an /install and /build folder.
 
 
 
-.. code:: bash
-mkdir -p inmoov_ros2_ws/src
-git clone https://github.com/crystal-net/inmoov_ros2 inmoov_ros2_ws
+.. code-block:: console
+
+   mkdir -p inmoov_ros2_ws/src
 
 
 
 Clone the repository
--------------------------
+-----------------
+git clone https://github.com/crystal-net/inmoov_ros2 inmoov_ros2_ws
 
+
+Install ROS2 base system
+-----------------
+sudo apt install ros-galactic-desktop ros-galactic-gazebo-ros2-control ros-galactic-rcl ros-galactic-rclcpp ros-galactic-rqt 
+
+
+
+Install Extra packages
+-----------------
+
+.. code:: bash
+   sudo apt install ros-galactic-rviz2
+   sudo apt install ros-galactic-joint-state-publisher-gui ros-galactic-joint-state-publisher
+   sudo apt install 
 
 
 
 3D Printing
 =================
-Source PLA
-Printer Settings
-Table of print aproximate print times
+- Source PLA
+- Printer Settings
+- Table of print aproximate print times
 
 
 
@@ -60,7 +96,7 @@ Tools
 ~~~~~~~~~~
 
 
-Simulation
+Simulationpo0
 =================
 
 Working with Joint State
