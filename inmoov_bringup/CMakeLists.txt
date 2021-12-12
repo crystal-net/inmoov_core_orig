@@ -25,10 +25,10 @@ endif()
 
 ament_package()
 
-add_executable(minimal_cpp_node src/my_cpp_node.cpp)
+add_executable(inmoov_bringup src/inmoov_bringup.cpp)
 
-ament_target_dependencies(minimal_cpp_node rclcpp)
+ament_target_dependencies(inmoov_bringup rclcpp)
 install(TARGETS
-  minimal_cpp_node
+  inmoov_bringup
   DESTINATION lib/${PROJECT_NAME}
 )
