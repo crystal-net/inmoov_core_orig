@@ -8,6 +8,18 @@
    :maxdepth: 2
    :caption: Contents:
 
+   index.rst
+   setup.rst
+   3dprinting.rst
+   bom.rst
+   troubleshoot.rst
+
+   about.rst
+   copyright.rst
+   license.rst
+
+
+
 
 
 Indices and tables
@@ -134,19 +146,6 @@ Tools
 ~~~~~~~~~~
 
 
-Simulationpo0
-=================
-
-Working with Joint State
------------------
-This allows us to send fake joint states using a slider GUI.
-
-.. code:: xml
-   <!-- send fake joint values -->
-   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-      <param name="use_gui" value="true">
-   </node>
-
 
 
 
@@ -154,65 +153,40 @@ This allows us to send fake joint states using a slider GUI.
 
 
 Troubleshooting
-=================
+-------------------------
 
 
 About
-=================
-
-
-
-
-InMoov on Robot Operating System 2!
 -------------------------
 
 
 
 
-.. toctree::
-
-   index.rst
-   setup.rst
-   3dprinting.rst
-   bom.rst
-   troubleshoot.rst
-
-   about.rst
-   copyright.rst
-   license.rst
-
-
-
-
-  
-    ROS 2 Galactic Cheatsheet
-    Filesystem Management Tools
-    ros2 pkg
     
 ROS2 Cheatsheet
 ==================
 
 Below is a list of available commands    
     
-    wstool - Manage many repos in workspace.
-    rqt dep - Displays package structure and dependencies.
+   - wstool - Manage many repos in workspace.
+   - rqt dep - Displays package structure and dependencies.
 
-    action     Various action related sub-commands
-    bag        Various rosbag related sub-commands
-    component  Various component related sub-commands
-    daemon     Various daemon related sub-commands
-    doctor     Check ROS setup and other potential issues
-    interface  Show information about ROS interfaces
-    launch     Run a launch file
-    lifecycle  Various lifecycle related sub-commands
-    multicast  Various multicast related sub-commands
-    node       Various node related sub-commands
-    param      Various param related sub-commands
-    pkg        Various package related sub-commands
-    run        Run a package specific executable
-    security   Various security related sub-commands
-    service    Various service related sub-commands
-    wtf        Use `wtf` as alias to `doctor`
+   - action     Various action related sub-commands
+   - bag        Various rosbag related sub-commands
+   - component  Various component related sub-commands
+   - daemon     Various daemon related sub-commands
+   - doctor     Check ROS setup and other potential issues
+   - interface  Show information about ROS interfaces
+   - launch     Run a launch file
+   - lifecycle  Various lifecycle related sub-commands
+   - multicast  Various multicast related sub-commands
+   - node       Various node related sub-commands
+   - param      Various param related sub-commands
+   - pkg        Various package related sub-commands
+   - run        Run a package specific executable
+   - security   Various security related sub-commands
+   - service    Various service related sub-commands
+   - wtf        Use `wtf` as alias to `doctor`
   
     
     
@@ -220,17 +194,17 @@ Working with topics
 ---------------------
 
 
-    rostopic
-    rosbag - A tool for displaying information about ROS topics, including publishers, subscribers, publishing rate, and messages.
-    Commands:
-    ros2 topic bw - Display bandwidth used by topic.
-    ros2 topic echo - Print messages to screen.
-    ros2 topic find - Find topics by type.
-    ros2 topic hz - Display publishing rate of topic.
-    ros2 topic info - Print information about an active topic.
-    ros2 topic list - List all published topics.
-    ros2 topic pub - Publish data to topic.
-    ros2 topic type - Print topic type.
+   - rostopic
+   - rosbag - A tool for displaying information about ROS topics, including publishers, subscribers, publishing rate, and messages.
+   Commands:
+   - ros2 topic bw - Display bandwidth used by topic.
+   - ros2 topic echo - Print messages to screen.
+   - ros2 topic find - Find topics by type.
+   - ros2 topic hz - Display publishing rate of topic.
+   - ros2 topic info - Print information about an active topic.
+   - ros2 topic list - List all published topics.
+   - ros2 topic pub - Publish data to topic.
+   - ros2 topic type - Print topic type.
     
 
 Working with ROS bag files
@@ -298,6 +272,24 @@ RQT Data Visualization
     I want to just view a new URDF in rviz without my inmoov stuff
     
     roslaunch urdf_tutorial display.launch model:=urdf/easyjoint.urdf.xacro
+
+
+
+
+Working with Joint State
+-----------------
+This allows us to send fake joint states using a slider GUI.
+
+.. code:: xml
+
+   <!-- send fake joint values -->
+   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+      <param name="use_gui" value="true">
+   </node>
+
+
+
+
 
 URDF Geometry Definition
 ==================
