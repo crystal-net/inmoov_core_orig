@@ -46,7 +46,13 @@ The code below will install the base ROS2 Packages
 
 Your directory structure should now look like the following
 
-
+.. code-block:: console
+   ~/catkin_ws
+    .vscode/
+    build/
+    devel/
+    src/
+    ROS_WS.code-workspace
 
    
 
