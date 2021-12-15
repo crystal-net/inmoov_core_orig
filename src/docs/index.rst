@@ -21,7 +21,7 @@ Indices and tables
 
 
 
-Setup
+Setup Ubuntu and ROS2
 =================
 
 Setup Ubuntu if you haven't already
@@ -37,9 +37,13 @@ If you already have them then nothing will happen.
 If you don't have them they will be downloaded and installed
 
 
+
+Create a Project Directory
+-----------------
 The code below will install the base ROS2 Packages
+
 .. code-block:: console
-   
+
    mkdir ~/ros2_ws
    cd ~ros2_ws
    git clone https://github.com/crystal-net/inmoov_ros2.git .
@@ -59,11 +63,8 @@ Your directory structure should now look like the following
    
 
 
-
-See following example:
-
-
 The code below will install the base ROS2 Packages
+
 .. code-block:: console
 
    sudo apt install ros-galactic-desktop
@@ -78,32 +79,11 @@ We need these packages for Gazebo
 
 
 
-
-Packages for Naviation (Nav2): sudo apt install ros-galactic-navigation2 ros-galactic-nav2-bringup
-
-
-Create a Project Directory
------------------
-First we need to create a working directory for the project.  Here, we will clone the git repository into /src.  Later as build the project, there will be an /install and /build folder.
-
-
+Packages for Naviation (Nav2): 
 
 .. code-block:: console
 
-   mkdir -p inmoov_ros2_ws/src
-
-
-
-Clone the repository
------------------
-git clone https://github.com/crystal-net/inmoov_ros2 inmoov_ros2_ws
-
-
-Install ROS2 base system
------------------
-
-.. code:: console
-   sudo apt install ros-galactic-desktop ros-galactic-gazebo-ros2-control ros-galactic-rcl ros-galactic-rclcpp ros-galactic-rqt 
+sudo apt install ros-galactic-navigation2 ros-galactic-nav2-bringup
 
 
 
@@ -111,6 +91,7 @@ Install Extra packages
 -----------------
 
 .. code:: console
+
    sudo apt install ros-galactic-rviz2
    sudo apt install ros-galactic-joint-state-publisher-gui ros-galactic-joint-state-publisher
    sudo apt install 
@@ -119,6 +100,7 @@ Install Extra packages
 
 3D Printing
 =================
+
    - Source PLA
    - Printer Settings
    - Table of print aproximate print times
@@ -130,6 +112,22 @@ Bill of Materials
 =================
    - Screws
    - Plastic
+
+
++-------+-----+----------------------------+
+| Screw | Qty | Link to suggested supplier |
++=======+=====+============================+
+| M2    | 42  | 2                          |
++-------+-----+----------------------------+
+| M3    | 23  | http://somesite.com        |
++-------+-----+----------------------------+
+| M4    | 23  | http://somesite.com        |
++-------+-----+----------------------------+
+| M5    | 23  | http://somesite.com        |
++-------+-----+----------------------------+
+| M6    | 23  | http://somesite.com        |
++=======+=====+============================+
+
 
 
 Tools
@@ -197,7 +195,6 @@ ROS2 Cheatsheet
 Below is a list of available commands    
     
     wstool - Manage many repos in workspace.
-    catkin make - Builds a ROS catkin workspace.
     rqt dep - Displays package structure and dependencies.
 
     action     Various action related sub-commands
@@ -219,7 +216,7 @@ Below is a list of available commands
   
     
     
-Logging Tools 
+Working with topics 
 ---------------------
 
 
@@ -235,7 +232,9 @@ Logging Tools
     ros2 topic pub - Publish data to topic.
     ros2 topic type - Print topic type.
     
-    
+
+Working with ROS bag files
+---------------------
     A set of tools for recording and playing back of ROS topics.
     Commands:
     rosbag record - Record a bag file with specified topics.
@@ -256,7 +255,10 @@ Logging Tools
 
 
 
-    RQT Galactic Cheatsheet
+RQT Data Visualization
+---------------------
+
+
     rqt_console
     rqt_bag
     rqt_logger_level
@@ -297,8 +299,8 @@ Logging Tools
     
     roslaunch urdf_tutorial display.launch model:=urdf/easyjoint.urdf.xacro
 
-    URDF Geometry Definition
-    ==================
+URDF Geometry Definition
+==================
 
     Links
     
@@ -332,7 +334,7 @@ Logging Tools
 
 
 Telemetry
-----------
+==================
 
 The basic syntax is not that different from Markdown, but it also
 has many more powerful features that Markdown doesn't have. We aren't
@@ -346,41 +348,22 @@ taking advantage of those yet though.
 
 
 
-...........
-Subtitle
-...........
+
 
 .. contents:: Overview
    :depth: 3
 
-===================
+
+
 Section 1
 ===================
 
 Text can be *italicized* or **bolded**  as well as ``monospaced``.
 You can \*escape certain\* special characters.
 
-----------------------
-Subsection 1 (Level 2)
-----------------------
-
-Some section 2 text
-
-Sub-subsection 1 (level 3)
---------------------------
 
 Some more text.
 
-=========
-Examples
-=========
-
---------
-Comments
---------
-
-.. This is a comment
-   Special notes that are not shown but might come out as HTML comments
 
 ------
 Images
@@ -482,24 +465,6 @@ Lines/Transitions
 Any 4+ repeated characters with blank lines surrounding it becomes an hr line, like this.
 
 ====================================
-
-------
-Bill of Materials
-------
-
-+-------+-----+----------------------------+
-| Screw | Qty | Link to suggested supplier |
-+=======+=====+============================+
-| M2    | 42  | 2                          |
-+-------+-----+----------------------------+
-| M3    | 23  | http://somesite.com        |
-+-------+-----+----------------------------+
-| M4    | 23  | http://somesite.com        |
-+-------+-----+----------------------------+
-| M5    | 23  | http://somesite.com        |
-+-------+-----+----------------------------+
-| M6    | 23  | http://somesite.com        |
-+=======+=====+============================+
 
 
 
