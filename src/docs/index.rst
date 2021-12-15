@@ -26,29 +26,43 @@ Setup
 
 Setup Ubuntu if you haven't already
 -----------------
-You can run these commands even if you have already installed many of the ROS components
-If you already have them then nothing will happen.  If you don't have them they will be downloaded and installed
+For our environment we will be using Ubuntu 20.04.  This is the only distribution I have tested.
+As newer versions come out I will be updating the documentation.  As a matter of simplicity
+I will only be documenting one way of doing things although other ways may work just was well.
+
+
+Once you have Ubuntu installed and VSCode installed its time to build the workspace folder.  
+You can run these commands even if you have already installed many of the ROS components.  
+If you already have them then nothing will happen.  
+If you don't have them they will be downloaded and installed
+
+
+The code below will install the base ROS2 Packages
+.. code-block:: console
+   mkdir ~/ros2_ws
+   cd ~ros2_ws
+   git clone https://github.com/crystal-net/inmoov_ros2.git .
+
+
+Your directory structure should now look like the following
+
+
+
+   
+
 
 
 See following example:
 
-.. code-block:: php
 
-   $a = 'b';
-
-
-
-
-.. code-block:: python
+The code below will install the base ROS2 Packages
+.. code-block:: console
 
    sudo apt install ros-galactic-desktop
 
 
 
-
 We need these packages for Gazebo
-
-
 
 .. code-block:: console
 
