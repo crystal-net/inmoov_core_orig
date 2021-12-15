@@ -7,7 +7,7 @@
                 "limitSymbolsToIncludedHeaders": true
             },
             "includePath": [
-                "${workspaceFolder}/build/include",
+                // "${workspaceFolder}/build/include",
                 "/opt/ros/galactic/include",
                 "/usr/include/**",
                 "${workspaceFolder}/**"

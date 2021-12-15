@@ -39,6 +39,7 @@ If you don't have them they will be downloaded and installed
 
 The code below will install the base ROS2 Packages
 .. code-block:: console
+   
    mkdir ~/ros2_ws
    cd ~ros2_ws
    git clone https://github.com/crystal-net/inmoov_ros2.git .
@@ -47,6 +48,7 @@ The code below will install the base ROS2 Packages
 Your directory structure should now look like the following
 
 .. code-block:: console
+
    ~/catkin_ws
     .vscode/
     build/
