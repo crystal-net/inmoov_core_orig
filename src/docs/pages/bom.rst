@@ -22,7 +22,7 @@ Bill of Materials
 
 
 Tools
-~~~~~~~~~~
+=============
 
 - Screwdriver
 - Hot Glue Gun
