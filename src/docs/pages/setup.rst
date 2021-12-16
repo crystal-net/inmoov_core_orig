@@ -1,9 +1,9 @@
-=====================
+
 Setup Ubuntu and ROS2
 =====================
 
 Setup Ubuntu if you haven't already
-===================================
+-----------------------------------
 For our environment we will be using Ubuntu 20.04.  This is the only distribution I have tested.
 As newer versions come out I will be updating the documentation.  As a matter of simplicity
 I will only be documenting one way of doing things although other ways may work just was well.
