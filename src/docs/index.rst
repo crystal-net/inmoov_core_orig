@@ -4,6 +4,18 @@
    contain the root `toctree` directive.
 
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   setup
+   3dprinting
+   bom.rst
+   troubleshoot.rst
+
+   about.rst
+   copyright.rst
+   license.rst
 
 Welcome to InMoov on ROS2
 =================
