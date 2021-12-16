@@ -1,30 +1,29 @@
-
-
-    
 ROS2 Cheatsheet
 ==================
 
-Below is a list of available commands    
+Commands
+--------
+    Below is a list of available commands    
     
-   - wstool - Manage many repos in workspace.
-   - rqt dep - Displays package structure and dependencies.
+    - wstool - Manage many repos in workspace.
+    - rqt dep - Displays package structure and dependencies.
 
-   - action     Various action related sub-commands
-   - bag        Various rosbag related sub-commands
-   - component  Various component related sub-commands
-   - daemon     Various daemon related sub-commands
-   - doctor     Check ROS setup and other potential issues
-   - interface  Show information about ROS interfaces
-   - launch     Run a launch file
-   - lifecycle  Various lifecycle related sub-commands
-   - multicast  Various multicast related sub-commands
-   - node       Various node related sub-commands
-   - param      Various param related sub-commands
-   - pkg        Various package related sub-commands
-   - run        Run a package specific executable
-   - security   Various security related sub-commands
-   - service    Various service related sub-commands
-   - wtf        Use `wtf` as alias to `doctor`
+    - action     Various action related sub-commands
+    - bag        Various rosbag related sub-commands
+    - component  Various component related sub-commands
+    - daemon     Various daemon related sub-commands
+    - doctor     Check ROS setup and other potential issues
+    - interface  Show information about ROS interfaces
+    - launch     Run a launch file
+    - lifecycle  Various lifecycle related sub-commands
+    - multicast  Various multicast related sub-commands
+    - node       Various node related sub-commands
+    - param      Various param related sub-commands
+    - pkg        Various package related sub-commands
+    - run        Run a package specific executable
+    - security   Various security related sub-commands
+    - service    Various service related sub-commands
+    - wtf        Use `wtf` as alias to `doctor`
   
     
     
@@ -32,16 +31,16 @@ Working with topics
 ---------------------
 
 
-   - rostopic
-   - rosbag - A tool for displaying information about ROS topics, including publishers, subscribers, publishing rate, and messages.
-   - ros2 topic bw - Display bandwidth used by topic.
-   - ros2 topic echo - Print messages to screen.
-   - ros2 topic find - Find topics by type.
-   - ros2 topic hz - Display publishing rate of topic.
-   - ros2 topic info - Print information about an active topic.
-   - ros2 topic list - List all published topics.
-   - ros2 topic pub - Publish data to topic.
-   - ros2 topic type - Print topic type.
+    - rostopic
+    - rosbag - A tool for displaying information about ROS topics, including publishers, subscribers, publishing rate, and messages.
+    - ros2 topic bw - Display bandwidth used by topic.
+    - ros2 topic echo - Print messages to screen.
+    - ros2 topic find - Find topics by type.
+    - ros2 topic hz - Display publishing rate of topic.
+    - ros2 topic info - Print information about an active topic.
+    - ros2 topic list - List all published topics.
+    - ros2 topic pub - Publish data to topic.
+    - ros2 topic type - Print topic type.
     
 
 Working with ROS bag files
@@ -70,21 +69,21 @@ RQT Data Visualization
 ----------------------
 
 
-    rqt_console
-    rqt_bag
-    rqt_logger_level
-    rqt_topic
-    rqt_msg
-    rqt_srv
-    rqt_action
-    rqt_publisher
-    rqt_service_caller
-    rqt_graph
-    rqt_dep
-    rqt_topic
-    rqt_reconfigure
-    rqt_shell
-    rqt_py_console
+    - rqt_console
+    - rqt_bag
+    - rqt_logger_level
+    - rqt_topic
+    - rqt_msg
+    - rqt_srv
+    - rqt_action
+    - rqt_publisher
+    - rqt_service_caller
+    - rqt_graph
+    - rqt_dep
+    - rqt_topic
+    - rqt_reconfigure
+    - rqt_shell
+    - rqt_py_console
 
     Data Visualization
     tf_echo
@@ -119,17 +118,17 @@ This allows us to send fake joint states using a slider GUI.
 
 .. code:: xml
 
-   <!-- send fake joint values -->
-   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-      <param name="use_gui" value="true">
-   </node>
+    <!-- send fake joint values -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="true" />
+    </node>
 
 
 
 
 
 URDF Geometry Definition
-========================
+------------------------
 
     Links
     
@@ -163,14 +162,14 @@ URDF Geometry Definition
 
 
 Telemetry
-==================
+---------
 
-The basic syntax is not that different from Markdown, but it also
-has many more powerful features that Markdown doesn't have. We aren't
-taking advantage of those yet though.
+    The basic syntax is not that different from Markdown, but it also
+    has many more powerful features that Markdown doesn't have. We aren't
+    taking advantage of those yet though.
 
-- Odometer readings
-- GPS readings
-- IMU readings
-- Force sensor readings
+    - Odometer readings
+    - GPS readings
+    - IMU readings
+    - Force sensor readings
 

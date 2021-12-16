@@ -17,13 +17,18 @@ Bill of Materials
 | M5    | 23  | http://somesite.com        |
 +-------+-----+----------------------------+
 | M6    | 23  | http://somesite.com        |
-+=======+=====+============================+
++-------+-----+----------------------------+
 
 
 
 
 Tools
 ~~~~~~~~~~
+
+- Screwdriver
+- Hot Glue Gun
+- CA Glue (a.k.a. Superglue)
+- Rubber hammer
 
 
 
