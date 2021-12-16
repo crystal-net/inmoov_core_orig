@@ -4,18 +4,6 @@
    contain the root `toctree` directive.
 
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   pages/setup
-   pages/ros-cheatsheet
-   pages/inmoov_modules
-   pages/3dprinting
-   pages/bom.rst
-   pages/troubleshoot
-   pages/lore
-   pages/rst-cheatsheet
 
 
 

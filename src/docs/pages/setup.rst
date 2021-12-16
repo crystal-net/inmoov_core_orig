@@ -63,6 +63,7 @@ The code below will install the base ROS2 Packages
 
 
 
+
 We need these packages for Gazebo
 
 .. code-block:: console
@@ -71,12 +72,21 @@ We need these packages for Gazebo
 
 
 
+
 Packages for Naviation (Nav2): 
 
 .. code-block:: console
 
-sudo apt install ros-galactic-navigation2 ros-galactic-nav2-bringup
+   sudo apt install ros-galactic-navigation2 ros-galactic-nav2-bringup
 
+
+
+
+Packages for Gazebo ros-galactic-gazebo-ros2-control
+
+.. code-block:: console
+
+   sudo apt install ros-galactic-gazebo-ros2-control ros-galactic-gazebo-ros2-control-demos
 
 
 
