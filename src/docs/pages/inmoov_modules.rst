@@ -1,9 +1,9 @@
 InMoov modules
-""""""""""""""
+==============
 This is a list of all the modules currently under development for InMoov.
 
 inmoov_bringup
-==============
+--------------
     Bring up the initial components.
         - Parameter Server
         - InMoov modules
@@ -12,7 +12,7 @@ inmoov_bringup
 
 
 inmoov_description
-==================
+------------------
     URDF/Xacro 3D model description.
 
 
@@ -20,7 +20,7 @@ inmoov_description
 
 
 inmoov_gazebo
-=============
+-------------
     components for Gazebo.  Currently unimplemented as I think we should use Ignition but still in early development.
 
 
@@ -28,7 +28,7 @@ inmoov_gazebo
 
 
 inmoov_rviz
-===========
+-----------
     Visualization using rViz2
 
 
@@ -36,7 +36,7 @@ inmoov_rviz
 
 
 inmoov_pubsub
-=============
+-------------
     Publisher and subscriber nodes for topics.  Generic for now
 
 
