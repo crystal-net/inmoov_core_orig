@@ -35,11 +35,11 @@ Your directory structure should now look like the following
 .. code-block:: console
 
    ~/catkin_ws
-    .vscode/
-    build/
-    devel/
-    src/
-    ROS_WS.code-workspace
+      .vscode/
+      build/
+      devel/
+      src/
+      ROS_WS.code-workspace
 
    
 
