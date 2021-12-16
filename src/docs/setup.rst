@@ -7,20 +7,6 @@
 
 
 
-Welcome to InMoov on ROS2
-=================
-Ros is one of the best open source projects for robots that exists with extensive development contributers around the world.  The aim of this projmect is develope for the InMoov project.
-
-
-
-
-* InMoov Telemetry: http://www.crystal-net.org
-
-
-
-
-
-
 
 Setup Ubuntu and ROS2
 =================
@@ -88,6 +74,9 @@ Packages for Naviation (Nav2):
 .. code-block:: console
 
 sudo apt install ros-galactic-navigation2 ros-galactic-nav2-bringup
+
+
+
 
 
 Inmoov Message Publisher and Subscriber node
