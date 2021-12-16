@@ -1,15 +1,4 @@
-.. inmoov_ros2 documentation master file, created by
-   sphinx-quickstart on Fri Nov 26 20:01:56 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-
-
-
-
-
-
-
+=================
 Bill of Materials
 =================
    - Screws

@@ -11,11 +11,15 @@
    pages/setup
    pages/3dprinting
    pages/bom.rst
-   troubleshoot.rst
+   pages/troubleshoot
 
    about.rst
    copyright.rst
    license.rst
+
+
+
+
 
 Welcome to InMoov on ROS2
 =================
