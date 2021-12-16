@@ -8,9 +8,9 @@
    :maxdepth: 2
    :caption: Contents:
 
-   setup
-   3dprinting
-   bom.rst
+   pages/setup
+   pages/3dprinting
+   pages/bom.rst
    troubleshoot.rst
 
    about.rst
