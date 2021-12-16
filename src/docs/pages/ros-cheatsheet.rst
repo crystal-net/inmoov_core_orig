@@ -139,7 +139,7 @@ URDF Geometry Definition
       xyz sets the location at
 
       Regarding the joint definition, origin xyz="0 -0.22 0.25"
-      It is defined in terms of the parent’s reference frame. So we are -0.22 meters in the y direction (to our left, but to the right relative to the axes) and 0.25 meters in the z direction (up).
+      It is defined in terms of the parents reference frame. So we are -0.22 meters in the y direction (to our left, but to the right relative to the axes) and 0.25 meters in the z direction (up).
       
       
       With respect to the **LINK** while looking at the front of the model.

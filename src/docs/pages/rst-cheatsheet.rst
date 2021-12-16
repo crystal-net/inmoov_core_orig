@@ -1,5 +1,5 @@
-ROS2 CheatSheet
-=================
+ROS2 Cheat Sheet
+"""""""""""""""""
 
 
     
@@ -185,8 +185,7 @@ Indices and tables
 
 
 
-Document Title
-"""""""""""""""""
+
 
 Subtitle
 ...........
