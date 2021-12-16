@@ -8,7 +8,7 @@
    :maxdepth: 2
    :caption: Contents:
 
-   index
+
    setup
    3dprinting.rst
    bom.rst
