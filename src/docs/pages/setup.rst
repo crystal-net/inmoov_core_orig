@@ -54,6 +54,14 @@ Install Extra packages
 
 
 
+Colcon command line autocomplete
+
+.. code:: console
+   
+   echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
+
+
+
 
 The code below will install the base ROS2 Packages
 
