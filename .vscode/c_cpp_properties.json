@@ -1,18 +1,22 @@
 {
   "configurations": [
-    {
-      "browse": {
-        "databaseFilename": "",
-        "limitSymbolsToIncludedHeaders": true
-      },
-      "includePath": [
-        "/opt/ros/galactic/include/**",
-        "/home/gkemper/ros2_ws/src/inmoov_bringup/include/**",
-        "/home/gkemper/ros2_ws/src/inmoov_service/include/**",
-        "/usr/include/**"
-      ],
-      "name": "ROS"
-    }
+      {
+          "name": "Linux",
+          "browse": {
+              "databaseFilename": "",
+              "limitSymbolsToIncludedHeaders": true
+          },
+          "includePath": [
+              "${workspaceFolder}/devel/include",
+              "/opt/ros/galactic/include",
+              "/usr/include/**",
+              "${workspaceFolder}/**"
+          ],
+          "intelliSenseMode": "gcc-x64",
+          "compilerPath": "/usr/bin/g++",
+          "cStandard": "c11",
+          "cppStandard": "c++17"
+      }
   ],
   "version": 4
 }
