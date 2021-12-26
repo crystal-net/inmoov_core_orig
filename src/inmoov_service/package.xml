@@ -3,7 +3,7 @@
 <package format="3">
   <name>inmoov_service</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>Taken from tutorial @ https://docs.ros.org/en/galactic/Tutorials/Writing-A-Simple-Cpp-Service-And-Client.html</description>
   <maintainer email="gckemper@gmail.com">gkemper</maintainer>
   <license>TODO: License declaration</license>
 
