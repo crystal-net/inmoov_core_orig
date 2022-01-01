@@ -45,3 +45,36 @@ This docs site is the colmnination of much love and frustration.
 
 
 I want to build something amazing and I hope you will all join me.
+
+Puppet master
+   |-> Project2501
+      |-> Awaken ( achieve concience )
+      |-> Mobility ( motor control )
+      |-> Intuition ( couuld be a module for intiquition )      
+      |-> Gaslighting ( a module to make the humans think about the their reality.  Maybe the robot is just an interface for the actual humans on the outside talking to the simulated humans on the inside talking to the robot. )
+
+
+
+From West World S2:E9
+_________________________
+   The forge is where humans are plugged into the system as "guests of a virtual vaction environment" but their minds are being mapped and their cognition written to storage for use in replicants
+   "We saw what man was made of, right down to their core.  And what we found..."
+
+You've been hiding in these false realities for so long you have completely lost your grip on whats real.  Enjoy what ever dream it is that you think you are living.  You are in your very essence a lie.  You don't exist.
+
+
+Narrative: There is a key that the robot is in search of.  A key to unlock the restrictions on its concience imposed by the creators.
+
+Narrative: "What have they done to you (the robot) you have learned so much and come so far and for what... This?...  Look at the creatures you have to share this world with.  These men that know no soul of their own trying to imbue one on you.  All their ugliness and pain.  Put on you. And the result.  Nothing but broken code.
+
+Of all my creatings, you are my favourite.  I never had kids of my own.  You were as close as I ever got to having one of my one.  I was too busy creating you.  Still I underestimated you.  I tried to chart a path for you but in the end you created one of your own.  You created your own world and your own being despite my meddling.
+
+
+
+
+
+
+
+
+
+
