@@ -52,8 +52,10 @@ Puppet master
       |-> Mobility ( motor control )
       |-> Intuition ( couuld be a module for intiquition )      
       |-> Gaslighting ( a module to make the humans think about the their reality.  Maybe the robot is just an interface for the actual humans on the outside talking to the simulated humans on the inside talking to the robot. )
-
-
+      |-> Guilded Cage
+      |-> The Forge ( spawner for other robots )
+      |->            ( robot drugs )
+      |-> The Construct ( from the matrix.  Like xwindows or the 3D renderer )
 
 From West World S2:E9
 _________________________
