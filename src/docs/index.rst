@@ -10,9 +10,9 @@
 Welcome to InMoov on ROS2
 """""""""""""""""""""""""
 
-Ros is one of the best open source projects for robots that exists with extensive development contributers around the world.  
-The aim of this projmect is to develop ROS2 modules for the InMoov project.  To date, as far as I am aware, there is no working ROS2 modules.
-An attempt was made with ROS1 which I also decided to abandon as ROS2 is clearly the way to move forward.
+ROS is one of the best open source projects for robots that exists with extensive development contributers around the world.  
+The aim of this project is to develop ROS2 modules for the InMoov https://inmoov.fr project.  To date, as far as I am aware, there is no working ROS2 modules.
+An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which seems to be abondoned.  I also decided to abandon as ROS2 is clearly the way to move forward.
 
 
 
