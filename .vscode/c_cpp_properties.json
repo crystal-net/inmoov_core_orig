@@ -1,21 +1,24 @@
 {
   "configurations": [
-      {
-          "name": "Linux",
-          "browse": {
-              "databaseFilename": "",
-              "limitSymbolsToIncludedHeaders": true
-          },
-          "includePath": [
-              "/opt/ros/galactic/include",
-              "/usr/include/**",
-              "${workspaceFolder}/**"
-          ],
-          "intelliSenseMode": "gcc-x64",
-          "compilerPath": "/usr/bin/g++",
-          "cStandard": "c11",
-          "cppStandard": "c++17"
-      }
+    {
+      "browse": {
+        "databaseFilename": "${workspaceFolder}/.vscode/browse.vc.db",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/gkemper/ros2_ws/install/inmoov_telemetry/include/**",
+        "/opt/ros/galactic/include/**",
+        "/home/gkemper/ros2_ws/src/inmoov_bringup/include/**",
+        "/home/gkemper/ros2_ws/src/inmoov_service/include/**",
+        "/home/gkemper/ros2_ws/src/inmoov_telemetry/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
   ],
   "version": 4
 }

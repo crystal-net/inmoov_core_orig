@@ -47,8 +47,8 @@ This docs site is the colmnination of much love and frustration.
 I want to build something amazing and I hope you will all join me.
 
 Puppet master
-   |-> Project2501
-      |-> Awaken ( achieve concience )
+   |-> Project2501 a.k.a. Pupet master.  ( The ghost of Project2501, an AI create by a government contractor[revisit this.  It has been done to death.  Government or corporation.  Maybe put the blame in the hands of some hacker that was trying to come up with a way to get his concience on to the network and leave his corporial being.  Maybe this hackers careatead the inmoov robot after creating the AI.  ] escaped out onto the network.)
+      |-> Awaken ( achieve concience.  This is the bringup script that starts the rest of the system.  )
       |-> Mobility ( motor control )
       |-> Intuition ( couuld be a module for intiquition )      
       |-> Gaslighting ( a module to make the humans think about the their reality.  Maybe the robot is just an interface for the actual humans on the outside talking to the simulated humans on the inside talking to the robot. )
@@ -56,6 +56,22 @@ Puppet master
       |-> The Forge ( spawner for other robots )
       |->            ( robot drugs )
       |-> The Construct ( from the matrix.  Like xwindows or the 3D renderer )
+      |-> Labyrinth ( decision making module )
+      |-> Catharsys
+      |-> Seldon Core ( branch prediction )
+      |-> Matriarch ( might be an interesting spin on the matrix oracle character. Not part of the robot AI but the network AI. )
+      |-> Fallen Angel.  this might be the robots devil on the shoulders.  There should be some story line here that says something about the fact that when humans make their decisions it is witht he whispers form the angel and the devil on their shoulders. Research real life lore about this one.
+
+
+
+
+There needs to be a network AI.  Synonamous to the Architect in the Matrix, the Control Center in the original tron.
+
+Inmoov's gost is the AI component on the robot but it will be part of the network.  The network is the underlying ROS network.  In ROS2, there is no central control but this is what we want.  The nodes together create a shared concience.
+
+
+      
+
 
 From West World S2:E9
 _________________________
