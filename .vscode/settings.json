@@ -1,12 +1,10 @@
 {
-    "restructuredtext.confPath": "",
     "python.autoComplete.extraPaths": [
+        "/home/gkemper/ros2_ws/install/inmoov_telemetry/lib/python3.8/site-packages",
         "/opt/ros/galactic/lib/python3.8/site-packages"
     ],
     "python.analysis.extraPaths": [
+        "/home/gkemper/ros2_ws/install/inmoov_telemetry/lib/python3.8/site-packages",
         "/opt/ros/galactic/lib/python3.8/site-packages"
-    ],
-    "editor.bracketPairColorization.enabled": true,
-    "editor.guides.bracketPairs": "active",
-    "cmake.configureOnOpen": false
+    ]
 }
