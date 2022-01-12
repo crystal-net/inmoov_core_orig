@@ -23,11 +23,22 @@ Create a Project Directory
 --------------------------
 The code below will install the base ROS2 Packages
 
+UPDATED 2022/01/11
+First create a repository in your github account (or clone mine).  Then.
+
 .. code-block:: console
 
    mkdir ~/ros2_ws
    cd ~ros2_ws
-   git clone https://github.com/crystal-net/inmoov_ros2.git .
+   git init 
+   git add README.md 
+   git commit -m "first commit"
+   git branch -M main 
+   git remote add origin https://github.com/crystal-net/inmoov_ros2.git  (or what ever your git repo is)
+   git push -u origin main
+
+
+   
 
 
 Your directory structure should now look like the following
