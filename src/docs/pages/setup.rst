@@ -109,6 +109,18 @@ Packages for Gazebo ros-galactic-gazebo-ros2-control
 
 
 
+Packages for building micro-ros-agent
+
+.. code-block:: console
+
+   sudo apt install build-essential cmake gcc-arm-none-eabi libnewlib-arm-none-eabi doxygen git python3
+
+
+
+building with the Pi-Pico:   Follow these instructions:
+   https://ubuntu.com/blog/getting-started-with-micro-ros-on-raspberry-pi-pico
+
+
 
 Inmoov Message Publisher and Subscriber node
 --------------------------------------------
