@@ -19,6 +19,17 @@ Source info for setting up the workstation is at: https://github.com/RoboGnome/V
 And here: https://github.com/athackst/vscode_ros2_workspace
 
 
+Non-ROS packages
+--------------------------
+These packages are just used to support different aspects of the overall environment.  Mostly just to make life easier.
+
+
+.. code-block:: console
+
+sudo apt install apt-transport-https
+
+
+
 Create a Project Directory
 --------------------------
 The code below will install the base ROS2 Packages
