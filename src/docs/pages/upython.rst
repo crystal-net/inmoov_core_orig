@@ -43,7 +43,30 @@ More information here: https://github.com/micropython/micropython/tree/master/po
         
         sudo apt install xz-utils
 
-    change directory into micropython
+    change directory into micropython and do the first configuration of the cross-compiler
+    
+
+        be sure to have the gcc-arm toolchain installed
+    .. code-block:: console
+
+        sudo apt install gcc-arm-none-eabi
+
+
+    .. code-block:: console
+    
+        cd micropython-1.17
+        make -C mpy-cross
+
+
+    .. code-block:: console
+        
+        cd ports/stm32
+        make BOARD=NUCLEO_F446RE deploy
+        make BOARD=NUCLEO_F446RE deploy-stlink
+
+        
+
+        
 
 
 
