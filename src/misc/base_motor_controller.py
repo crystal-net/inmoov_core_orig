@@ -15,7 +15,7 @@ class BaseMotorController(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    node = BaseMotor_Controller()
+    node = BaseMotorController()
     rclpy.spin(node)
     rclpy.shutdown()
 
