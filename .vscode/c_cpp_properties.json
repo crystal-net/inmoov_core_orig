@@ -6,11 +6,7 @@
         "limitSymbolsToIncludedHeaders": false
       },
       "includePath": [
-        "/home/gkemper/ros2_ws/install/inmoov_telemetry/include/**",
         "/opt/ros/galactic/include/**",
-        "/home/gkemper/ros2_ws/src/inmoov_bringup/include/**",
-        "/home/gkemper/ros2_ws/src/inmoov_service/include/**",
-        "/home/gkemper/ros2_ws/src/inmoov_telemetry/include/**",
         "/usr/include/**"
       ],
       "name": "ROS",
