@@ -1,8 +1,10 @@
-# ROS2 Excludes
+# ROS2 / Colcon Excludes
 build/
 log/
 install/
-.vscode/
+
+# VSCode Excludes
+browse.*
 
 # Prerequisites
 *.d
