@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-                "base_motor_controller=inmoov_awaken.base_motor_controller:main"
+                "base_motor_controller=inmoov_awaken.base_motor_controller:main",
+                "base_led_controller=inmoov_awaken.base_led_controller:main"
         ],
     },
 )
