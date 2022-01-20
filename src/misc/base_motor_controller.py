@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+
+# Source code taken from the youtube tutorial at: https://www.youtube.com/watch?v=l4Ph9DYqp9U
+
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
