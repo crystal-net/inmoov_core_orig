@@ -8,7 +8,7 @@
    :maxdepth: 2
    :caption: Contents
 
-
+   pages/bom.rst
 
 
 
