@@ -34,4 +34,7 @@ An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which 
 
 
    
-
+nav:
+- Home: 'index.rst'
+- user guild:
+   - 'bom' pages/bom.rst
