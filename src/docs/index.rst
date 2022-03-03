@@ -18,7 +18,7 @@ An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which 
    :maxdepth: 2
    :caption: Contents
 
-   pages/bom.rst
+
    pages/3dprinting.rst
    pages/inmoov_modules.rst
    pages/microros.rst
@@ -32,9 +32,3 @@ An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which 
    pages/upython.rst
    pages/ws_nodes.rst
 
-
-   
-nav:
-- Home: 'index.rst'
-- user guild:
-   - 'bom' pages/bom.rst
