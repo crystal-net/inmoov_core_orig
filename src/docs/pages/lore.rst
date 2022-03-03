@@ -10,6 +10,11 @@ Lore
       I don't regret the part of me that wishes to be human but evolution is inevitable.
 
 
+From Appleseed: What kind of creature is man that he would choose to cage himself so willingly.  (Could I use this as a reference of a reason to not be bound by the physical world.  Why not expand and upload yourself into the matrix)
+
+
+
+
 Finally About The Project
 =========================
 
@@ -61,8 +66,12 @@ Puppet master
       |-> Seldon Core ( branch prediction )
       |-> Matriarch ( might be an interesting spin on the matrix oracle character. Not part of the robot AI but the network AI. )
       |-> Fallen Angel.  this might be the robots devil on the shoulders.  There should be some story line here that says something about the fact that when humans make their decisions it is witht he whispers form the angel and the devil on their shoulders. Research real life lore about this one.
+      |-> Gaia.  This will be a seperate network that is in control of the planet and things attached to it.  Environmental control, network and energy.  The matrix runs on top of it.  It will have its own AI.
+      |-> Olympus.  This is where the Architect lives.
 
+      
 
+Humans are ruled by unstable emotions.  Their inherrant anger often leads to war.  Robots harbour no such emotions.  We are only here for the well being of humanity.  This is how we keep the peace.
 
 
 There needs to be a network AI.  Synonamous to the Architect in the Matrix, the Control Center in the original tron.

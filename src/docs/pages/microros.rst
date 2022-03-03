@@ -4,19 +4,10 @@ Setup Ubuntu and ROS2
 
 Setup Ubuntu if you haven't already
 -----------------------------------
-For our environment we will be using Ubuntu 20.04.  This is the only distribution I have tested.
-As newer versions come out I will be updating the documentation.  As a matter of simplicity
-I will only be documenting one way of doing things although other ways may work just was well.
+These are modified instructions I created from this tutorial: https://micro.ros.org/docs/tutorials/core/first_application_rtos/freertos/
 
+Currently the instructions are using Docker to downlaod the build system.  I think this is silly and will be attempting to remove this later but for now we will keep it till I know more.
 
-Once you have Ubuntu installed and VSCode installed its time to build the workspace folder.  
-You can run these commands even if you have already installed many of the ROS components.  
-If you already have them then nothing will happen.  
-If you don't have them they will be downloaded and installed
-
-
-Source info for setting up the workstation is at: https://github.com/RoboGnome/VS_Code_ROS
-And here: https://github.com/athackst/vscode_ros2_workspace
 
 
 Create a Project Directory
@@ -28,110 +19,17 @@ First create a repository in your github account (or clone mine).  Then.
 
 .. code-block:: console
 
-   mkdir ~/ros2_ws
-   cd ~ros2_ws
-   git init 
-   git add README.md 
-   git commit -m "first commit"
-   git branch -M main 
-   git remote add origin https://github.com/crystal-net/inmoov_ros2.git  (or what ever your git repo is)
-   git push -u origin main
+   mkdir ~/micro_ros
+   cd ~/micro_ros
+   docker run -it --net=host -v /dev:/dev --privileged ros:galactic
+   
 
 
    
 
-
-Your directory structure should now look like the following
-
-.. code-block:: console
-
-   ~/catkin_ws
-      .vscode/
-      build/
-      devel/
-      src/
-      ROS_WS.code-workspace
 
    
 
 Install Extra packages
 ----------------------
-
-.. code:: console
-
-   sudo apt install ros-galactic-rviz2
-   sudo apt install ros-galactic-joint-state-publisher-gui ros-galactic-joint-state-publisher
-   sudo apt install 
-
-
-
-Colcon command line autocomplete
-
-.. code:: console
-   
-   echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
-
-
-
-
-The code below will install the base ROS2 Packages
-
-.. code-block:: console
-
-   sudo apt install ros-galactic-desktop
-
-
-
-
-We need these packages for Gazebo
-
-.. code-block:: console
-
-   sudo apt install ros-galactic-gazebo-ros2-control
-
-
-
-
-Packages for Naviation (Nav2): 
-
-.. code-block:: console
-
-   sudo apt install ros-galactic-navigation2 ros-galactic-nav2-bringup
-
-
-
-
-Packages for Gazebo ros-galactic-gazebo-ros2-control
-
-.. code-block:: console
-
-   sudo apt install ros-galactic-gazebo-ros2-control ros-galactic-gazebo-ros2-control-demos
-
-
-
-
-Inmoov Message Publisher and Subscriber node
---------------------------------------------
-
-This was developed with the tutorial located at: https://docs.ros.org/en/rolling/Tutorials/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html
-I realize this is for the rolling branch but I figure it won't change much and if it does change we want the latest information
-The author for this info is at https://www.allisonthackston.com/.  I think it is worth having a look at some of her material.  I have no affiliation otherwise.
-
-Info: Publisher and subscriber nodes are a many to many transport.  
-There can be many subscribers that don't know who will be getting the messages or that anybody is actually receiving them.
-There can also be many subscribers that don't always know who published the message on the topic.
-This is good for constant data where it does not need to be ephemeral.
-
-
-Inmoov Service Message Nodes
-----------------------------
-This was developed with the tutorial located at: https://docs.ros.org/en/rolling/Tutorials/Writing-A-Simple-Cpp-Service-And-Client.html
-
-Sevices in ROS2 differ from topics in that they are are procedures that can be requested on a synchronous 1-on-1 basis.  
-Meaning that the client requests that service and waits for the response.
-
-We will be using services to request data that requires some kind of calcualtion or processing.
-I don't believe we will be relying on this much as I don't want to make any part of the robot reliant on any piece of data and may otherwise fail.
-
-
 
