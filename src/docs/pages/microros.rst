@@ -30,6 +30,15 @@ First create a repository in your github account (or clone mine).  Then.
 
    
 
-Install Extra packages
+Basic Steps
 ----------------------
+
+- Use CubeMX to generate a CubeIDE project for the STM32 MCU as a make project.  
+- Import the template configuration file nucleof446re_uros_template.ioc 
+  **** Note that there is a bit of a chicken and egg issue here.  This file is generated from compiling the microros project but we need it to build the project.
+  **** For the purpose of this project I am going to provide my modified file already setup for you.
+
+- Click Generate Code in the top left
+- Open CubeIDE
+- Open project we just generated code for
 
