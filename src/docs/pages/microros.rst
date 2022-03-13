@@ -42,3 +42,7 @@ Basic Steps
 - Open CubeIDE
 - Open project we just generated code for
 
+
+
+
+docker pull microros/micro_ros_static_library_builder:galactic && docker run --rm -v ${workspace_loc:/${ProjName}}:/project --env MICROROS_LIBRARY_FOLDER=micro_ros_stm32cubemx_utils/microros_static_library_ide microros/micro_ros_static_library_builder:galactic
