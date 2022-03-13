@@ -66,3 +66,22 @@ source install/local_setup.bash
 # now build the firmware
 ros2 run micro_ros_setup create_firmware_ws.sh freertos nucleo_f446re
 
+
+Summary
+Create a microros Directory
+Download microros from git
+Build the project using for FreeRTOS on Nucleo446 board
+This will create an nucleo_f446re.ioc file we will use to start the project
+Startup STM32CubeIDE and create a new project using the IOC file in a new directory called uros (or something sensible)
+Close STM32CubeIDE
+Open STM32CubeMX
+Chnage the project to use MakeFile
+Update Make file with instructions from the repo at https://github.com/micro-ROS/micro_ros_setup.git
+From here on in don't generate new code using IDE because the Makefile toolchain will get deleted.
+Close CubeMX and load CubeIDE
+Update the include paths
+
+
+
+
+
