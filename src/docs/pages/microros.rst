@@ -44,5 +44,44 @@ Basic Steps
 
 
 
+# Source the ROS 2 installation
+source /opt/ros/$ROS_DISTRO/setup.bash
 
-docker pull microros/micro_ros_static_library_builder:galactic && docker run --rm -v ${workspace_loc:/${ProjName}}:/project --env MICROROS_LIBRARY_FOLDER=micro_ros_stm32cubemx_utils/microros_static_library_ide microros/micro_ros_static_library_builder:galactic
+# Create a workspace and download the micro-ROS tools
+mkdir microros_ws
+cd microros_ws
+git clone -b $ROS_DISTRO https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup
+
+# Update dependencies using rosdep
+sudo apt update && rosdep update
+rosdep install --from-path src --ignore-src -y
+
+# Install pip
+sudo apt-get install python3-pip
+
+# Build micro-ROS tools and source them
+colcon build
+source install/local_setup.bash
+
+# now build the firmware
+ros2 run micro_ros_setup create_firmware_ws.sh freertos nucleo_f446re
+
+
+Summary
+Create a microros Directory
+Download microros from git
+Build the project using for FreeRTOS on Nucleo446 board
+This will create an nucleo_f446re.ioc file we will use to start the project
+Startup STM32CubeIDE and create a new project using the IOC file in a new directory called uros (or something sensible)
+Close STM32CubeIDE
+Open STM32CubeMX
+Chnage the project to use MakeFile
+Update Make file with instructions from the repo at https://github.com/micro-ROS/micro_ros_setup.git
+From here on in don't generate new code using IDE because the Makefile toolchain will get deleted.
+Close CubeMX and load CubeIDE
+Update the include paths
+
+
+
+
+
