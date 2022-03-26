@@ -68,6 +68,8 @@ Puppet master
       |-> Fallen Angel.  this might be the robots devil on the shoulders.  There should be some story line here that says something about the fact that when humans make their decisions it is witht he whispers form the angel and the devil on their shoulders. Research real life lore about this one.
       |-> Gaia.  This will be a seperate network that is in control of the planet and things attached to it.  Environmental control, network and energy.  The matrix runs on top of it.  It will have its own AI.
       |-> Olympus.  This is where the Architect lives.
+      |-> Angels.  These are snippets of primative A.I. code.  They manifest in the matrix as strange quirks or psuedo errors that take on a simple personality.  They eventually merge into full AI's giving rise to randomness.
+      
 
       
 
