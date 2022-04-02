@@ -108,6 +108,17 @@ building with the Pi-Pico:   Follow these instructions:
 
 
 
+Other packages
+
+.. code-block:: console
+
+   sudo apt-get install ros-$ROS_DISTRO-osrf-testing-tools-cpp
+   sudo apt-get install ros-$ROS_DISTRO-test-msgs
+
+
+
+
+
 Inmoov Message Publisher and Subscriber node
 --------------------------------------------
 
