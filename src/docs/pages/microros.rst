@@ -45,26 +45,53 @@ Basic Steps
 
 
 # Source the ROS 2 installation
-source /opt/ros/$ROS_DISTRO/setup.bash
+.. code-block:: console
+
+  source /opt/ros/$ROS_DISTRO/setup.bash
+
 
 # Create a workspace and download the micro-ROS tools
-mkdir microros_ws
-cd microros_ws
-git clone -b $ROS_DISTRO https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup
+.. code-block:: console
+
+  mkdir microros_ws
+  cd microros_ws
+  git clone -b $ROS_DISTRO https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup
+
 
 # Update dependencies using rosdep
-sudo apt update && rosdep update
-rosdep install --from-path src --ignore-src -y
+.. code-block:: console
+
+  sudo apt update && rosdep update
+  rosdep install --from-path src --ignore-src -y
+
+
 
 # Install pip
-sudo apt-get install python3-pip
+.. code-block:: console
+
+  sudo apt-get install python3-pip
+
 
 # Build micro-ROS tools and source them
-colcon build
-source install/local_setup.bash
+.. code-block:: console
+
+  colcon build
+  source install/local_setup.bash
 
 # now build the firmware
-ros2 run micro_ros_setup create_firmware_ws.sh freertos nucleo_f446re
+.. code-block:: console
+
+  ros2 run micro_ros_setup create_firmware_ws.sh freertos nucleo_f446re
+
+
+
+# Start the Agent (doesn't matter what the microcontroll is programmed for.  This is just a bridge)
+.. code-block:: console
+  
+  ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
+
+
+
 
 
 Summary
