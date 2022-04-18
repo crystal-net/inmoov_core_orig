@@ -12,6 +12,7 @@ Some thoughts and ideas:
 - https://www.youtube.com/watch?v=QGLGq8WIMzM
 - https://www.youtube.com/watch?v=BpnnD_0IlbE
 
+- https://www.youtube.com/watch?v=nBKhoam3AQQ :Doctor who inspiration for quotes that the robot should say.
 
 
 Why doesn't it look lifelike?
