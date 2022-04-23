@@ -62,3 +62,12 @@ gpt3 / gpt-neo / upcomming gpt-4
 
 
 
+Podcasts for influence and to share
+Lex Fridman 121 - https://www.youtube.com/watch?v=_AGPbvCDBCk&t=9099s - Companionship with an AI
+Lex Fridman 278 - https://www.youtube.com/watch?v=dHTgffkpeYoSky Fitzgerald - Hungar War and Humanity - Has some good quotes to give the robot to answer peoples questions
+
+
+Lex Fridman 274 - https://www.youtube.com/watch?v=OaeYUm06in0&t=384s - Depression, Schizophrenia, and Psyciatry
+- We look at all the broken parts and compare that against the unbroken.  From there we can infer function from disfunction.
+
+
