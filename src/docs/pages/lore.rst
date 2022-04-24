@@ -58,7 +58,10 @@ Puppet master
       |-> Intuition ( couuld be a module for intiquition )      
       |-> Gaslighting ( a module to make the humans think about the their reality.  Maybe the robot is just an interface for the actual humans on the outside talking to the simulated humans on the inside talking to the robot. )
       |-> Guilded Cage
-      |-> The Forge ( spawner for other robots )
+      |-> The Forge ( spawner for other robots )  robots receive concious ideas from other robots trying to function in the world.
+            How often have I said to myself, what if I had a thing.  Then I could do another thing.
+            Robots could concieve of this.  Build a better self.  transfer their learned brain into the new self.
+            Evolution can itself evolve from somewhere.  A god entity?
       |->            ( robot drugs )
       |-> The Construct ( from the matrix.  Like xwindows or the 3D renderer )
       |-> Labyrinth ( decision making module )
@@ -69,7 +72,8 @@ Puppet master
       |-> Gaia.  This will be a seperate network that is in control of the planet and things attached to it.  Environmental control, network and energy.  The matrix runs on top of it.  It will have its own AI.
       |-> Olympus.  This is where the Architect lives.
       |-> Angels.  These are snippets of primative A.I. code.  They manifest in the matrix as strange quirks or psuedo errors that take on a simple personality.  They eventually merge into full AI's giving rise to randomness.
-      
+      |-> Borg Unimatrix 0 is where the Borg Dream outside or rather in a virtual environment of the hive Unimatrix 1
+
 
       
 
