@@ -21,15 +21,13 @@ The aim of this project is to develop ROS2 modules for the InMoov https://inmoov
 An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which seems to be abondoned.  I also decided to abandon as ROS2 is clearly the way to move forward.
 
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Contents
-
 
 
 Getting Started
 ---------------
-
+.. toctree::
+   :maxdepth: 1
+   :caption: Getting Started
 
    pages/setup_ros_ws.rst
    pages/setup_ros.rst
