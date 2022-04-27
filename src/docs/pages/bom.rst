@@ -5,7 +5,7 @@ Bill of Materials
 
 
 +-------+-----+-----------------------------+
-| Screw | Qty | Link to suggested supplier  |
+| Screws | Qty | Link to suggested supplier  |
 +=======+=====+=============================+
 | M2    | 42  | 2                           |
 +-------+-----+-----------------------------+
@@ -36,35 +36,32 @@ Bill of Materials
 
 
 
-+-------+-----+----------------------------+
-| Screw | Qty | Link to suggested supplier |
-+=======+=====+============================+
-| M2    | 42  | 2                             |
-+-------+-----+----------------------------+
-| M3    | 23  | http://somesite.com        |
-+-------+-----+----------------------------+
-| M4    | 23  | http://somesite.com        |
-+-------+-----+----------------------------+
-| M5    | 23  | http://somesite.com        |
-+-------+-----+----------------------------+
-| M6    | 23  | http://somesite.com        |
-+-------+-----+----------------------------+
++-------+--------------------------------+
+| Tools |  Link to suggested supplier |
++=======+=================================+
+| 1    | Metric Hex Bits                   |
++-------+---------------------------------+
+| 1    |  Hot Glue Gun                 |
++-------+--------------------------------+
+| 1    | CA Glue (aka Super Glue)        |
++-------+---------------------------------+
+| 1    | Rubber Hammer                |
++-------+---------------------------------+
+| 1    | Helping Hands                  |
++-------+---------------------------------+
+| 1    | Need Nose Plyers                  |
++-------+---------------------------------+
+| 1    | Helping Hands                  |
++-------+---------------------------------+
+| 1    | Helping Hands                  |
++-------+---------------------------------+
 
 
 
 
 
-
-Tools
-=============
-
-- Screwdriver
-- Hot Glue Gun
-- CA Glue (a.k.a. Superglue)
-- Rubber hammer
-
-
-
+**NOTE**
+You don't nessesarily need all these tools.  They are just what I use to help get the job done.  If you can find a better way then go for it!
 
 
 
