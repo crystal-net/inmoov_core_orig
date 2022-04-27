@@ -24,17 +24,19 @@ An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which 
 
 .. toctree::
    :maxdepth: 1
-   :caption: Getting Started
+   :caption: ROS2
 
-   pages/setup_ros_ws
+   pages/setup_ros_workspace
    pages/setup_ros
    pages/setup_toolchain
    pages/setup_ubuntu
 
 
-MicroROS
----------------
 
+
+.. toctree::
+   :maxdepth: 1
+   :caption: MicroROS
 
    pages/3dprinting.rst
    pages/inmoov_modules.rst
@@ -48,11 +50,29 @@ MicroROS
 
 
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Controll and Visualization
+
+   pages/moveit2
+   pages/joystick
+
+
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents
+   :caption: A.I.
 
-   pages/moveit2.rst
-   pages/why.rst
+   pages/gpt4
+   pages/yolov4
+
+
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Extras
+
+   pages/why
+   pages/lore
 
