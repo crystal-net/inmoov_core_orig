@@ -39,3 +39,15 @@ An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which 
    pages/upython.rst
    pages/ws_nodes.rst
 
+
+
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents
+
+   pages/moveit2.rst
+   pages/why.rst
+
+   
