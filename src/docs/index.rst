@@ -22,7 +22,7 @@ An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which 
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents
 
 
@@ -50,4 +50,3 @@ An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which 
    pages/moveit2.rst
    pages/why.rst
 
-   
