@@ -1,27 +1,12 @@
 
-Setup Ubuntu and ROS2
-=====================
-
-Setup Ubuntu if you haven't already
------------------------------------
-For our environment we will be using Ubuntu 20.04.  This is the only distribution I have tested.
-As newer versions come out I will be updating the documentation.  As a matter of simplicity
-I will only be documenting one way of doing things although other ways may work just was well.
+Setup ROS2 and Required Packages
+================================
 
 
-Once you have Ubuntu installed and VSCode installed its time to build the workspace folder.  
-You can run these commands even if you have already installed many of the ROS components.  
-If you already have them then nothing will happen.  
-If you don't have them they will be downloaded and installed
 
-
-Source info for setting up the workstation is at: https://github.com/RoboGnome/VS_Code_ROS
-And here: https://github.com/athackst/vscode_ros2_workspace
-
-
-Non-ROS packages
+Support Packages
 --------------------------
-These packages are just used to support different aspects of the overall environment.  Mostly just to make life easier.
+These packages are not part of ROS2 but are needed to install the binary packages
 
 
 .. code-block:: console

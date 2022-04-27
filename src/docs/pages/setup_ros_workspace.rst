@@ -1,6 +1,6 @@
 
-Setup Ubuntu and ROS2
-=====================
+Setup Ubuntu and Build a Workspace
+==================================
 
 Setup Ubuntu if you haven't already
 -----------------------------------
