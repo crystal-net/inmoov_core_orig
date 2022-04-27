@@ -22,17 +22,14 @@ An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which 
 
 
 
-
-Getting Started
----------------
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started
 
-   pages/setup_ros_ws.rst
-   pages/setup_ros.rst
-   pages/setup_toolchain.rst
-   pages/setup_ubuntu.rst
+   pages/setup_ros_ws
+   pages/setup_ros
+   pages/setup_toolchain
+   pages/setup_ubuntu
 
 
 MicroROS
