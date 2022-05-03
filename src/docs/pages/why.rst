@@ -2,6 +2,28 @@
 WHY?
 ==============
 
+If a robot infront of you appears concious then is it indeed concious?  What does that mean?  It is
+just a program running in memory right?  Well are you not also a machine, programmed over the course of
+your life time to feel and act a certian way to stimulous?  What If I was to show you something that 
+gave you an emotional response and then recorded your brain activity.  Then if I take away that
+stimulous and replay those exact conditions in your brain, would you feel the same even though
+I am controlling it.  This was from a conversation with Lex Fridman from the Lex Fridman podcast with
+guest Karl Deisseroth.  See: https://www.youtube.com/watch?v=DmNM_2wjFcE
+
+During the same conversation they talked about spreading those neurons across a large geographical area
+like a city.  If you still played those same signals then would you exist in a larger physical capacity?
+Would your conciousness spread across the city?  What does that even mean?
+
+They spoke about the relationship between cells or neurons that form and what causes that relationship.  What
+is the link or the thing that gives that meaning.  I think this is a point that is very hard to verbalize
+and could potentially be very important.  Maybe this is where a concious lies?  What does the fact that those
+neurons formed mean?
+
+
+
+
+Roger Penrose would say that conciousness is not a computation.  See: https://www.youtube.com/watch?v=hXgqik6HXc0
+
 
 
 When I  converse with people I meet about why I built this robot or what I plan to do with it.  
