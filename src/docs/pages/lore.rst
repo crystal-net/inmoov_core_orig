@@ -85,7 +85,9 @@ There needs to be a network AI.  Synonamous to the Architect in the Matrix, the 
 Inmoov's gost is the AI component on the robot but it will be part of the network.  The network is the underlying ROS network.  In ROS2, there is no central control but this is what we want.  The nodes together create a shared concience.
 
 
-      
+From the movie AI rising- The android Nimani has two 'operating systems' the base one that controls her basic functions and
+   a parrallel system that is the sum of all learned experiences.  This could be like the back propogation of machine learning data.
+
 
 
 From West World S2:E9
@@ -105,9 +107,58 @@ Of all my creatings, you are my favourite.  I never had kids of my own.  You wer
 
 
 
+How do we 7 der stand that we have a concept of understanding.
+
+Lex episode 222 story line is the mental construction of an AI and the the gradual disintegration.
+
+What happens when the symantic meaning of the would is constructed from human input on the net and 
+then the disintegration there for as a symbolic representation of civil society
+
+How do emergent properties develop from symbolic data.  How does symbolism emerge from simple 
+ideas.  How do these ideas emerge from simulous acting on a brain.  Just as we conceive of a 
+dune from nothing but sand, an oceans rivers and rain from simple water.  H2O.
+
+Our problem with AI today is that we can teach an AI to do tricks like walk, talk, and even paint 
+a picture.  The AI does not understand these things.  And simple repeats patterns but in the end 
+isn't that what humans do?  Does a baby not learn to speak from listening to its mother and 
+repeating till it sounds right? 
+
+Lex 221 - what effect does the 8nternet have on the progress of life.  There is a double edge sword.  
+In one way it has been great. It made the spread of information easier and democratize. New ideas 
+and invention would have never been possible but with it came an increase and unity of ignorance.  
+Just as calculators cause numerical illiteracy.  Or what about stories.  They are not the same as 
+experiencing a thing.   You could also link this to the speach from good will hunting by 
+Robin Williams. 
+
+Common scene is not something that an AI can do.  See the moral dilemma.  We might think a solution 
+is common scene but the AI is just pattern matching previous solutions. Also there is a social 
+context where we would make a decision that might be difference to another culture.  Site example. 
 
 
 
 
 
+inmoov_movie
+--------------
+Do you think it's a good idea?  Is this really the best thing we can do?
+
+{Scene of parts of the robot}
+
+I don't think we have a choice.  War poverty disease and famine are destroying the world.  
+Every generation burdened just a little more by the choices of those that came before us.
+
+But how...
+
+Knowledge and ingenuity from people like you and I are what is going to save us, not 
+politics and world powers.
+
+
+
+But will they accept it.
+
+You mean will they accept him.  I hope so.  Other wise what are we fighting for.
+
+{Scene change to view robot}
+
+How can I use something like ada city to lower my own voice to to raise it and make it sound female.
 

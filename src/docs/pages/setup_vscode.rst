@@ -1,5 +1,5 @@
 
-Setup IDE and Compilers
+Setup VSCode for ROS
 =======================
 
 

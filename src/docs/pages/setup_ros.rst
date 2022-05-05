@@ -4,27 +4,6 @@ Setup ROS2 and Required Packages
 
 
 
-Support Packages
---------------------------
-These packages are not part of ROS2 but are needed to install the binary packages
-
-
-.. code-block:: console
-
-sudo apt install apt-transport-https
-
-
-
-Install VS Code.
-
-.. code-block:: console
-
-   wget https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
-   sudo dpkg -i code_1.63.2-1639562499_amd64.deb
-
-
-
-
 Install Extra packages
 ----------------------
 

@@ -1,5 +1,5 @@
 
-Setup the microcontroller using STMCubeMX
+Setup the STMCubeMX
 =====================
 
 Objective

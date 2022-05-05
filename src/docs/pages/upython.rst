@@ -1,6 +1,8 @@
 Running MicroPython on Nucleo-F446RE
 ==============
 
+**Optional
+
 Currently I am using a STM Nucleo-F446RE dev board that as that is what I had on hand that is well supported.
 Since the number of IO needed for Inmoov might be significant, I may need to upgrade to a different Nucleo board in the future but for now we can test with this.
 If and when I do make the change then this page will be rewritten / updated accordingly.  
