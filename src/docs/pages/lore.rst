@@ -162,3 +162,5 @@ You mean will they accept him.  I hope so.  Other wise what are we fighting for.
 
 How can I use something like ada city to lower my own voice to to raise it and make it sound female.
 
+There are the known knowns; the things we know we know.  There are the known unknowns; things we know we don't know.
+Then there are the unknown unknowns; The things we don't know we don't know.
