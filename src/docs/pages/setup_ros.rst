@@ -33,15 +33,6 @@ The code below will install the base ROS2 Packages
 
 
 
-We need these packages for Gazebo
-
-.. code-block:: console
-
-   sudo apt install ros-galactic-gazebo-ros2-control
-
-
-
-
 Packages for Naviation (Nav2): 
 
 .. code-block:: console
@@ -50,8 +41,21 @@ Packages for Naviation (Nav2):
 
 
 
+Install Ignition-Fortress 
+Instructions from: https://gazebosim.org/docs/fortress/install_ubuntu
 
-Packages for Gazebo ros-galactic-gazebo-ros2-control
+.. code-block:: console
+
+   sudo apt-get update
+   sudo apt-get install lsb-release wget gnupg
+   sudo wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
+   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
+   sudo apt-get update
+   sudo apt-get install ignition-fortress
+
+
+
+Packages for old Gazebo ros-galactic-gazebo-ros2-control
 
 .. code-block:: console
 
