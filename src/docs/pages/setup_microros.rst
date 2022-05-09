@@ -1,21 +1,12 @@
 
-Setup Ubuntu and ROS2
+Build MicroROS MCU Firmware
 =====================
 
-Setup Ubuntu if you haven't already
------------------------------------
-These are modified instructions I created from this tutorial: https://micro.ros.org/docs/tutorials/core/first_application_rtos/freertos/
 
-Currently the instructions are using Docker to downlaod the build system.  I think this is silly and will be attempting to remove this later but for now we will keep it till I know more.
-
-
-
-Create a Project Directory
+Create a build directory and download Docker image
 --------------------------
-The code below will install the base ROS2 Packages
 
-UPDATED 2022/01/11
-First create a repository in your github account (or clone mine).  Then.
+Currently the build tools are based on Docker.  We will do it this way for now but I'd like to not use docker and not everybody is going to have docker installed
 
 .. code-block:: console
 
@@ -27,15 +18,13 @@ First create a repository in your github account (or clone mine).  Then.
 
    
 
-
-   
-
-Basic Steps
+Build steps
 ----------------------
 
-- Use CubeMX to generate a CubeIDE project for the STM32 MCU as a make project.  
+We are going to use CubeMX to generate a CubeIDE project for the STM32 MCU as a make project.  This will also allow us to use whatever STM developement board we want.
+
 - Import the template configuration file nucleof446re_uros_template.ioc 
-  **** Note that there is a bit of a chicken and egg issue here.  This file is generated from compiling the microros project but we need it to build the project.
+  **** Note that there is a bit odf a chicken and egg issue here.  This file is generated from compiling the microros project but we need it to build the project.
   **** For the purpose of this project I am going to provide my modified file already setup for you.
 
 - Click Generate Code in the top left

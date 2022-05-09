@@ -6,6 +6,8 @@ Template
    - Item3
 
 
+.. image:: https://moveit.ros.org/assets/images/roadmap.png
+   :width: 400px
 
 
 Level 2
