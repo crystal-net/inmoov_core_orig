@@ -5,18 +5,6 @@
 #include "rclcpp/rclcpp.hpp" 
 
 
-// OOP Methode
-class publisherNode: public rclcpp::Node
-{
-    public:
-    publisherNode(): Node("inmoov_publisher")
-    {
-        RCLCPP_INFO(this->get_logger(), "Hello World");
-    }
-
-    private:
-};
-
 // Next we are going to create an executable that creates a node and this is the starting main function.  This has nothing to do with any other main function from other modules.
 int main(int argc, char **argv)
 {
