@@ -8,6 +8,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(example_interfaces)
 
 
 # uncomment the following section in order to fill in
@@ -34,7 +35,7 @@ endif()
 add_executable(template_pkg_cpp src/template_pkg_cpp.cpp)
 
 # next we link the dependencies (rclcpp) as noted in find_package(rclcpp REQUIRED)
-ament_target_dependencies(inmoov_publisher rclcpp)
+ament_target_dependencies(template_pkg_cpp rclcpp)
 
 
 # Next we install the executable inside the workspace

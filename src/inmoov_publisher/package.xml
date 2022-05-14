@@ -13,7 +13,7 @@
   <!-- For example the following required this line in CMakeLists.txt -->
   <!-- ament_target_dependencies(inmoov_publisher rclcpp) -->
   <depend>rclcpp</depend>
-
+  <depend>example_interfaces</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

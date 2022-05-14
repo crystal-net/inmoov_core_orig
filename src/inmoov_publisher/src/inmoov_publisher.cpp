@@ -3,18 +3,23 @@
 
 //add include path to /opt/ros/galactic/include in c_cpp_properties.json if this doesn't resolve
 #include "rclcpp/rclcpp.hpp" 
+#include "example_interfaces/msg/string.hpp"
 
 
 // OOP Methode
 class publisherNode: public rclcpp::Node
 {
     public:
-    publisherNode(): Node("inmoov_publisher")
-    {
-        RCLCPP_INFO(this->get_logger(), "Hello World");
-    }
+        publisherNode(): Node("inmoov_publisher")
+        {
+            // RCLCPP_INFO(this->get_logger(), "Hello World");
+            publisher_ = create_publisher<example_interfaces::msg::String>("robot_news",10);
+            
+        }
 
     private:
+        rclcpp::Publisher<example_interfaces::msg::String>::SharedPtr publisher_;
+        
 };
 
 // Next we are going to create an executable that creates a node and this is the starting main function.  This has nothing to do with any other main function from other modules.
