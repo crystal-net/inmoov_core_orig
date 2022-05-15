@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(inmoov_teleop)
+project(inmoov_neopixel)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -8,6 +8,8 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(example_interfaces REQUIRED)
+
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -19,5 +21,16 @@ if(BUILD_TESTING)
   #set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+
+add_executable(inmoov_neopixel src/inmoov_neopixel.cpp)
+ament_target_dependencies(inmoov_neopixel rclcpp example_interfaces)
+
+
+
+install(TARGETS
+  inmoov_neopixel
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 ament_package()
