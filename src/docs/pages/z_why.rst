@@ -93,3 +93,10 @@ Lex Fridman 274 - https://www.youtube.com/watch?v=OaeYUm06in0&t=384s - Depressio
 - We look at all the broken parts and compare that against the unbroken.  From there we can infer function from disfunction.
 
 
+Why am I writing a story along with the project?
+--------------------
+On a day to day basis I often find myself contemplating current events over the world.  While these are sometimes inspiring, they are often horrifying.
+
+I partly consider this project as my take on the exploration of technology and society around it.
+
+

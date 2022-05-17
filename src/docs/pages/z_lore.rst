@@ -50,7 +50,7 @@ This docs site is the colmnination of much love and frustration.
 
 
 I want to build something amazing and I hope you will all join me.
-
+``
 Puppet master
    |-> Project2501 a.k.a. Pupet master.  ( The ghost of Project2501, an AI create by a government contractor[revisit this.  It has been done to death.  Government or corporation.  Maybe put the blame in the hands of some hacker that was trying to come up with a way to get his concience on to the network and leave his corporial being.  Maybe this hackers careatead the inmoov robot after creating the AI.  ] escaped out onto the network.)
       |-> Awaken ( achieve concience.  This is the bringup script that starts the rest of the system.  )
@@ -164,3 +164,4 @@ How can I use something like adacity to lower my own voice or to raise it and ma
 
 There are the known knowns; the things we know we know.  There are the known unknowns; things we know we don't know.
 Then there are the unknown unknowns; The things we don't know we don't know.
+
