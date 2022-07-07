@@ -87,6 +87,15 @@ Other packages
 
 
 
+Colcon command line autocomplete
+
+.. code:: console
+   
+   echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
+
+
+
+
 Inmoov Message Publisher and Subscriber node
 --------------------------------------------
 

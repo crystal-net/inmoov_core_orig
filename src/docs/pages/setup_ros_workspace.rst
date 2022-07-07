@@ -43,16 +43,6 @@ Your directory structure should now look like the following
    
 
 
-Colcon command line autocomplete
-
-.. code:: console
-   
-   echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
-
-
-
-building with the Pi-Pico:   Follow these instructions:
-   https://ubuntu.com/blog/getting-started-with-micro-ros-on-raspberry-pi-pico
 
 
 

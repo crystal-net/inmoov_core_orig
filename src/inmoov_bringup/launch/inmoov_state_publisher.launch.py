@@ -26,9 +26,15 @@ def generate_launch_description():
     )
 
 
+    # node_rviz2 = Node(package='rviz2', node_executable='rviz2', output='screen')
+
+
     # Run the node
     return LaunchDescription([
         node_robot_state_publisher
     ])
 
-    
+    # Run the rviz2
+    # return LaunchDescription([
+    #     node_rviz2
+    # ])

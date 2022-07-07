@@ -5,6 +5,39 @@ URDF Cheatsheet
 
 
 
+    Notes
+      Joint Types
+      There are three kinds of joints that move around in space. 
+      Prismatic joint can only move along one dimension (in and out?)
+      Planar joint can move around in a plane, or two dimensions. 
+      Floating joints are unconstrained, and can move around in any of the three dimensions. These joints cannot be specified by just one number, and therefore aren’t included in this tutorial.
+
+    
+    rosparam load my_robot.urdf robot_description
+      
+    
+    I want to just view a new URDF in rviz without my inmoov stuff
+    
+    roslaunch urdf_tutorial display.launch model:=urdf/easyjoint.urdf.xacro
+
+
+
+
+Working with Joint State
+------------------------
+This allows us to send fake joint states using a slider GUI.
+
+.. code:: xml
+
+    <!-- send fake joint values -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="true" />
+    </node>
+
+
+
+
+
 URDF Geometry Definition
 ------------------------
 
@@ -36,4 +69,3 @@ URDF Geometry Definition
       (y)(GREEN) a positive value moves right, a negative value moves the part left
       (z)(BLUE) a positive vlue moves up, a negative value moves the part down
       
-
