@@ -19,6 +19,14 @@ import xacro
 
 def generate_launch_description():
 
+    # Xacro robot definition
+    # xacro_file = os.path.join(get_package_share_directory(pkg_name),file_subpath)
+    file_subpath = 'description/example_robot.urdf.xacro'
+    xacro_file = os.path.join(get_package_share_directory('inmoov_bringup'),file_subpath)
+    robot_description_raw = xacro.process_file(xacro_file).toxml()
+
+
+
     # args that can be set from the command line or a default will be used
     background_r_launch_arg = DeclareLaunchArgument(
         "background_r", default_value=TextSubstitution(text="0")
@@ -33,6 +41,7 @@ def generate_launch_description():
         "chatter_ns", default_value=TextSubstitution(text="my/chatter/ns")
     )
 
+
     # include another launch file
     launch_include = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -40,6 +49,8 @@ def generate_launch_description():
                 get_package_share_directory('demo_nodes_cpp'),
                 'launch/topics/talker_listener.launch.py'))
     )
+
+
     # include another launch file in the chatter_ns namespace
     launch_include_with_namespace = GroupAction(
         actions=[
@@ -54,6 +65,7 @@ def generate_launch_description():
         ]
     )
 
+
     # start a turtlesim_node in the turtlesim1 namespace
     turtlesim_node = Node(
             package='turtlesim',
@@ -61,6 +73,7 @@ def generate_launch_description():
             executable='turtlesim_node',
             name='sim'
         )
+
 
     # start another turtlesim_node in the turtlesim2 namespace
     # and use args to set parameters
@@ -76,6 +89,7 @@ def generate_launch_description():
             }]
         )
 
+
     # perform remap so both turtles listen to the same command topic
     forward_turtlesim_commands_to_second_turtlesim_node = Node(
             package='turtlesim',
@@ -87,6 +101,24 @@ def generate_launch_description():
             ]
         )
 
+
+    # Load Rviz2
+    start_rviz2 = Node(
+        package='rviz2',
+        executable='rviz2',
+        output='screen',
+        arguments=['-f world']
+        name='sim'
+    )
+
+    # Configure the node
+    node_robot_state_publisher = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        output='screen',
+        parameters=[{'robot_description': robot_description_raw}] # add other parameters here if required
+    )
+
     return LaunchDescription([
         background_r_launch_arg,
         background_g_launch_arg,
@@ -97,37 +129,11 @@ def generate_launch_description():
         turtlesim_node,
         turtlesim_node_with_parameters,
         forward_turtlesim_commands_to_second_turtlesim_node,
+        start_rviz2,
+        node_robot_state_publisher
     ])
 
 
-# # =========================
-
-#     # Use xacro to process the file
-#     xacro_file = os.path.join(get_package_share_directory(pkg_name),file_subpath)
-#     robot_description_raw = xacro.process_file(xacro_file).toxml()
-
-
-#     # Configure the node
-#     node_robot_state_publisher = Node(
-#         package='robot_state_publisher',
-#         executable='robot_state_publisher',
-#         output='screen',
-#         parameters=[{'robot_description': robot_description_raw}] # add other parameters here if required
-#     )
-
-
-#     # node_rviz2 = Node(package='rviz2', node_executable='rviz2', output='screen')
-
-
-#     # Run the node
-#     return LaunchDescription([
-#         node_robot_state_publisher
-#     ])
-
-#     # Run the rviz2
-#     # return LaunchDescription([
-#     #     node_rviz2
-#     # ])
-
-
+# todo
+#  ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
