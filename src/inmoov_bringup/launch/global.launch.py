@@ -103,13 +103,20 @@ def generate_launch_description():
 
 
     # Load Rviz2
+    # arguments=[('-d'+str(rviz_path)),('-f', 'world')]
+
+    base_path = os.path.realpath(get_package_share_directory('inmoov_bringup')) # also tried without realpath
+    rviz_path=base_path+'launch/conf.rviz'
+
     start_rviz2 = Node(
         package='rviz2',
         executable='rviz2',
         output='screen',
-        arguments=['-f world']
-        name='sim'
+        name='sim',
+        arguments=['-d', str(rviz_path)]
     )
+
+
 
     # Configure the node
     node_robot_state_publisher = Node(
