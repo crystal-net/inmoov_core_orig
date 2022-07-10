@@ -19,6 +19,10 @@ import xacro
 
 def generate_launch_description():
 
+
+    base_path = os.path.realpath(get_package_share_directory('inmoov_bringup')) # also tried without realpath
+    rviz_path= base_path + ' launch/conf.rviz'
+
     # Xacro robot definition
     # xacro_file = os.path.join(get_package_share_directory(pkg_name),file_subpath)
     file_subpath = 'description/example_robot.urdf.xacro'
@@ -105,8 +109,7 @@ def generate_launch_description():
     # Load Rviz2
     # arguments=[('-d'+str(rviz_path)),('-f', 'world')]
 
-    base_path = os.path.realpath(get_package_share_directory('inmoov_bringup')) # also tried without realpath
-    rviz_path=base_path+'launch/conf.rviz'
+
 
     start_rviz2 = Node(
         package='rviz2',
@@ -123,6 +126,7 @@ def generate_launch_description():
         package='robot_state_publisher',
         executable='robot_state_publisher',
         output='screen',
+        name='sim',
         parameters=[{'robot_description': robot_description_raw}] # add other parameters here if required
     )
 
