@@ -15,13 +15,15 @@ from launch.substitutions import TextSubstitution
 from launch_ros.actions import Node
 from launch_ros.actions import PushRosNamespace
 import xacro
+from glob import glob
+from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
 
 
-    base_path = os.path.realpath(get_package_share_directory('inmoov_bringup')) # also tried without realpath
-    rviz_path= base_path + ' launch/conf.rviz'
+    rviz_path = os.path.join(get_package_share_directory('inmoov_bringup'), 'launch/conf.rviz')
+
 
     # Xacro robot definition
     # xacro_file = os.path.join(get_package_share_directory(pkg_name),file_subpath)
@@ -72,42 +74,67 @@ def generate_launch_description():
 
     # start a turtlesim_node in the turtlesim1 namespace
     turtlesim_node = Node(
-            package='turtlesim',
-            namespace='turtlesim1',
-            executable='turtlesim_node',
-            name='sim'
-        )
+        package='turtlesim',
+        namespace='turtlesim1',
+        executable='turtlesim_node',
+        name='sim'
+    )
 
 
     # start another turtlesim_node in the turtlesim2 namespace
     # and use args to set parameters
     turtlesim_node_with_parameters = Node(
-            package='turtlesim',
-            namespace='turtlesim2',
-            executable='turtlesim_node',
-            name='sim',
-            parameters=[{
-                "background_r": LaunchConfiguration('background_r'),
-                "background_g": LaunchConfiguration('background_g'),
-                "background_b": LaunchConfiguration('background_b'),
-            }]
-        )
+        package='turtlesim',
+        namespace='turtlesim2',
+        executable='turtlesim_node',
+        name='sim',
+        parameters=[{
+            "background_r": LaunchConfiguration('background_r'),
+            "background_g": LaunchConfiguration('background_g'),
+            "background_b": LaunchConfiguration('background_b'),
+        }]
+    )
 
 
     # perform remap so both turtles listen to the same command topic
     forward_turtlesim_commands_to_second_turtlesim_node = Node(
-            package='turtlesim',
-            executable='mimic',
-            name='mimic',
-            remappings=[
-                ('/input/pose', '/turtlesim1/turtle1/pose'),
-                ('/output/cmd_vel', '/turtlesim2/turtle1/cmd_vel'),
-            ]
-        )
+        package='turtlesim',
+        executable='mimic',
+        name='mimic',
+        remappings=[
+            ('/input/pose', '/turtlesim1/turtle1/pose'),
+            ('/output/cmd_vel', '/turtlesim2/turtle1/cmd_vel'),
+        ]
+    )
+
+# Joint State Functions
+# ###############################
+
+  # Publish the joint state values for the non-fixed joints in the URDF file.
+    start_joint_state_publisher_cmd = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        name='joint_state_publisher')
+ 
+  # A GUI to manipulate the joint state values
+    start_joint_state_publisher_gui_node = Node(
+        package='joint_state_publisher_gui',
+        executable='joint_state_publisher_gui',
+        name='joint_state_publisher_gui')
+ 
+  # Subscribe to the joint states of the robot, and publish the 3D pose of each link.
+    start_robot_state_publisher_cmd = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        parameters=[{'use_sim_time': use_sim_time, 
+        'robot_description': Command(['xacro ', urdf_model])}],
+        arguments=[default_urdf_model_path])
 
 
-    # Load Rviz2
-    # arguments=[('-d'+str(rviz_path)),('-f', 'world')]
+
+
+
+
 
 
 
@@ -115,9 +142,8 @@ def generate_launch_description():
         package='rviz2',
         executable='rviz2',
         output='screen',
-        name='sim',
-        arguments=['-d', str(rviz_path)]
-    )
+        arguments=[('-d'+ rviz_path),('-f', 'world')]    
+        )
 
 
 
