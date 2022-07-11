@@ -7,12 +7,13 @@ Setup ROS2 and Required Packages
 Install Extra packages
 ----------------------
 
+
+Install ros-galactic-rviz2
+
 .. code:: console
 
    sudo apt install ros-galactic-rviz2
-   sudo apt install ros-galactic-joint-state-publisher-gui ros-galactic-joint-state-publisher
-   sudo apt install 
-
+   
 
 
 Colcon command line autocomplete
@@ -29,6 +30,17 @@ The code below will install the base ROS2 Packages
 .. code-block:: console
 
    sudo apt install ros-galactic-desktop
+
+
+
+For manual control of the joints during development, we need the robot_state_publiser and joint_state_publisher
+
+.. code-block:: console
+   
+   sudo apt install ros-galactic-robot-state-publisher
+   sudo apt install ros-galactic-joint-state-publisher
+   sudo apt install ros-galactic-joint-state-publisher-gui
+   
 
 
 
