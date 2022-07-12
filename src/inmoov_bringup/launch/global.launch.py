@@ -131,13 +131,13 @@ def generate_launch_description():
         executable='joint_state_publisher_gui',
         name='joint_state_publisher_gui')
  
-#   # Subscribe to the joint states of the robot, and publish the 3D pose of each link.
-#     start_robot_state_publisher_cmd = Node(
-#         package='robot_state_publisher',
-#         executable='robot_state_publisher',
-#         parameters=[{'use_sim_time': use_sim_time, 
-#         'robot_description': Command(['xacro ', urdf_model])}],
-#         arguments=[default_urdf_model_path])
+  # Subscribe to the joint states of the robot, and publish the 3D pose of each link.
+    start_robot_state_publisher_cmd = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        parameters=[{'use_sim_time': use_sim_time, 
+        'robot_description': Command(['xacro ', urdf_model])}],
+        arguments=[default_urdf_model_path])
 
 
 
@@ -178,7 +178,8 @@ def generate_launch_description():
         start_rviz2,
         node_robot_state_publisher,
         start_joint_state_publisher_cmd,
-        start_joint_state_publisher_gui_node
+        start_joint_state_publisher_gui_node,
+        start_robot_state_publisher_cmd
     ])
 
 
