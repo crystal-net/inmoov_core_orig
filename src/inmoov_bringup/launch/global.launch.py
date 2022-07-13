@@ -14,25 +14,37 @@ from launch.substitutions import LaunchConfiguration
 from launch.substitutions import TextSubstitution
 from launch_ros.actions import Node
 from launch_ros.actions import PushRosNamespace
-import xacro
+import xacro   #Functions for working with and converting xacro files to standard urdf/xml
 from glob import glob
 from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
 
-    rviz_config_file = 'launch/conf.rviz'
-    rviz_path = os.path.join(get_package_share_directory('inmoov_bringup'), rviz_config_file)
+
+    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
+
+
+    rviz_config_path = 'launch/conf.rviz'
+    
+    rviz_path = os.path.join(
+        get_package_share_directory('inmoov_bringup'),
+        rviz_config_path)
+
 
 
     # Xacro robot definition
     # xacro_file = os.path.join(get_package_share_directory(pkg_name),file_subpath)
-    file_subpath = 'description/example_robot.urdf.xacro'
-    xacro_file = os.path.join(get_package_share_directory('inmoov_bringup'),file_subpath)
-    
+    xacro_file_path = 'description/example_robot.urdf.xacro'
+    xacro = os.path.join(
+        get_package_share_directory('inmoov_bringup'),
+        urdf_file_path)
+
+  
     # We need to convert the xacro file to URDF XML because rviz and gazebo don't understand XACRO
     # We will use
-    robot_description_raw = xacro.process_file(xacro_file).toxml()
+    # robot_description_raw = xacro.process_file(xacro_file).toxml() # Dumb variable name
+    urdf_file = xacro.process_file(xacro_file).toxml()
 
 
 
@@ -52,9 +64,6 @@ def generate_launch_description():
     chatter_ns_launch_arg = DeclareLaunchArgument(
         "chatter_ns", default_value=TextSubstitution(text="my/chatter/ns")
     )
-
-
-
 
 
     # include another launch file
@@ -90,21 +99,6 @@ def generate_launch_description():
     # )
 
 
-    # # start another turtlesim_node in the turtlesim2 namespace
-    # # and use args to set parameters
-    # turtlesim_node_with_parameters = Node(
-    #     package='turtlesim',
-    #     namespace='turtlesim2',
-    #     executable='turtlesim_node',
-    #     name='sim',
-    #     parameters=[{
-    #         "background_r": LaunchConfiguration('background_r'),
-    #         "background_g": LaunchConfiguration('background_g'),
-    #         "background_b": LaunchConfiguration('background_b'),
-    #     }]
-    # )
-
-
     # # perform remap so both turtles listen to the same command topic
     # forward_turtlesim_commands_to_second_turtlesim_node = Node(
     #     package='turtlesim',
@@ -135,17 +129,8 @@ def generate_launch_description():
     start_robot_state_publisher_cmd = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        parameters=[{'use_sim_time': use_sim_time, 
-        'robot_description': Command(['xacro ', urdf_model])}],
-        arguments=[default_urdf_model_path])
-
-
-
-
-
-
-
-
+        parameters=[{'robot_description': robot_description_raw}] # add other parameters here if required
+        
 
     start_rviz2 = Node(
         package='rviz2',
@@ -153,7 +138,6 @@ def generate_launch_description():
         output='screen',
         arguments=[('-d'+ rviz_path),('-f', 'world')]    
         )
-
 
 
     # Configure the node
