@@ -39,17 +39,20 @@ def generate_launch_description():
 
     # ########   Xacro robot definition  #############
     # First we need to determine the location of our file and set a variable
-    # xacro_file = os.path.join(get_package_share_directory(pkg_name),file_subpath)
     xacro_file_path = 'description/example_robot.urdf.xacro'
+
+
+    # We need to convert the xacro file to URDF XML because rviz and gazebo don't understand XACRO
+    # We will use
+    # robot_description_raw = xacro.process_file(xacro_file).toxml() # Dumb variable name
+    urdf_file = xacro.process_file(xacro_file).toxml()
+
+
     xacro = os.path.join(
         get_package_share_directory('inmoov_bringup'),
         urdf_file_path)
 
   
-    # We need to convert the xacro file to URDF XML because rviz and gazebo don't understand XACRO
-    # We will use
-    # robot_description_raw = xacro.process_file(xacro_file).toxml() # Dumb variable name
-    urdf_file = xacro.process_file(xacro_file).toxml()
 
 
 
