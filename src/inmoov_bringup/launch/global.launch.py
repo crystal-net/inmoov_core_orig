@@ -25,15 +25,20 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
 
-    rviz_config_path = 'launch/conf.rviz'
-    
-    rviz_path = os.path.join(
+
+    # Configure path variables for RViz
+    rviz_config_path = 'launch/conf.rviz'               # File location
+
+    # This is the path to the install/share folder
+    rviz_path = os.path.join(                           
         get_package_share_directory('inmoov_bringup'),
         rviz_config_path)
 
 
 
-    # Xacro robot definition
+
+    # ########   Xacro robot definition  #############
+    # First we need to determine the location of our file and set a variable
     # xacro_file = os.path.join(get_package_share_directory(pkg_name),file_subpath)
     xacro_file_path = 'description/example_robot.urdf.xacro'
     xacro = os.path.join(
