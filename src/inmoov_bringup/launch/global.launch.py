@@ -24,8 +24,14 @@ def generate_launch_description():
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
+    # Some basic variables
+    # First we will create a variable for the basic package itself "inmoov_bringup"
+    pkg_share = FindPackageShare(package='inmoov_bringup')
+    
+     
 
 
+ 
     # Configure path variables for RViz
     rviz_config_path = 'launch/conf.rviz'               # File location
 
@@ -48,15 +54,11 @@ def generate_launch_description():
     urdf_file = xacro.process_file(xacro_file).toxml()
 
 
-    xacro = os.path.join(
+    robot_description_raw = os.path.join(
         get_package_share_directory('inmoov_bringup'),
-        urdf_file_path)
+        urdf_file_path) 
 
   
-
-
-
-
 
 
     # args that can be set from the command line or a default will be used
@@ -137,7 +139,9 @@ def generate_launch_description():
     start_robot_state_publisher_cmd = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        parameters=[{'robot_description': robot_description_raw}] # add other parameters here if required
+        parameters={'robot_description':robot_description_raw})
+
+        
         
 
     start_rviz2 = Node(
