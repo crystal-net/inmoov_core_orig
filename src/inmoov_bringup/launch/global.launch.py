@@ -24,6 +24,9 @@ def generate_launch_description():
         Node(
             package='micro_ros_agent',
             executable='micro_ros_agent',
+            name='micro_ros_agent',
+            arguments=["serial", "--dev", "/dev/ttyACM0"]
+
             # namespace='inmoov', # Namespace
             # name='uros',                # Subnodename
             # parameters=[{'serial --dev /dev/ttyACM0'}]
