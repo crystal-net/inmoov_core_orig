@@ -24,7 +24,6 @@ endif()
 
 install(DIRECTORY 
   launch
-  description
   config
   DESTINATION share/${PROJECT_NAME}
 )
