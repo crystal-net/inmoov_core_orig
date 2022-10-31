@@ -20,4 +20,10 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+INSTALL(
+   DIRECTORY urdf
+   DESTINATION urdf
+)
+
+
 ament_package()
