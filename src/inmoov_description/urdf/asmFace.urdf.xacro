@@ -2,7 +2,7 @@
 
 <robot name="inmoov" xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:include filename="$(find inmoov_description)/urdf/asmEye.urdf.xacro" />
+<xacro:include filename="asmEye.urdf.xacro" />
 
 <xacro:macro name="face" params="covers">
 
