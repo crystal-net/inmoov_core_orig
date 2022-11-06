@@ -22,7 +22,7 @@ endif()
 
 INSTALL(
    DIRECTORY urdf
-   DESTINATION urdf
+   DESTINATION share/${PROJECT_NAME}
 )
 
 
