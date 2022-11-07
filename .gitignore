@@ -3,6 +3,8 @@ build/
 log/
 install/
 
+*.tmp
+
 # VSCode Excludes
 browse.*
 
