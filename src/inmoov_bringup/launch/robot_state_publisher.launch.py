@@ -9,8 +9,8 @@ def generate_launch_description():
 
     # Specify the name of the package and path to xacro file within the package
     pkg_name = 'inmoov_description'
-    file_subpath = 'robots/inmoov.urdf.xacro'
-
+    # file_subpath = 'robots/inmoov.urdf.xacro'
+    file_subpath = "robots/example_robot.urdf.xacro"
 
     # Use xacro to process the file
     xacro_file = os.path.join(get_package_share_directory(pkg_name),file_subpath)
