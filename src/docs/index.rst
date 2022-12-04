@@ -6,7 +6,7 @@
 InMoov ROS2 Build Guide
 ======================
 
-Welcome to the very unofficial build guide for the the InMoov robot project.
+ Updated!!   Welcome to the very unofficial build guide for the the InMoov robot project.
 
 .. image:: https://moveit.ros.org/assets/images/roadmap.png
    :width: 400px
@@ -53,7 +53,7 @@ An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which 
    :maxdepth: 1
    :caption: Controll and Visualization
 
-   pages/joint_state
+   pages/joint_state.rst
    pages/moveit2
    pages/joystick
 
