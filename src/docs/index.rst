@@ -43,7 +43,7 @@ An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which 
    pages/rst-cheetsheet.rst
    pages/troubleshoot.rst
    pages/upython.rst
-   pages/ws_nodes.rst
+   pages/ws_nodes1.rst
 
 
 
