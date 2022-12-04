@@ -43,7 +43,8 @@ An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which 
    pages/rst-cheetsheet.rst
    pages/troubleshoot.rst
    pages/upython.rst
-   pages/ws_nodes1.rst
+   pages/ws_nodes.rst
+
 
 
 
@@ -52,6 +53,7 @@ An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which 
    :maxdepth: 1
    :caption: Controll and Visualization
 
+   pages/joint_state
    pages/moveit2
    pages/joystick
 
