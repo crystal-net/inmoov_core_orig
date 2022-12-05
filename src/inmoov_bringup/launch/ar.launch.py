@@ -16,11 +16,13 @@ def generate_launch_description():
   # Set the path to this package.
   pkg_share = FindPackageShare(package='inmoov_bringup').find('inmoov_bringup')
 
+  desc_share = FindPackageShare(package='inmoov_description').find('inmoov_description')
+
   # Set the path to the RViz configuration settings
   default_rviz_config_path = os.path.join(pkg_share, 'config/conf.rviz')
 
   # Set the path to the URDF file
-  default_urdf_model_path = os.path.join(pkg_share, 'description/example_robot.urdf.xacro')
+  default_urdf_model_path = os.path.join(desc_share, 'robots/inmoov.urdf.xacro')
 
   ########### YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE ##############  
   # Launch configuration variables specific to simulation

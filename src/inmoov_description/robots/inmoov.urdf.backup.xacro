@@ -19,7 +19,7 @@
 
 
 
-<!-- For now we start with a world link.  We might change this later. -->
+
   <link name="world"/>
 
   <joint name="fixed" type="fixed">
@@ -70,8 +70,6 @@
      <origin rpy="0 0 0"  xyz="0 0 0"/>
   </joint>
 
-
-  <!-- Run macro called "torso" in file asmTorso.urdf.xacro -->
   <xacro:torso covers="yes" />
 
   <joint name="head_roll_joint" type="revolute">
@@ -91,12 +89,8 @@
    <child link="head_base_link"/>
   </joint>
 
-  
-  <!-- Run macro called "head" in file asmHead.urdf.xacro -->
   <xacro:head covers="yes" />
 
-
-  <!-- Run macro called "face" in file asmFace.urdf.xacro -->
   <xacro:face covers="yes" />
 
   <joint name="face_joint" type="fixed">
@@ -105,9 +99,6 @@
     <child link="face_link"/>
   </joint>
 
-
-  <!-- Run macro called "face" in file asmArm.urdf.xacro -->
-  <!-- We pass the param "side" in order to process 2 arms with 2 hands, right(r) in this case-->
   <xacro:arm side="r" flip="1" covers="yes" />
 
   <joint name="r_shoulder_out_joint" type="revolute">
@@ -128,12 +119,8 @@
    <child link="r_hand_link"/>
   </joint>
 
-
   <xacro:arm side="l" flip="-1" covers="yes" />
 
-
-  <!-- Run macro called "face" in file asmArm.urdf.xacro -->
-  <!-- We pass the param "side" in order to process 2 arms with 2 hands, left(l) in this case-->
   <joint name="l_shoulder_out_joint" type="revolute">
    <axis xyz="1 0 0"/>
    <limit effort="1000.0" lower="${l_shoulder_out_joint_lower}" upper="${l_shoulder_out_joint_upper}" velocity="${l_shoulder_out_joint_velocity}" />

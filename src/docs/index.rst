@@ -19,6 +19,10 @@ To date, as far as I am aware, there is no working ROS2 projects for InMoov.
 An attempt was made with ROS1 https://github.com/alansrobotlab/inmoov_ros which seems to be abondoned.  I also decided to abandon ROS1 as ROS2 is clearly the way to move forward.
 
 
+Example tutorials used to build this project
+Articulated Robotics - https://youtu.be/OWeLUSzxMsw
+
+
 
 .. toctree::
    :maxdepth: 1

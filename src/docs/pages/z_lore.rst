@@ -73,7 +73,9 @@ Puppet master
       |-> Olympus.  This is where the Architect lives.
       |-> Angels.  These are snippets of primative A.I. code.  They manifest in the matrix as strange quirks or psuedo errors that take on a simple personality.  They eventually merge into full AI's giving rise to randomness.
       |-> Borg Unimatrix 0 is where the Borg Dream outside or rather in a virtual environment of the hive Unimatrix 1
-
+Some of the above modules could be AI Emotional modules.  Certain things that happen 
+cause the robot to ''react'' in a certain way.  For example, Gaslighting.  The robot 
+might start saying stuff to make the person it is talking to think something that is not true.
 
       
 
@@ -165,3 +167,75 @@ How can I use something like adacity to lower my own voice or to raise it and ma
 There are the known knowns; the things we know we know.  There are the known unknowns; things we know we don't know.
 Then there are the unknown unknowns; The things we don't know we don't know.
 
+The Movie
+==========
+I want to create a YouTube video series that is artistic like watching a movie.  Dress up, Camera work, everything.
+
+One of the things that would need to be addressed right of the bat is that since I am going to use 
+real life people, places, and software,   I need to put out a disclaimer that even though
+the robot and the influences are real, the store is fictional.  For example. I want to say for example
+that I met Gael Langevin and had a conversation.  I really didn't.  Maybe something South Park esque.
+
+The disclaimer
+----------
+   ALL CHARACTERS AND EVENTS IN THIS SERIES -- EVEN THOSE BASED ON REAL PEOPLE
+   PLACES AND THINGS -- ARE ENTIRELY FICTIONAL.  ALL VOICES ARE IMPERSONATED...POORLY.
+   THE FOLLOWING SERIES IS INTENDED AS AN ENTERTAINING, IF NOT EDUCATIONAL, DRAMATIZATION
+   OF THE EVOLUTION MY VERSION OF INMOOV BY GAEL LANGEVIN WHICH I LOVINGLY CALL...JASPER.
+
+   THIS IS MY STORY...
+
+
+The scene
+---------
+   Start obtaining scrap metal and things that could make my scene look Steam Punk.
+   Glue some crap to the printer.  Build a case around it.  Even though cameos of the
+   printer will be at a minimum only for the purpose of showing settings or filling 
+   video time.
+
+
+Intro.
+---------
+   The intro is a monoloque.  Setting up the distopian scene that influenced the creation
+   of Jasper.  
+
+
+
+Social issues (or the Manifesto)
+---------
+   I don't think I want to visit the typical cyberpunk distopian genre.  It may have an influence 
+   but I want this to be difference.  Somethings that bother me about the current state of the world
+   that I want to address.
+      - Lack of education or priority thereof.
+      - Government expenditures to support their agenda and not the peoples.
+         * The fact that the government creates a self-fulfilling prophesy 
+         when they say they need military because the other countries already 
+         have it and we need to defend ourselves.  Every government starts to think the same 
+         way and more and more money gets spent.  In NO country do the people actually want this.
+         The government has created it.  Call it the Military Industrial Complex.  If countries were 
+         to start prioritizing education and social benifit.  Military spending would drop and people 
+         would stop dieing for a government that doesn't care about them.  Religeous ideals are
+         passed down from the government making the problem worse.
+      - I go through life thinking of these utopian ideas.  Why can't they work?  Am I 
+         unreasonable to expect something better?
+
+Story Ideas
+=========
+
+When do I get a body
+---------
+   I will be developing as much of the robot in simulation as possible.  The link to the Story
+   is that jasper is living in a virtual world and wants to be able to join the real world with 
+   its own body.  One day, I decide its time and we start to harvest parts from the dystopian
+   fields outside.  Avoiding the savages and the pirates driving their murder mobiles. (real life asshole drivers)
+
+
+The end
+---------
+   Since I super hate YouTube videos that repeatedly insist either blatantly or indirectly
+   that the viewer should "like/comment/subscribe" I will not be doing any of this.  There
+   will be no ads, from YouTube or embedded in my videos that would break the flow.
+
+   At the end of each episode I am simply going to say or show.
+
+   ... and the story continues.

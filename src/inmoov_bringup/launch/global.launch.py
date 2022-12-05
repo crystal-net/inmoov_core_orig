@@ -6,6 +6,9 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch_ros.actions import Node
 from launch.substitutions import Command, LaunchConfiguration
+import xacro
+
+# For more example code see: https://github.com/joshnewans/articubot_one/tree/main/launch
 
 def generate_launch_description():
 
@@ -17,9 +20,8 @@ def generate_launch_description():
     # different package share directory paths but requires extra processing
     inmoov_config = os.path.join(get_package_share_directory('inmoov_bringup'),'config','inmoov_config.yaml')
     rviz_config = os.path.join(get_package_share_directory('inmoov_bringup'),'config','conf.rviz')
-    xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'description','example_robot.urdf.xacro')
-    default_urdf_model_path = os.path.join(get_package_share_directory('inmoov_description'), 'urdf/example_robot.urdf.xacro')
-
+    xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','inmoov.urdf.xacro')
+    robot_description_raw = xacro.process_file(xacro_config).toxml()
 
 
 
@@ -45,12 +47,6 @@ def generate_launch_description():
             parameters=[inmoov_config]
         ),
         Node(
-            package='micro_ros_agent',
-            executable='micro_ros_agent',
-            name='micro_ros_agent',
-            arguments=["serial", "--dev", "/dev/ttyACM0"]
-        ),
-        Node(
             package='joint_state_publisher',
             executable='joint_state_publisher',
             name='joint_state_publisher'
@@ -70,10 +66,17 @@ def generate_launch_description():
         Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
-            parameters=[{'use_sim_time': use_sim_time, 
-            'robot_description': Command(['xacro ', xacro_config])}],
-            arguments=[default_urdf_model_path]
+            name='robot_state_publisher',
+            output='screen',
+            parameters=[{'robot_description': robot_description_raw}] # add other parameters here if required
         ),
     ])
 
 
+
+        # Node(
+        #     package='micro_ros_agent',
+        #     executable='micro_ros_agent',
+        #     name='micro_ros_agent',
+        #     arguments=["serial", "--dev", "/dev/ttyACM0"]
+        # ),
