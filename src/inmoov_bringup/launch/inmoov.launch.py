@@ -1,7 +1,7 @@
-# Author: Addison Sears-Collins
-# Date: September 14, 2021
-# Description: Launch a two-wheeled robot URDF file using Rviz.
-# https://automaticaddison.com
+# Author: Alpenglow Robotics
+# Date: December 2022
+# Description: Launch an instance of Inmoov with URDF file using Rviz.
+# https://robotics.alpenglow-projects.ca
 
 import os
 from launch import LaunchDescription

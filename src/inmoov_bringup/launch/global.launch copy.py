@@ -77,3 +77,10 @@ def generate_launch_description():
     ])
 
 
+# Other possible Node() parameters
+#   Don't know why these seem to be duplicates
+#   node_executeable
+#   node_namespace
+#   node_name
+# 
+#   remappings=[]
