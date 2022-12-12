@@ -57,22 +57,26 @@ def generate_launch_description():
             name='joint_state_publisher_gui'
         ),
         Node(
-            package='rviz2',
-            executable='rviz2',
-            name='rviz2',
-            output='screen',
-            arguments=['-d', rviz_config]
-        ),
-        Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
             name='robot_state_publisher',
             output='screen',
             parameters=[{'robot_description': robot_description_raw}] # add other parameters here if required
         ),
+        Node(
+            package='rviz2',
+            executable='rviz2',
+            name='rviz2',
+            output='screen',
+            arguments=['-d', rviz_config]
+        # ),Node(
+        #     package='gazebo_ros',
+        #     executable='gazebo_ros_pkgs',
+        #     name='gazebo_ros'
+        ),
     ])
 
-
+        # ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/model/vehicle_blue/cmd_vel
 
         # Node(
         #     package='micro_ros_agent',
