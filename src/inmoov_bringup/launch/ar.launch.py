@@ -10,10 +10,25 @@ from launch.conditions import IfCondition, UnlessCondition
 from launch.substitutions import Command, LaunchConfiguration
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 # This was an example from a video from the channel Articulated Robotics
 # generate_launch_description is a parent function.
+# Useful tutorials: 
+#   https://roboticscasual.com/tutorial-ros2-launch-files-all-you-need-to-know/
+#   https://roboticsbackend.com/ros2-launch-file-example/
+#
+# the Node section is an Action imported from launch_ros.actions module
+# Node is added to LaunchDescription which is a method imported from the launch py module
+# Node is an action.  That means, this launch file will start the node as if you would execute
+#  $ ros2 run turtlesim turtlesim_node
+
+#
+# ld in this example launcher is an object of LaunchDescription
 # 
+
+
+
 
 
 def generate_launch_description():
@@ -32,6 +47,8 @@ def generate_launch_description():
 
   ########### YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE ##############  
   # Launch configuration variables specific to simulation
+  # I believe these create empty LaunchConfiguration objects that need to be
+  #  further declared and configured
   gui = LaunchConfiguration('gui')
   urdf_model = LaunchConfiguration('urdf_model')
   rviz_config_file = LaunchConfiguration('rviz_config_file')
@@ -39,7 +56,11 @@ def generate_launch_description():
   use_rviz = LaunchConfiguration('use_rviz')
   use_sim_time = LaunchConfiguration('use_sim_time')
 
+
   # Declare the launch arguments  
+  # These are command line arguements.
+  # They all have defaults so nothing has to be specified
+  # However they can be overridden using the name key
   declare_urdf_model_path_cmd = DeclareLaunchArgument(
     name='urdf_model', 
     default_value=default_urdf_model_path, 
@@ -70,8 +91,8 @@ def generate_launch_description():
     default_value='True',
     description='Use simulation (Gazebo) clock if true')
    
-  # Specify the actions
 
+  # Specify the actions
   # Publish the joint state values for the non-fixed joints in the URDF file.
   start_joint_state_publisher_cmd = Node(
     condition=UnlessCondition(gui),
@@ -104,6 +125,9 @@ def generate_launch_description():
     output='screen',
     arguments=['-d', rviz_config_file])
   
+
+
+
   # Create the launch description and populate
   ld = LaunchDescription()
 
@@ -122,3 +146,8 @@ def generate_launch_description():
   ld.add_action(start_rviz_cmd)
 
   return ld
+
+  IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            FindPackageShare("gazebo_ros"), '/launch', '/gazebo.launch.py'])
+    )
