@@ -17,6 +17,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 # Useful tutorials: 
 #   https://roboticscasual.com/tutorial-ros2-launch-files-all-you-need-to-know/
 #   https://roboticsbackend.com/ros2-launch-file-example/
+#   http://design.ros2.org/articles/node_lifecycle.html
 #
 # the Node section is an Action imported from launch_ros.actions module
 # Node is added to LaunchDescription which is a method imported from the launch py module
