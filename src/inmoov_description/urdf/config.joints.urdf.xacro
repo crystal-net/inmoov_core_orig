@@ -3,9 +3,10 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:property name="filename" value="$(find inmoov_bringup)/config/config.yaml"/>
+  <!-- <xacro:property name="filename" value="$(find inmoov_bringup)/config/config.yaml"/> -->
   <xacro:property name="c" value="${load_yaml(filename)}"/>
 
-  <xacro:property name="pi" value="3.1415926539"/>
+  <!-- <xacro:property name="pi" value="3.1415926539"/> -->
 
   <xacro:if value="${c['bringup']['angles'] == 'degrees'}">
     <xacro:property name="r" value="${pi/180.0}"/>
