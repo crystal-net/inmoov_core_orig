@@ -37,10 +37,10 @@ def generate_launch_description():
   # See inmoov.launch.py for a custom version
   # Set the path to this package.
   pkg_share = FindPackageShare(package='inmoov_bringup').find('inmoov_bringup')
-  print (pkg_share)
-
+  print ("***** " + pkg_share + "*******")
+  
   desc_share = FindPackageShare(package='inmoov_description').find('inmoov_description')
-  print (desc_share)
+  print ("***** " + desc_share + "*******")
 
   # Set the path to the RViz configuration settings
   default_rviz_config_path = os.path.join(pkg_share, 'config/conf.rviz')
@@ -55,6 +55,8 @@ def generate_launch_description():
   # I believe these create empty LaunchConfiguration objects that need to be
   #  further declared and configured
   gui = LaunchConfiguration('gui')
+  print ("***** " + gui + "*******")
+
   urdf_model = LaunchConfiguration('urdf_model')
   rviz_config_file = LaunchConfiguration('rviz_config_file')
   use_robot_state_pub = LaunchConfiguration('use_robot_state_pub')
