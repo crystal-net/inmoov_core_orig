@@ -19,7 +19,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 #   https://roboticsbackend.com/ros2-launch-file-example/
 #   http://design.ros2.org/articles/node_lifecycle.html
 #
-# the Node section is an Action imported from launch_ros.actions module
+# The Node section is an Action imported from launch_ros.actions module
 # Node is added to LaunchDescription which is a method imported from the launch py module
 # Node is an action.  That means, this launch file will start the node as if you would execute
 #  $ ros2 run turtlesim turtlesim_node

@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot name="inmoov" xmlns:xacro="http://ros.org/wiki/xacro">
-<!-- This is from the tutorial at https://www.youtube.com/watch?v=BcjHyhV0kIs&list=PLunhqkrRNRhYAffV8JDiFOatQXuU-NnxT&index=2 -->
+<!-- This is from the tutorial by Articulated Robotics -->
+<!-- at https://www.youtube.com/watch?v=BcjHyhV0kIs&list=PLunhqkrRNRhYAffV8JDiFOatQXuU-NnxT&index=2 -->
 
 
 
@@ -10,26 +11,50 @@
 <!-- <xacro:include filename="$(find inmoov_description)/urdf/materials.urdf.xacro" /> -->
 <!-- <xacro:include filename="$(find inmoov_description)/urdf/inmoov.gazebo" /> -->
 
+
+
+
+<!-- Just some colors to use later -->
 <material name="white">
   <color rgba="1 1 1 1"/>
 </material>
 
-<material name="blue">
-  <color rgba="0 0 1 1"/>
+<material name="orange">
+  <color rgba="1 0.3 0.1 1"/>
 </material>
 
-<!-- Since we are building a mobile (bipedal robot), we are going to make the first link base_link. -->
-<!-- If this were a robot that was attached to a base that was stationare then we would use "world" -->
-  <link name="base_link">
+<material name="blue">
+  <color rgba="0.2 0.2 1 1"/>
+</material>
 
+<material name="black">
+  <color rgba="0 0 0 1"/>
+</material>
+
+
+<!-- Since we are building a mobile (bipedal robot), we are going to make the first link base_link. -->
+<!-- If this were a robot that was attached to a base that was stationary then we would use "world" -->
+<!-- This link will be in the center of the chest for now just for testing as if we were building a -->
+<!-- two wheeled robot.  Instead it will have two arms.  Should be funny. -->
+<!-- BTW.  Is this invisible? -->
+  <link name="base_link">
 
   </link>
 
+
+
+<!-- The original tutorial had a 'chassis' that the wheels were attached to.  we are going to call -->
+<!-- it atorso that we are attaching the arms to. -->  
+<!-- The origin is set to -0.1 to bring it 100mm from the back of the box that is the torso -->
+<!-- but still center Y and center z.  (THIS DOESN'T SEEM RIGHT.  GET YOUR MEASUREMENTS RIGHT) -->
+<!-- It is of course 'fixed' to the base link and will never move from it. -->
   <joint name="torso" type="fixed">
     <parent link="base_link" />
     <child link="chassis_link"/>
     <origin xyz"-0.1 0 0"/>
   </joint>
+
+
 
   <link name="chassis_link">
     <visual>
@@ -40,6 +65,9 @@
       <material name="white">
     </visual>
   </link>
+
+
+
 
   <link name="left_leg">
     <visual>
