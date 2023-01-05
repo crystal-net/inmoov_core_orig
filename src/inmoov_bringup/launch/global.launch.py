@@ -3,9 +3,11 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch_ros.actions import Node
 from launch.substitutions import Command, LaunchConfiguration
+from launch_ros.substitutions import FindPackageShare
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 import xacro
 
 # For more example code see: https://github.com/joshnewans/articubot_one/tree/main/launch
@@ -69,11 +71,11 @@ def generate_launch_description():
             name='rviz2',
             output='screen',
             arguments=['-d', rviz_config]
-        # ),Node(
-        #     package='gazebo_ros',
-        #     executable='gazebo_ros_pkgs',
-        #     name='gazebo_ros'
         ),
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource([
+                FindPackageShare("gazebo_ros"), '/launch', '/gazebo.launch.py'])
+        )
     ])
 
         # ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/model/vehicle_blue/cmd_vel

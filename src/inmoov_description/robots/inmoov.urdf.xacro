@@ -19,7 +19,13 @@
 
 
 
-<!-- For now we start with a world link.  We might change this later. -->
+<!-- For now we start with a world link.  This is because we have no legs yet -->
+<!-- We are basically treating this as a stationary robot with a solid base -->
+<!-- rather than a mobile robot.  A mobile robot will start with a "base_link" instead -->
+<!-- The source I copied already has a base_link.  Maybe we start there later. -->
+<!-- For now we will leave it as part of the robot and leave world as well  -->
+<!-- We will change this later. -->
+<!--  -->
   <link name="world"/>
 
   <joint name="fixed" type="fixed">
