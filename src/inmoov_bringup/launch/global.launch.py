@@ -72,10 +72,10 @@ def generate_launch_description():
             output='screen',
             arguments=['-d', rviz_config]
         ),
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([
-                FindPackageShare("gazebo_ros"), '/launch', '/gazebo.launch.py'])
-        )
+        # IncludeLaunchDescription(
+        #     PythonLaunchDescriptionSource([
+        #         FindPackageShare("gazebo_ros"), '/launch', '/gazebo.launch.py'])
+        # )
     ])
 
         # ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/model/vehicle_blue/cmd_vel
