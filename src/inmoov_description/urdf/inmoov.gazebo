@@ -11,6 +11,19 @@
     </plugin>
   </gazebo>
 
+  <gazebo reference="base_link">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+
+  <gazebo reference="pedestal_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+
+
   <!-- color definitions for gazebo links -->
   <xacro:macro name="g_frame_color">
     <material>Gazebo/Grey</material>

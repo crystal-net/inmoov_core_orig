@@ -22,8 +22,8 @@ def generate_launch_description():
     # different package share directory paths but requires extra processing
     inmoov_config = os.path.join(get_package_share_directory('inmoov_bringup'),'config','inmoov_config.yaml')
     rviz_config = os.path.join(get_package_share_directory('inmoov_bringup'),'config','conf.rviz')
-    # xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','inmoov.urdf.xacro')
-    xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','example_robot.urdf.xacro')
+    xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','inmoov.urdf.xacro')
+    # xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','example_robot.urdf.xacro')
     robot_description_raw = xacro.process_file(xacro_config).toxml()
 
 
@@ -39,16 +39,55 @@ def generate_launch_description():
     # default_urdf_model_path = os.path.join(pkg_share, 'urdf/example_robot.urdf.xacro')
 
 
+    # There are a couple ways of defining a launch file.
+    # The first is to define actions right inside the LaunchDescription() constructor
+    #     Node(
+    #             package='package_name',
+    #             executable='executable inside package',
+    #             name='name_of_the_node?'
+    #     )
+    # 
+    # The next way is to create a LaunchDescription object and then trigger the actions later.
+    #     ld = LaunchDescription()            # Create an object called ld
+    #     some_node = Node(
+    #         package='some_package',
+    #         executable='some_executable',
+    #         name='some_name'
+    #     )
+    # 
+    #     ld.add_action(some_node)
+    #     return ld
+
+
+    #   LaunchDescription([
+    #        ...,
+    #        GroupAction(
+    #            condition=IfCondition(use_gui),
+    #            actions = [
+    #                ...,
+    #                SetParametersFromFile('path/to/file.yaml'),
+    #                ...,
+    #                Node(...),  // the Node will be started when the condition is fullfilled and params will be passed to this node
+    #                ...,
+    #            ]
+    #        ),
+    #        Node(...),  // This node is not dependent on the condition and the parameters will not be passed, as it is not in the same scope
+    #        ...
+    #    ])
+
+
+
+
 
 
     return LaunchDescription([
-        Node(
-            package='demo_nodes_cpp',
-            executable='talker',
-            namespace='inmoov', # Namespace
-            name='sim',                # Subnodename
-            parameters=[inmoov_config]
-        ),
+        # Node(
+        #     package='demo_nodes_cpp',
+        #     executable='talker',
+        #     namespace='inmoov', # Namespace
+        #     name='sim',                # Subnodename
+        #     parameters=[inmoov_config]
+        # ),
         Node(
             package='joint_state_publisher',
             executable='joint_state_publisher',
@@ -73,11 +112,24 @@ def generate_launch_description():
             output='screen',
             arguments=['-d', rviz_config]
         ),
-        # IncludeLaunchDescription(
-        #     PythonLaunchDescriptionSource([
-        #         FindPackageShare("gazebo_ros"), '/launch', '/gazebo.launch.py'])
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource([
+                FindPackageShare("gazebo_ros"), '/launch', '/gazebo.launch.py'])
+        ),
+        # Node(
+        #     package='gazebo_ros',
+        #     executable='spawn_entity.py',
+        #     output='screen',
+        #     arguments=['-topic', 'robot_description',
+        #             '-entity', 'ur5',
+        #             '-z', '0.1']
         # )
+
+
     ])
+
+
+        
 
         # ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/model/vehicle_blue/cmd_vel
 

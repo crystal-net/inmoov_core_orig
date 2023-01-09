@@ -19,7 +19,13 @@
 
 
 
-
+<!-- For now we start with a world link.  This is because we have no legs yet -->
+<!-- We are basically treating this as a stationary robot with a solid base -->
+<!-- rather than a mobile robot.  A mobile robot will start with a "base_link" instead -->
+<!-- The source I copied already has a base_link.  Maybe we start there later. -->
+<!-- For now we will leave it as part of the robot and leave world as well  -->
+<!-- We will change this later. -->
+<!--  -->
   <link name="world"/>
 
   <joint name="fixed" type="fixed">
@@ -28,6 +34,16 @@
   </joint>
 
   <link name="base_link">
+    <inertial>
+      <mass value="58.767261719000004"/>
+      <inertia ixx="0.147272256" ixy="7.553278125e-05" ixz="0.055060208" iyy="0.134112088" iyz="-1.2159836913999999e-05" izz="0.156998304"/>
+    </inertial>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.055"/>
+      <geometry>
+        <cylinder length="0.11" radius="0.26"/>
+      </geometry> 
+    </collision>
     <visual>
       <geometry>
         <cylinder length="0.11" radius="0.26"/>
@@ -44,13 +60,23 @@
   </joint>
 
   <link name="pedestal_link">
+    <collision>
+      <origin xyz="0 0 0" rpy"0 0 0"/>
+      <geometry>
+        <cylinder length="0.11" radius="0.26"/>
+      </geometry> 
+    </collision>
     <visual>
       <geometry>
-        <cylinder length="0.94" radius="0.0254"/>
-      </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0.58"/>
+        <cylinder length="0.11" radius="0.26"/>
+      </geometry> 
+      <origin rpy="0 0 0" xyz="0 0 0.055"/>
       <xacro:base_color/>
     </visual>
+    <inertial>
+      <mass value="58.767261719000004"/>
+      <inertia ixx="0.147272256" ixy="7.553278125e-05" ixz="0.055060208" iyy="0.134112088" iyz="-1.2159836913999999e-05" izz="0.156998304"/>
+    </inertial>
   </link>
 
   <link name="head_tilt_link">
@@ -70,6 +96,8 @@
      <origin rpy="0 0 0"  xyz="0 0 0"/>
   </joint>
 
+
+  <!-- Run macro called "torso" in file asmTorso.urdf.xacro -->
   <xacro:torso covers="yes" />
 
   <joint name="head_roll_joint" type="revolute">
@@ -89,8 +117,12 @@
    <child link="head_base_link"/>
   </joint>
 
+  
+  <!-- Run macro called "head" in file asmHead.urdf.xacro -->
   <xacro:head covers="yes" />
 
+
+  <!-- Run macro called "face" in file asmFace.urdf.xacro -->
   <xacro:face covers="yes" />
 
   <joint name="face_joint" type="fixed">
@@ -99,6 +131,9 @@
     <child link="face_link"/>
   </joint>
 
+
+  <!-- Run macro called "face" in file asmArm.urdf.xacro -->
+  <!-- We pass the param "side" in order to process 2 arms with 2 hands, right(r) in this case-->
   <xacro:arm side="r" flip="1" covers="yes" />
 
   <joint name="r_shoulder_out_joint" type="revolute">
@@ -119,8 +154,12 @@
    <child link="r_hand_link"/>
   </joint>
 
+
   <xacro:arm side="l" flip="-1" covers="yes" />
 
+
+  <!-- Run macro called "face" in file asmArm.urdf.xacro -->
+  <!-- We pass the param "side" in order to process 2 arms with 2 hands, left(l) in this case-->
   <joint name="l_shoulder_out_joint" type="revolute">
    <axis xyz="1 0 0"/>
    <limit effort="1000.0" lower="${l_shoulder_out_joint_lower}" upper="${l_shoulder_out_joint_upper}" velocity="${l_shoulder_out_joint_velocity}" />

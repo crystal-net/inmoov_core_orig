@@ -9,7 +9,7 @@
 
 ros2 launch inmoov_bringup global.launch.py
 
-# ros2 run gazebo_ros spawn_entity.py -topic robot_description -entity bot_name
+# ros2 run gazebo_ros spawn_entity.py -topic robot_description -entity inmoov
 
 
 
