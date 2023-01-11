@@ -9,17 +9,16 @@
 
 <!-- The following includes are for the various appendages -->
 <!-- <xacro:include filename="$(find inmoov_description)/urdf/asmBase.urdf.xacro" /> -->
-<xacro:include filename="$(find inmoov_description)/urdf/asmTorso.urdf.xacro" />
+<xacro:include filename="$(find inmoov_description)/robots/asmTorso.urdf.xacro" />
 <!-- <xacro:include filename="$(find inmoov_description)/urdf/asmHead.urdf.xacro" /> -->
 <!-- <xacro:include filename="$(find inmoov_description)/urdf/asmEye.urdf.xacro" /> -->
 <!-- <xacro:include filename="$(find inmoov_description)/urdf/asmFace.urdf.xacro" /> -->
 <!-- <xacro:include filename="$(find inmoov_description)/urdf/asmArm.urdf.xacro" /> -->
 <!-- <xacro:include filename="$(find inmoov_description)/urdf/asmHand.urdf.xacro" /> -->
 
-
-
-
   <link name="world"/>
+
+
 
   <joint name="fixed" type="fixed">
     <parent link="world"/>
@@ -42,8 +41,6 @@
   </link>
 
 
-
-
   <joint name="base_to_pedestal_link" type="fixed">
     <parent link="base_link"/>
     <child link="pedestal_link"/>
@@ -60,13 +57,16 @@
     </visual>
   </link>
 
+  <xacro:torso />
+
   <joint name="pedestal_to_mid_stomach_joint" type="fixed">
     <parent link="pedestal_link"/>
     <child link="mid_stomach_link"/>
-    <origin rpy="0 0 0"  xyz="0 0 0"/>    
+    <origin rpy="0 0 0" xyz="0 0 0"/>    
   </joint>
 
-  <xacro:torso covers="yes" />
+
+
 
   <!-- <joint name="head_roll_joint" type="revolute">
    <axis xyz="1 0 0"/>

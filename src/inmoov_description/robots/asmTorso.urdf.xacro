@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 
-<robot name="inmoov" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:macro name="torso" params="covers">
+<xacro:macro name="torso">
+<!-- <xacro:macro name="torso" params="covers"> -->
 
   <link name="mid_stomach_link">
     <xacro:mid_stomach_inertial/>

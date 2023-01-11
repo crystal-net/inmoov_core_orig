@@ -11,5 +11,5 @@ ros2 launch inmoov_bringup global.launch.py
 
 # ros2 run gazebo_ros spawn_entity.py -topic robot_description -entity inmoov
 
-
+urdf_to_graphiz 
 
