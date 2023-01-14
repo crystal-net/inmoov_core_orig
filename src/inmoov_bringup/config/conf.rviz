@@ -56,11 +56,13 @@ Visualization Manager:
         All Enabled: true
         base_link:
           Value: true
-        mid_stomach_link:
+        caster_wheel:
           Value: true
-        pedestal_link:
+        chassis:
           Value: true
-        world:
+        left_wheel:
+          Value: true
+        right_wheel:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -68,11 +70,14 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        world:
-          base_link:
-            pedestal_link:
-              mid_stomach_link:
-                {}
+        base_link:
+          chassis:
+            caster_wheel:
+              {}
+          left_wheel:
+            {}
+          right_wheel:
+            {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -97,21 +102,26 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        mid_stomach_link:
+        caster_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        pedestal_link:
+        chassis:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        world:
+        left_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
+        right_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Mass Properties:
         Inertia: false
         Mass: false
@@ -123,7 +133,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: world
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -166,7 +176,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 10
+      Distance: 2.5634946823120117
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -181,10 +191,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.1453983634710312
+      Pitch: 0.5502025485038757
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.4703933000564575
+      Yaw: 5.343583583831787
     Saved: ~
 Window Geometry:
   Displays:
@@ -202,5 +212,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1200
-  X: 2691
-  Y: 217
+  X: 4058
+  Y: 209

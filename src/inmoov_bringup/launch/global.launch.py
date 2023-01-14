@@ -22,8 +22,8 @@ def generate_launch_description():
     # different package share directory paths but requires extra processing
     inmoov_config = os.path.join(get_package_share_directory('inmoov_bringup'),'config','inmoov_config.yaml')
     rviz_config = os.path.join(get_package_share_directory('inmoov_bringup'),'config','conf.rviz')
-    xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','inmoov.urdf.xacro')
-    # xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','example_robot.urdf.xacro')
+    # xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','inmoov.urdf.xacro')
+    xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','articubot_one','robot.urdf.xacro')
     robot_description_raw = xacro.process_file(xacro_config).toxml()
 
 
@@ -116,14 +116,11 @@ def generate_launch_description():
             PythonLaunchDescriptionSource([
                 FindPackageShare("gazebo_ros"), '/launch', '/gazebo.launch.py'])
         ),
-        # Node(
-        #     package='gazebo_ros',
-        #     executable='spawn_entity.py',
-        #     output='screen',
-        #     arguments=['-topic', 'robot_description',
-        #             '-entity', 'ur5',
-        #             '-z', '0.1']
-        # )
+        Node(package='gazebo_ros', executable='spawn_entity.py',
+                    arguments=['-topic', 'robot_description',
+                                '-entity', 'my_bot'],
+                    output='screen'
+        ),
 
 
     ])
