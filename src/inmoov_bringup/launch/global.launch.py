@@ -15,8 +15,8 @@ import xacro
 def generate_launch_description():
 
 
-    use_sim_time = LaunchConfiguration('use_sim_time')
-
+    # use_sim_time = LaunchConfiguration('use_sim_time')
+    # use_ros2_control = LaunchConfiguration('use_ros2_control') 
 
     # Build configuration variables by passing the package share path each time.  We do this in order to use
     # different package share directory paths but requires extra processing
@@ -25,6 +25,13 @@ def generate_launch_description():
     # xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','inmoov.urdf.xacro')
     xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','articubot_one','robot.urdf.xacro')
     robot_description_raw = xacro.process_file(xacro_config).toxml()
+
+
+    # Got this from tutorial and modified as below: robot_description_config = Command(['xacro ', xacro_file, ' use_ros2_control:=', use_ros2_control, ' sim_mode:=', use_sim_time])
+    # I believe this is just a way of specifying the parameters without a bunch of currly brace operations later
+    # robot_description_config = Command(['use_ros2_control:=', use_ros2_control, ' sim_mode:=', use_sim_time])
+    
+
 
 
 
@@ -101,9 +108,10 @@ def generate_launch_description():
         Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
-            name='robot_state_publisher',
+            # name='robot_state_publisher',
             output='screen',
-            parameters=[{'robot_description': robot_description_raw}] # add other parameters here if required
+            # parameters=[{'robot_description': robot_description_raw, 'use_ros2_control': use_ros2_control, ' sim_mode': use_sim_time }] # add other parameters here if required
+            parameters=[{'use_sim_time': True, 'robot_description': robot_description_raw}] # add other parameters here if required
         ),
         Node(
             package='rviz2',
