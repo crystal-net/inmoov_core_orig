@@ -3,19 +3,23 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch_ros.actions import Node
-from launch.substitutions import Command, LaunchConfiguration
 from launch_ros.substitutions import FindPackageShare
-from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import Command, LaunchConfiguration
+
 import xacro
 
 # For more example code see: https://github.com/joshnewans/articubot_one/tree/main/launch
 
+
+
+# Start of launch definition.  First we define some node actions and then at the end we will activate those actions.
 def generate_launch_description():
 
 
-    # use_sim_time = LaunchConfiguration('use_sim_time')
+    use_sim_time = LaunchConfiguration('use_sim_time')            # I think this just evaluates to 'True' in the params variable
     # use_ros2_control = LaunchConfiguration('use_ros2_control') 
 
     # Build configuration variables by passing the package share path each time.  We do this in order to use
@@ -25,12 +29,9 @@ def generate_launch_description():
     # xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','inmoov.urdf.xacro')
     xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','articubot_one','robot.urdf.xacro')
     robot_description_raw = xacro.process_file(xacro_config).toxml()
+    # params = {'robot_description': robot_description_raw, 'use_sim_time': use_sim_time}
+    params = {'use_sim_time': use_sim_time, 'robot_description': robot_description_raw}
 
-
-    # Got this from tutorial and modified as below: robot_description_config = Command(['xacro ', xacro_file, ' use_ros2_control:=', use_ros2_control, ' sim_mode:=', use_sim_time])
-    # I believe this is just a way of specifying the parameters without a bunch of currly brace operations later
-    # robot_description_config = Command(['use_ros2_control:=', use_ros2_control, ' sim_mode:=', use_sim_time])
-    
 
 
 
@@ -84,53 +85,61 @@ def generate_launch_description():
 
 
 
+    node_joint_state_publisher = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        name='joint_state_publisher'
+    )
+    node_joint_state_publisher_gui = Node(
+        package='joint_state_publisher_gui',
+        executable='joint_state_publisher_gui',
+        name='joint_state_publisher_gui'
+    )
+    node_robot_state_publisher = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        name='robot_state_publisher',
+        output='screen',
+        parameters=[params] # add other parameters here if required
+        # parameters=[params] # add other parameters here if required
+        # parameters=[{'robot_description': robot_description_raw, 'use_ros2_control': use_ros2_control, ' sim_mode': use_sim_time }] # add other parameters here if required
+    )
+    node_rviz2 = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
+        arguments=['-d', rviz_config]
+    )
+    node_gazebo_ros_entity = Node(
+        package='gazebo_ros', executable='spawn_entity.py',
+        arguments=['-topic', 'robot_description',
+                    '-entity', 'my_bot'],
+        output='screen'
+    )
 
 
 
     return LaunchDescription([
-        # Node(
-        #     package='demo_nodes_cpp',
-        #     executable='talker',
-        #     namespace='inmoov', # Namespace
-        #     name='sim',                # Subnodename
-        #     parameters=[inmoov_config]
-        # ),
-        Node(
-            package='joint_state_publisher',
-            executable='joint_state_publisher',
-            name='joint_state_publisher'
+        DeclareLaunchArgument(
+            'use_sim_time',
+            default_value='false',
+            description='Use sim time if true'
         ),
-        Node(
-            package='joint_state_publisher_gui',
-            executable='joint_state_publisher_gui',
-            name='joint_state_publisher_gui'
-        ),
-        Node(
-            package='robot_state_publisher',
-            executable='robot_state_publisher',
-            # name='robot_state_publisher',
-            output='screen',
-            # parameters=[{'robot_description': robot_description_raw, 'use_ros2_control': use_ros2_control, ' sim_mode': use_sim_time }] # add other parameters here if required
-            parameters=[{'use_sim_time': True, 'robot_description': robot_description_raw}] # add other parameters here if required
-        ),
-        Node(
-            package='rviz2',
-            executable='rviz2',
-            name='rviz2',
-            output='screen',
-            arguments=['-d', rviz_config]
+        DeclareLaunchArgument(
+            'use_ros2_control',
+            default_value='true',
+            description='Use ros2_control if true'
         ),
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource([
                 FindPackageShare("gazebo_ros"), '/launch', '/gazebo.launch.py'])
         ),
-        Node(package='gazebo_ros', executable='spawn_entity.py',
-                    arguments=['-topic', 'robot_description',
-                                '-entity', 'my_bot'],
-                    output='screen'
-        ),
-
-
+        node_joint_state_publisher,
+        node_joint_state_publisher_gui,
+        node_robot_state_publisher,
+        node_rviz2,
+        node_gazebo_ros_entity,
     ])
 
 
@@ -143,4 +152,13 @@ def generate_launch_description():
         #     executable='micro_ros_agent',
         #     name='micro_ros_agent',
         #     arguments=["serial", "--dev", "/dev/ttyACM0"]
+        # ),
+
+
+        # Node(
+        #     package='demo_nodes_cpp',
+        #     executable='talker',
+        #     namespace='inmoov', # Namespace
+        #     name='sim',                # Subnodename
+        #     parameters=[inmoov_config]
         # ),
