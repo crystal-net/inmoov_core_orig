@@ -21,7 +21,9 @@ if(BUILD_TESTING)
 endif()
 
 INSTALL(
-   DIRECTORY urdf robots launch
+   DIRECTORY urdf 
+   DIRECTORY meshes
+   DIRECTORY robots launch
    DESTINATION share/${PROJECT_NAME}
 )
 

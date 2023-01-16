@@ -19,9 +19,7 @@ import xacro
 def generate_launch_description():
 
 
-    use_sim_time = LaunchConfiguration('use_sim_time')            # I think this just evaluates to 'True' in the params variable
-    # use_ros2_control = LaunchConfiguration('use_ros2_control') 
-
+    
     # Build configuration variables by passing the package share path each time.  We do this in order to use
     # different package share directory paths but requires extra processing
     inmoov_config = os.path.join(get_package_share_directory('inmoov_bringup'),'config','inmoov_config.yaml')
@@ -29,8 +27,12 @@ def generate_launch_description():
     # xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','inmoov.urdf.xacro')
     xacro_config = os.path.join(get_package_share_directory('inmoov_description'),'robots','articubot_one','robot.urdf.xacro')
     robot_description_raw = xacro.process_file(xacro_config).toxml()
+    
+    
+    use_sim_time = LaunchConfiguration('use_sim_time')            # I think this just evaluates to 'True' in the params variable
+    use_ros2_control = LaunchConfiguration('use_ros2_control') 
     # params = {'robot_description': robot_description_raw, 'use_sim_time': use_sim_time}
-    params = {'use_sim_time': use_sim_time, 'robot_description': robot_description_raw}
+    params = {'use_sim_time':use_sim_time, 'use_ros2_control':use_ros2_control, 'robot_description':robot_description_raw}
 
 
 
@@ -114,16 +116,30 @@ def generate_launch_description():
     node_gazebo_ros_entity = Node(
         package='gazebo_ros', executable='spawn_entity.py',
         arguments=['-topic', 'robot_description',
-                    '-entity', 'my_bot'],
+                    '-entity', 'inmoov'],
         output='screen'
     )
+    # node_micro_ros_agent = Node(
+    #     package='micro_ros_agent',
+    #     executable='micro_ros_agent',
+    #     name='micro_ros_agent',
+    #     arguments=["serial", "--dev", "/dev/ttyACM0"]
+    # ),
 
+
+    # node_demo_nodes_cpp = Node(
+    #     package='demo_nodes_cpp',
+    #     executable='talker',
+    #     namespace='inmoov', # Namespace
+    #     name='sim',                # Subnodename
+    #     parameters=[inmoov_config]
+    # ),
 
 
     return LaunchDescription([
         DeclareLaunchArgument(
             'use_sim_time',
-            default_value='false',
+            default_value='true',
             description='Use sim time if true'
         ),
         DeclareLaunchArgument(
@@ -140,6 +156,8 @@ def generate_launch_description():
         node_robot_state_publisher,
         node_rviz2,
         node_gazebo_ros_entity,
+        # node_micro_ros_agent,
+        # node_demo_nodes_cpp,
     ])
 
 
@@ -147,18 +165,3 @@ def generate_launch_description():
 
         # ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/model/vehicle_blue/cmd_vel
 
-        # Node(
-        #     package='micro_ros_agent',
-        #     executable='micro_ros_agent',
-        #     name='micro_ros_agent',
-        #     arguments=["serial", "--dev", "/dev/ttyACM0"]
-        # ),
-
-
-        # Node(
-        #     package='demo_nodes_cpp',
-        #     executable='talker',
-        #     namespace='inmoov', # Namespace
-        #     name='sim',                # Subnodename
-        #     parameters=[inmoov_config]
-        # ),
