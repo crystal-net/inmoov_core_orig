@@ -90,13 +90,16 @@ def generate_launch_description():
     node_joint_state_publisher = Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
-        name='joint_state_publisher'
+        name='joint_state_publisher',
+        parameters=[{'use_sim_time': True}]
     )
+
     node_joint_state_publisher_gui = Node(
         package='joint_state_publisher_gui',
         executable='joint_state_publisher_gui',
         name='joint_state_publisher_gui'
     )
+
     node_robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -106,19 +109,23 @@ def generate_launch_description():
         # parameters=[params] # add other parameters here if required
         # parameters=[{'robot_description': robot_description_raw, 'use_ros2_control': use_ros2_control, ' sim_mode': use_sim_time }] # add other parameters here if required
     )
+
     node_rviz2 = Node(
         package='rviz2',
         executable='rviz2',
         name='rviz2',
         output='screen',
-        arguments=['-d', rviz_config]
+        arguments=['-d', rviz_config],
+        parameters=[{'use_sim_time': True}]
     )
+
     node_gazebo_ros_entity = Node(
         package='gazebo_ros', executable='spawn_entity.py',
         arguments=['-topic', 'robot_description',
                     '-entity', 'inmoov'],
         output='screen'
     )
+
     # node_micro_ros_agent = Node(
     #     package='micro_ros_agent',
     #     executable='micro_ros_agent',
@@ -154,8 +161,8 @@ def generate_launch_description():
         node_joint_state_publisher,
         node_joint_state_publisher_gui,
         node_robot_state_publisher,
-        node_rviz2,
         node_gazebo_ros_entity,
+        node_rviz2,
         # node_micro_ros_agent,
         # node_demo_nodes_cpp,
     ])
