@@ -32,7 +32,8 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')            # I think this just evaluates to 'True' in the params variable
     use_ros2_control = LaunchConfiguration('use_ros2_control') 
     # params = {'robot_description': robot_description_raw, 'use_sim_time': use_sim_time}
-    params = {'use_sim_time':use_sim_time, 'use_ros2_control':use_ros2_control, 'robot_description':robot_description_raw}
+    # params = {'use_sim_time':use_sim_time, 'use_ros2_control':use_ros2_control, 'robot_description':robot_description_raw}
+    # params = {'use_sim_time':use_sim_time, 'use_ros2_control':use_ros2_control, 'robot_description':robot_description_raw}
 
 
 
@@ -91,7 +92,7 @@ def generate_launch_description():
         package='joint_state_publisher',
         executable='joint_state_publisher',
         name='joint_state_publisher',
-        parameters=[{'use_sim_time': True}]
+        # parameters=[{'use_sim_time': True}]
     )
 
     node_joint_state_publisher_gui = Node(
@@ -105,9 +106,9 @@ def generate_launch_description():
         executable='robot_state_publisher',
         name='robot_state_publisher',
         output='screen',
-        parameters=[params] # add other parameters here if required
         # parameters=[params] # add other parameters here if required
-        # parameters=[{'robot_description': robot_description_raw, 'use_ros2_control': use_ros2_control, ' sim_mode': use_sim_time }] # add other parameters here if required
+        # parameters=[params] # add other parameters here if required
+        parameters=[{'robot_description': robot_description_raw, 'use_ros2_control': use_ros2_control }] # add other parameters here if required
     )
 
     node_rviz2 = Node(
@@ -116,7 +117,7 @@ def generate_launch_description():
         name='rviz2',
         output='screen',
         arguments=['-d', rviz_config],
-        parameters=[{'use_sim_time': True}]
+        # parameters=[{'use_sim_time': True}]
     )
 
     node_gazebo_ros_entity = Node(
@@ -158,8 +159,8 @@ def generate_launch_description():
             PythonLaunchDescriptionSource([
                 FindPackageShare("gazebo_ros"), '/launch', '/gazebo.launch.py'])
         ),
-        node_joint_state_publisher,
-        node_joint_state_publisher_gui,
+        # node_joint_state_publisher,
+        # node_joint_state_publisher_gui,
         node_robot_state_publisher,
         node_gazebo_ros_entity,
         node_rviz2,
