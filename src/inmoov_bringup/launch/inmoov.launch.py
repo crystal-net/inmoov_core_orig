@@ -28,7 +28,7 @@ def generate_launch_description():
   default_rviz_config_path = os.path.join(pkg_share, 'config/conf.rviz')
 
   # Set the path to the URDF file
-  default_urdf_model_path = os.path.join(desc_share, 'robots/inmoov.urdf.xacro')
+  default_urdf_model_path = os.path.join(desc_share, 'robots/articubot_one/robot.urdf.xacro')
 
   ########### YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE ##############  
   # Launch configuration variables specific to simulation
@@ -38,6 +38,7 @@ def generate_launch_description():
   use_robot_state_pub = LaunchConfiguration('use_robot_state_pub')
   use_rviz = LaunchConfiguration('use_rviz')
   use_sim_time = LaunchConfiguration('use_sim_time')
+  use_gazebo = LaunchConfiguration('use_gazebo')
 
   # Declare the launch arguments  
   declare_urdf_model_path_cmd = DeclareLaunchArgument(
@@ -64,6 +65,11 @@ def generate_launch_description():
     name='use_rviz',
     default_value='True',
     description='Whether to start RVIZ')
+
+  # declare_use_gazebo_cmd = DeclareLaunchArgument(
+  #   name='use_gazebo',
+  #   default_value='True',
+  #   description='Whether to start Gazebo')
     
   declare_use_sim_time_cmd = DeclareLaunchArgument(
     name='use_sim_time',
@@ -103,7 +109,18 @@ def generate_launch_description():
     name='rviz2',
     output='screen',
     arguments=['-d', rviz_config_file])
-  
+
+  # Launch Gazebo
+  start_rviz_cmd = Node(
+    condition=IfCondition(use_gazebo),
+    package='gazebo_ros',
+    executable='gazebo_ros',
+    name='gazebo_ros',
+    output='screen',
+    arguments=['-d', rviz_config_file])
+
+
+
   # Create the launch description and populate
   ld = LaunchDescription()
 
