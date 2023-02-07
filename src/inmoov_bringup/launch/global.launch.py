@@ -123,7 +123,7 @@ def generate_launch_description():
     node_gazebo_ros_entity = Node(
         package='gazebo_ros', executable='spawn_entity.py',
         arguments=['-topic', 'robot_description',
-                    '-entity', 'inmoov'],
+                    '-entity', 'mybot'],
         output='screen'
     )
 
@@ -159,11 +159,12 @@ def generate_launch_description():
             PythonLaunchDescriptionSource([
                 FindPackageShare("gazebo_ros"), '/launch', '/gazebo.launch.py'])
         ),
-        # node_joint_state_publisher,
-        # node_joint_state_publisher_gui,
-        node_robot_state_publisher,
-        node_gazebo_ros_entity,
+
         node_rviz2,
+        # node_gazebo_ros_entity, 
+        node_joint_state_publisher,
+        node_joint_state_publisher_gui,
+        node_robot_state_publisher,        
         # node_micro_ros_agent,
         # node_demo_nodes_cpp,
     ])
