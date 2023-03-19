@@ -20,11 +20,11 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-INSTALL(
-   DIRECTORY urdf 
-   DIRECTORY meshes
-   DIRECTORY robots launch
-   DESTINATION share/${PROJECT_NAME}
+install(DIRECTORY
+  urdf 
+  meshes
+  robots
+  DESTINATION share/${PROJECT_NAME}
 )
 
 
