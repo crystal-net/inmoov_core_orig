@@ -1,9 +1,0 @@
-{
-    "python.autoComplete.extraPaths": [
-        "/home/gkemper/ros2_ws/install/template_pkg_py/lib/python3.8/site-packages",
-        "/home/gkemper/ros2_ws/install/ourbotmanager/lib/python3.8/site-packages",
-        "/home/gkemper/ros2_ws/install/inmoov_bringup/lib/python3.8/site-packages",
-        "/home/gkemper/ros2_ws/install/inmoov_awaken/lib/python3.8/site-packages",
-        "/opt/ros/galactic/lib/python3.8/site-packages"
-    ]
-}
