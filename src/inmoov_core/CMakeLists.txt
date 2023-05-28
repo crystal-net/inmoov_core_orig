@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(inmoov_description)
+project(inmoov_core)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -7,7 +7,9 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
+# uncomment the following section in order to fill in
+# further dependencies manually.
+# find_package(<dependency> REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -20,12 +22,12 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-install(DIRECTORY
-  urdf 
-  meshes
-  robots
+install(DIRECTORY 
+  config
+  description
+  launch
+  world
   DESTINATION share/${PROJECT_NAME}
 )
-
 
 ament_package()
